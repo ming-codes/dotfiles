@@ -37,6 +37,7 @@ email = vmliu1@gmail.com
 
 [push]
 default = current
+followTags = true
 
 [pull]
 default = current
