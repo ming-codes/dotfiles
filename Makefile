@@ -87,12 +87,22 @@ ifeq ($(OS),Darwin)
 	-unlink /Applications/iOS\ Simulator.app
 endif
 
-clean: unlink
+uninstall:
 	-unlink ~/.fzf
+
+clean: unlink
+	-brew uninstall --force brew-cask
+	-brew untap phinze/cask
+	-brew untap caskroom/cask
+	-brew update
+	-brew cleanup
+	-brew cask cleanup
+	-trash -s
 
 update:
 	sh ./zsh/oh-my-zsh/tools/upgrade.sh
 	brew update
+	brew cask update
 ifeq ($(OS),Darwin)
 	-brew upgrade reattach-to-user-namespace
 	-brew upgrade brew-cask
