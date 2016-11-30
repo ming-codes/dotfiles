@@ -11,17 +11,21 @@ endif
 	brew install zsh
 	brew install neovim/neovim/neovim
 	brew install git
+	brew install curl --with-nghttp2
+	brew link curl --force
 	brew install tree
 	brew install ack
 	brew install wget
 	brew install direnv
 	brew install trash
 	brew install jq
+	brew install rename
 	brew install coreutils
 
 cask-install:
 ifeq ($(OS),Darwin)
 	brew cask install iterm2
+	brew cask install eclipse-jee
 endif
 
 gem-install:
