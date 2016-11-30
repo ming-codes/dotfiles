@@ -72,3 +72,4 @@ helper = osxkeychain
 pretty = oneline
 [log]
 abbrevCommit = true
+decorate = true
