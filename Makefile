@@ -122,4 +122,5 @@ endif
 	-brew upgrade direnv
 	-brew upgrade trash
 	-brew upgrade jq
+	-brew upgrade curl --with-nghttp2
 	-brew upgrade coreutils
