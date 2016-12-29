@@ -124,3 +124,5 @@ endif
 	-brew upgrade jq
 	-brew upgrade curl --with-nghttp2
 	-brew upgrade coreutils
+	git submodule update --remote --merge -- nvm
+	./nvm/install.sh
