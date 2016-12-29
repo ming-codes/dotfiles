@@ -2,6 +2,8 @@
 export DOTFILES=$HOME/.dotfiles
 export ZSH=$DOTFILES/zsh/oh-my-zsh
 
+DISABLE_AUTO_UPDATE=true
+
 plugins=(git history-substring-search vi-mode)
 
 # Raise file descriptor limit
