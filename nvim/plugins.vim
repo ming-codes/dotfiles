@@ -45,7 +45,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 
 " JavaScript
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'mtscout6/syntastic-local-eslint.vim', { 'for': 'javascript' }
+"Plug 'mtscout6/syntastic-local-eslint.vim', { 'for': 'javascript' }
 " Mustache
 Plug 'mustache/vim-mustache-handlebars'
 " Less CSS
