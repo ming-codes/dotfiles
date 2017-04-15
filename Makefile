@@ -118,6 +118,7 @@ endif
 	-brew upgrade zsh
 	-brew upgrade neovim/neovim/neovim
 	-brew upgrade git
+	-brew upgrade fzf
 	-brew upgrade tree
 	-brew upgrade ack
 	-brew upgrade wget
@@ -128,3 +129,5 @@ endif
 	-brew upgrade coreutils
 	git submodule update --remote --merge -- nvm
 	./nvm/install.sh
+	nvim -c 'PlugUpgrade' -c 'xa'
+	nvim -c 'PlugUpdate' -c 'xa'
