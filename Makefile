@@ -103,6 +103,8 @@ clean: unlink
 	-brew cask cleanup
 	-trash -s
 
+upgrade: update
+
 update:
 	git checkout master
 	git pull --rebase origin master --tags
