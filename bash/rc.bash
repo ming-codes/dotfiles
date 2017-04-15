@@ -24,3 +24,6 @@ eval $(thefuck --alias)
 
 # This needs to be the last line
 eval "$(direnv hook bash)"
+
+# This loads nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" 
