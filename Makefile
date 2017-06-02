@@ -9,6 +9,7 @@ endif
 	brew install tmux
 	brew install fish
 	brew install zsh
+	brew install thefuck
 	brew install neovim/neovim/neovim
 	brew install git
 	brew install curl --with-nghttp2
