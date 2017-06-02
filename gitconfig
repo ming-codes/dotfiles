@@ -30,6 +30,10 @@ browser = google-chrome
 ; credit goes to https://gist.github.com/datagrok/5080545
 serve = !bash -c '"echo \"Usage: git clone git://`hostname`/ <local-dirname>\"; git daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/"'
 today = log --author=Ming --since="6am" --branches
+co = checkout
+br = branch
+ci = commit
+st = status
 
 [user]
 name = Ming Liu

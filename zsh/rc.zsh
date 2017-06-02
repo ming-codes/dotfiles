@@ -9,10 +9,6 @@ plugins=(git history-substring-search vi-mode)
 # Raise file descriptor limit
 ulimit -n 8192
 
-alias vim="nvim"
-alias vi="nvim"
-alias ll="ls -l"
-
 export PATH=$DOTFILES/bin:$PATH
 
 for ruby in `find ~/.gem/ruby -type d -maxdepth 2 | grep 'bin$'`
@@ -22,11 +18,18 @@ done
 
 source $DOTFILES/shell/promptline.sh
 source $ZSH/oh-my-zsh.sh
-source $HOME/.nvm/nvm.sh
+source $HOME/.nvm/nvm.sh --no-use
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 echo "Welcome to ZSH"
+
+alias vim="nvim"
+alias vi="nvim"
+alias ll="ls -l"
+alias f="fuck"
+
+eval $(thefuck --alias)
 
 # This needs to be the last line
 eval "$(direnv hook zsh)"
