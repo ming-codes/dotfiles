@@ -107,7 +107,6 @@ clean: unlink
 update:
 	sh ./zsh/oh-my-zsh/tools/upgrade.sh
 	brew update
-	brew cask update
 ifeq ($(OS),Darwin)
 	-brew upgrade reattach-to-user-namespace
 	-brew upgrade brew-cask
