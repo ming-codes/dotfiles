@@ -105,6 +105,8 @@ clean: unlink
 	-trash -s
 
 update:
+	git checkout master
+	git pull --rebase origin master --tags
 	sh ./zsh/oh-my-zsh/tools/upgrade.sh
 	brew update
 ifeq ($(OS),Darwin)
