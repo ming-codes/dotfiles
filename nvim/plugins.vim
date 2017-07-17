@@ -23,9 +23,9 @@ Plug 'triglav/vim-visual-increment'
 Plug 'myusuf3/numbers.vim'
 Plug 'editorconfig/editorconfig-vim'
 
-Plug 'winresizer.vim'
-Plug 'EasyMotion'
-Plug 'Tabmerge'
+Plug 'simeji/winresizer'
+Plug 'easymotion/vim-easymotion'
+Plug 'vim-scripts/Tabmerge'
 
 " Style
 Plug 'vim-airline/vim-airline'
