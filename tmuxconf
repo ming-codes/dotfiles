@@ -1,7 +1,7 @@
 
 source ~/.dotfiles/shell/tmuxline.sh
 
-set -g default-command "reattach-to-user-namespace -l zsh"
+set -g default-command "zsh"
 set -g default-terminal "screen-256color"
 
 set -g base-index 1

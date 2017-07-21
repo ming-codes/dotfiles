@@ -3,7 +3,6 @@ OS:=$(shell uname -s)
 
 brew-install:
 ifeq ($(OS),Darwin)
-	brew install reattach-to-user-namespace
 	brew install brew-cask
 endif
 	brew install tmux
@@ -110,7 +109,6 @@ update:
 	sh ./zsh/oh-my-zsh/tools/upgrade.sh
 	brew update
 ifeq ($(OS),Darwin)
-	-brew upgrade reattach-to-user-namespace
 	-brew upgrade brew-cask
 endif
 	-brew upgrade tmux
