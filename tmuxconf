@@ -3,6 +3,7 @@ source ~/.dotfiles/shell/tmuxline.sh
 
 set -g default-command "zsh"
 set -g default-terminal "screen-256color"
+set -g renumber-windows on
 
 set -g base-index 1
 
@@ -14,8 +15,8 @@ bind | split-window -h -c '#{pane_current_path}'
 bind - split-window -v -c '#{pane_current_path}'
 
 # TODO find way to always copy/paste from system clipboard
-bind -t vi-copy v begin-selection
-bind -t vi-copy y copy-pipe "pbcopy"
+bind-key -Tcopy-mode-vi 'v' send -X begin-selection
+bind-key -Tcopy-mode-vi 'y' send -X copy-selection
 
 # Smart pane switching with awareness of vim splits
 # See: https://github.com/christoomey/vim-tmux-navigator
