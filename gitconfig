@@ -73,7 +73,8 @@ autostash = true
 [credential]
 helper = osxkeychain
 [format]
-pretty = oneline
+pretty = format:%h %Cblue%ad%Creset %ae %Cgreen%s%Creset %C(auto)%d%Creset
 [log]
 abbrevCommit = true
+date = relative
 decorate = true
