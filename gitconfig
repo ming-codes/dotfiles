@@ -23,6 +23,9 @@ added = yellow
 changed = green
 untracked = cyan
 
+[color "decorate"]
+tag = magenta
+
 [web]
 browser = google-chrome
 
