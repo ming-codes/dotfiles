@@ -9,7 +9,7 @@ endif
 	brew install fish
 	brew install zsh
 	brew install thefuck
-	brew install neovim/neovim/neovim
+	brew install neovim
 	brew install git
 	brew install curl --with-nghttp2
 	brew link curl --force
@@ -116,7 +116,7 @@ endif
 	-brew upgrade tmux
 	-brew upgrade fish
 	-brew upgrade zsh
-	-brew upgrade neovim/neovim/neovim
+	-brew upgrade neovim
 	-brew upgrade git
 	-brew upgrade fzf
 	-brew upgrade tree
