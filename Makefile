@@ -127,7 +127,10 @@ endif
 	-brew upgrade jq
 	-brew upgrade curl --with-nghttp2
 	-brew upgrade coreutils
+	-brew prune
+	-brew cleanup
 	git submodule update --remote --merge -- nvm
 	./nvm/install.sh
 	nvim -c 'PlugUpgrade' -c 'xa'
 	nvim -c 'PlugUpdate' -c 'xa'
+	nvim -c 'PlugClean' -c 'xa'
