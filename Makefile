@@ -4,6 +4,7 @@ OS:=$(shell uname -s)
 brew-install:
 ifeq ($(OS),Darwin)
 	brew install brew-cask
+	brew install mas
 endif
 	brew install tmux
 	brew install fish
@@ -106,12 +107,16 @@ clean: unlink
 upgrade: update
 
 update:
+ifeq ($(OS),Darwin)
+	-xcode-select --install
+endif
 	git checkout master
 	git pull --rebase origin master --tags
 	sh ./zsh/oh-my-zsh/tools/upgrade.sh
 	brew update
 ifeq ($(OS),Darwin)
 	-brew upgrade brew-cask
+	-brew upgrade mas
 endif
 	-brew upgrade tmux
 	-brew upgrade fish
@@ -129,6 +134,7 @@ endif
 	-brew upgrade coreutils
 	-brew prune
 	-brew cleanup
+	-mas upgrade
 	git submodule update --remote --merge -- nvm
 	./nvm/install.sh
 	nvim -c 'PlugUpgrade' -c 'xa'
