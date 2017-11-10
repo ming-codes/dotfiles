@@ -1,6 +1,7 @@
 
 export DOTFILES=$HOME/.dotfiles
 export ZSH=$DOTFILES/zsh/oh-my-zsh
+export FZF_DEFAULT_OPTS="-m"
 
 DISABLE_AUTO_UPDATE=true
 
