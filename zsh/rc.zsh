@@ -19,7 +19,7 @@ done
 
 source $DOTFILES/shell/promptline.sh
 source $ZSH/oh-my-zsh.sh
-source $HOME/.nvm/nvm.sh --no-use
+source $HOME/.nvm/nvm.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
