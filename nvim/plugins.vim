@@ -52,5 +52,9 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'groenewege/vim-less'
 " Elixir
 Plug 'elixir-lang/vim-elixir'
+" PEG
+Plug 'alunny/pegjs-vim'
+" GLSL
+Plug 'tikhomirov/vim-glsl'
 
 call plug#end()
