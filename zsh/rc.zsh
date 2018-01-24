@@ -17,10 +17,10 @@ do
   export PATH=$ruby:$PATH
 done
 
-for py in `find ~/Library/Python -type d -maxdepth 2 | grep 'bin$'`
-do
-  export PATH=$py:$PATH
-done
+#for py in `find ~/Library/Python -type d -maxdepth 2 | grep 'bin$'`
+#do
+#  export PATH=$py:$PATH
+#done
 
 source $DOTFILES/shell/promptline.sh
 source $ZSH/oh-my-zsh.sh
