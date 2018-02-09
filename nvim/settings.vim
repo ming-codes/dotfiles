@@ -58,3 +58,5 @@ set undofile
 
 set backupdir=~/.config/nvim/vim-backup//
 set backup
+
+set omnifunc=syntaxcomplete#Complete
