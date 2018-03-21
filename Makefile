@@ -13,6 +13,7 @@ endif
 	brew install neovim
 	brew install git
 	brew install curl --with-nghttp2
+	brew install yarn --without-node
 	brew link curl --force
 	brew install tree
 	brew install ack
@@ -131,6 +132,7 @@ endif
 	-brew upgrade trash
 	-brew upgrade jq
 	-brew upgrade curl --with-nghttp2
+	-brew upgrade yarn --without-node
 	-brew upgrade coreutils
 	-brew prune
 	-brew cleanup
