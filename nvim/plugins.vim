@@ -15,7 +15,8 @@ Plug 'junegunn/limelight.vim'
 Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-multiple-cursors'
 
-Plug 'scrooloose/syntastic'
+Plug 'sodapopcan/vim-twiggy'
+Plug 'vim-syntastic/syntastic'
 Plug 'mbbill/undotree'
 Plug 'mileszs/ack.vim'
 Plug 'osyo-manga/vim-over'
@@ -47,6 +48,9 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'flowtype/vim-flow', { 'for': 'javascript' }
 "Plug 'mtscout6/syntastic-local-eslint.vim', { 'for': 'javascript' }
+" TypeScript
+Plug 'leafgarland/typescript-vim'
+"leafgarland/typescript-vim
 " Mustache
 Plug 'mustache/vim-mustache-handlebars'
 " Less CSS
@@ -57,5 +61,7 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'alunny/pegjs-vim'
 " GLSL
 Plug 'tikhomirov/vim-glsl'
+" Solidity
+Plug 'tomlion/vim-solidity'
 
 call plug#end()
