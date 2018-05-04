@@ -1,12 +1,18 @@
 
 OS:=$(shell uname -s)
 
+mas-install:
+	mas install 413857545 # Divvy
+	mas install 587512244 # Kaleidoscope
+	mas install 407963104 # Pixelmator
+
 brew-install:
 ifeq ($(OS),Darwin)
 	brew tap caskroom/cask
 	brew install mas
 endif
 	brew install tmux
+	brew link tmux
 	brew install fish
 	brew install zsh
 	brew install thefuck
@@ -26,8 +32,13 @@ endif
 
 cask-install:
 ifeq ($(OS),Darwin)
-	brew cask install iterm2
-	brew cask install eclipse-jee
+	brew cask install --appdir=~/Applications alfred
+	brew cask install --appdir=~/Applications dash
+	brew cask install --appdir=~/Applications slack
+	brew cask install --appdir=~/Applications chromium
+	brew cask install --appdir=~/Applications iterm2
+	brew cask install --appdir=~/Applications java
+	brew cask install --appdir=~/Applications eclipse-jee
 endif
 
 gem-install:
@@ -66,12 +77,10 @@ link:
 	ln -s ~/.dotfiles/tmuxconf             ~/.tmux.conf
 
 ifeq ($(OS),Darwin)
-	ln -s ~/.dotfiles/alfred               ~/Library/Application\ Support/Alfred\ 2/Alfred.alfredpreferences
-
 	ln -s /Applications/Xcode.app/Contents/Developer/Applications/iOS\ Simulator.app /Applications/iOS\ Simulator.app
 endif
 
-install: brew-install link cask-install gem-install vim-install git-install
+install: brew-install cask-install mas-install unlink link gem-install vim-install git-install
 
 unlink:
 	-unlink ~/.config/nvim/init.vim
