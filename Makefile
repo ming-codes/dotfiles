@@ -3,7 +3,7 @@ OS:=$(shell uname -s)
 
 brew-install:
 ifeq ($(OS),Darwin)
-	brew install brew-cask
+	brew tap caskroom/cask
 	brew install mas
 endif
 	brew install tmux
@@ -71,7 +71,7 @@ ifeq ($(OS),Darwin)
 	ln -s /Applications/Xcode.app/Contents/Developer/Applications/iOS\ Simulator.app /Applications/iOS\ Simulator.app
 endif
 
-install: link brew-install cask-install gem-install vim-install git-install
+install: brew-install link cask-install gem-install vim-install git-install
 
 unlink:
 	-unlink ~/.config/nvim/init.vim
