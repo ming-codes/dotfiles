@@ -24,7 +24,8 @@ Plug 'triglav/vim-visual-increment'
 Plug 'myusuf3/numbers.vim'
 Plug 'editorconfig/editorconfig-vim'
 
-Plug 'simeji/winresizer'
+"Plug 'simeji/winresizer'
+Plug 'melonmanchan/vim-tmux-resizer'
 Plug 'easymotion/vim-easymotion'
 Plug 'vim-scripts/Tabmerge'
 
