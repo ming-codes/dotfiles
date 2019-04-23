@@ -3,6 +3,9 @@ export DOTFILES=$HOME/.dotfiles
 export ZSH=$DOTFILES/zsh/oh-my-zsh
 export FZF_DEFAULT_OPTS="-m"
 
+export LDFLAGS="-L/usr/local/opt/curl-openssl/lib"
+export CPPFLAGS="-I/usr/local/opt/curl-openssl/include"
+
 DISABLE_AUTO_UPDATE=true
 
 plugins=(git history-substring-search vi-mode)
@@ -16,6 +19,8 @@ for ruby in `find ~/.gem/ruby -type d -maxdepth 2 | grep 'bin$'`
 do
   export PATH=$ruby:$PATH
 done
+
+export PATH="/usr/local/opt/curl-openssl/bin:$PATH"
 
 #for py in `find ~/Library/Python -type d -maxdepth 2 | grep 'bin$'`
 #do

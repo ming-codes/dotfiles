@@ -2,9 +2,10 @@
 OS:=$(shell uname -s)
 
 mas-install:
-	mas install 413857545 # Divvy
-	mas install 587512244 # Kaleidoscope
-	mas install 407963104 # Pixelmator
+	mas install 413857545  # Divvy
+	mas install 587512244  # Kaleidoscope
+	mas install 407963104  # Pixelmator
+	mas install 1362171212 # Caffeinated
 
 brew-install:
 ifeq ($(OS),Darwin)
@@ -18,9 +19,8 @@ endif
 	brew install thefuck
 	brew install neovim
 	brew install git
-	brew install curl --with-nghttp2
-	brew install yarn --without-node
-	brew link curl --force
+	brew install curl-openssl
+	brew install yarn
 	brew install tree
 	brew install ack
 	brew install wget
@@ -35,7 +35,7 @@ ifeq ($(OS),Darwin)
 	brew cask install --appdir=~/Applications alfred
 	brew cask install --appdir=~/Applications dash
 	brew cask install --appdir=~/Applications slack
-	brew cask install --appdir=~/Applications chromium
+	brew cask install --appdir=~/Applications brave-browser
 	brew cask install --appdir=~/Applications iterm2
 	brew cask install --appdir=~/Applications java
 	brew cask install --appdir=~/Applications eclipse-jee
