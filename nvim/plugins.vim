@@ -41,28 +41,36 @@ Plug 'Yggdroot/indentLine'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 
+"""
+" Completion
+"""
+
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+
 ""
 " Syntax
 ""
 
+Plug 'sheerun/vim-polyglot'
+
 " JavaScript
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'flowtype/vim-flow', { 'for': 'javascript' }
+"Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+"Plug 'flowtype/vim-flow', { 'for': 'javascript' }
 "Plug 'mtscout6/syntastic-local-eslint.vim', { 'for': 'javascript' }
 " TypeScript
-Plug 'leafgarland/typescript-vim'
+"Plug 'leafgarland/typescript-vim'
 "leafgarland/typescript-vim
 " Mustache
-Plug 'mustache/vim-mustache-handlebars'
+"Plug 'mustache/vim-mustache-handlebars'
 " Less CSS
-Plug 'groenewege/vim-less'
+"Plug 'groenewege/vim-less'
 " Elixir
-Plug 'elixir-lang/vim-elixir'
+"Plug 'elixir-lang/vim-elixir'
 " PEG
 Plug 'alunny/pegjs-vim'
 " GLSL
-Plug 'tikhomirov/vim-glsl'
+"Plug 'tikhomirov/vim-glsl'
 " Solidity
-Plug 'tomlion/vim-solidity'
+"Plug 'tomlion/vim-solidity'
 
 call plug#end()
