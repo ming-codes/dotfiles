@@ -20,6 +20,8 @@ let g:syntastic_javascript_checkers             = [ 'jshint', 'eslint' ]
 let g:syntastic_javascript_jshint_exe           = '[ -f $(npm bin)/jshint ] && $(npm bin)/jshint || jshint'
 let g:syntastic_javascript_eslint_exe           = '[ -f $(npm bin)/eslint ] && $(npm bin)/eslint || eslint'
 
+let g:undotree_SplitWidth                       = 35
+
 set list lcs=trail:·,tab:¦\ ,eol:¬
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 

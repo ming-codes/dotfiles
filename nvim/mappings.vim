@@ -1,6 +1,6 @@
 
 nnoremap <silent> <bs> :TmuxNavigateLeft<cr>
-nnoremap K :UndotreeToggle<cr>
+nnoremap K :Goyo 70%+20x80%<cr>:UndotreeToggle<cr>:UndotreeFocus<cr>
 nnoremap S :OverCommandLine<cr>
 nnoremap Y v$hy
 
@@ -26,3 +26,7 @@ inoremap <expr> <C-n> pumvisible() ? '<C-n>' : '<C-n><C-r>=pumvisible() ? "\<lt>
 inoremap <expr> <M-,> pumvisible() ? '<C-n>' : '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 inoremap <expr> <C-Space> (pumvisible() ? (col('.') > 1 ? '<Esc>i<Right>' : '<Esc>i') : '') .  '<C-x><C-o><C-r>=pumvisible() ? "\<lt>C-n>\<lt>C-p>\<lt>Down>" : ""<CR>'
 inoremap <expr> <S-Space> (pumvisible() ? (col('.') > 1 ? '<Esc>i<Right>' : '<Esc>i') : '') .  '<C-x><C-u><C-r>=pumvisible() ? "\<lt>C-n>\<lt>C-p>\<lt>Down>" : ""<CR>'
+
+function g:Undotree_CustomMap()
+  map <buffer> q :UndotreeToggle<cr>:Goyo!<cr>
+endfunction
