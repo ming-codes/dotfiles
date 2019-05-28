@@ -29,6 +29,7 @@ endif
 	brew install jq
 	brew install rename
 	brew install coreutils
+	brew install watchman
 
 cask-install:
 ifeq ($(OS),Darwin)
@@ -140,9 +141,10 @@ endif
 	-brew upgrade direnv
 	-brew upgrade trash
 	-brew upgrade jq
-	-brew upgrade curl --with-nghttp2
-	-brew upgrade yarn --without-node
+	-brew upgrade curl-openssl
+	-brew upgrade yarn
 	-brew upgrade coreutils
+	-brew upgrade watchman
 	-brew prune
 	-brew cleanup
 	-mas upgrade
