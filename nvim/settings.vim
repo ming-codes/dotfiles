@@ -20,6 +20,17 @@ let g:syntastic_javascript_checkers             = [ 'jshint', 'eslint' ]
 let g:syntastic_javascript_jshint_exe           = '[ -f $(npm bin)/jshint ] && $(npm bin)/jshint || jshint'
 let g:syntastic_javascript_eslint_exe           = '[ -f $(npm bin)/eslint ] && $(npm bin)/eslint || eslint'
 
+let g:coc_global_extensions = [
+  \ 'coc-tsserver',
+  \ 'coc-css',
+  \ 'coc-json',
+  \ 'coc-html',
+  \ 'coc-vimlsp',
+  \ 'coc-highlight',
+  \ 'coc-ember',
+  \ 'coc-tailwindcss'
+\ ]
+
 let g:undotree_SplitWidth                       = 35
 
 set list lcs=trail:·,tab:¦\ ,eol:¬
