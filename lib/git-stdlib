@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+export CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+export REPO_DIR=$(git rev-parse --show-toplevel)
+export HEAD_HASH=$(git log -n 1 --pretty=format:%H)
+
+stdlib_reset() {
+  git reset $HEAD_HASH
+}
+
+stdlib_stash() {
+  git add -A
+  git commit -m 'stdlib stashed changes'
+}
+
+stdlib_unstash() {
+  git reset head~
+}

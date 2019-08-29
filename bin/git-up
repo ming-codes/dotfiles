@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+source $(dirname $BASH_SOURCE)/../lib/git-stdlib
+
+run() {
+  git fetch origin --tags
+  git checkout master
+  git merge origin/master --ff-only
+  git checkout $CURRENT_BRANCH
+  git rebase master
+}
+
+stdlib_stash
+run
+stdlib_unstash

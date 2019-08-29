@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+BRANCH_REF=$(git branch --sort=-committerdate)
+TAG_REF=$(git tag --list --sort=-committerdate)
+
+TARGET_REF=$(echo "$BRANCH_REF\n$TAG_REF" | fzf)
+
+git checkout $TARGET_REF
