@@ -107,7 +107,6 @@ uninstall:
 	-unlink ~/.fzf
 
 clean: unlink
-	-brew uninstall --force brew-cask
 	-brew untap phinze/cask
 	-brew untap caskroom/cask
 	-brew update
@@ -126,7 +125,6 @@ endif
 	sh ./zsh/oh-my-zsh/tools/upgrade.sh
 	brew update
 ifeq ($(OS),Darwin)
-	-brew upgrade brew-cask
 	-brew upgrade mas
 endif
 	-brew upgrade tmux
@@ -145,7 +143,6 @@ endif
 	-brew upgrade yarn
 	-brew upgrade coreutils
 	-brew upgrade watchman
-	-brew prune
 	-brew cleanup
 	-mas upgrade
 	git submodule update --remote --merge -- nvm
