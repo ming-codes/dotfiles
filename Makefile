@@ -20,7 +20,6 @@ endif
 	brew install neovim
 	brew install git
 	brew install curl-openssl
-	brew install yarn
 	brew install tree
 	brew install ack
 	brew install wget
@@ -51,6 +50,9 @@ vim-install:
 git-install:
 	git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
 
+curl-install:
+	curl -o- -L https://yarnpkg.com/install.sh | bash
+
 link:
 	mkdir -p ~/.config/nvim/autoload
 	mkdir -p ~/.config/nvim/vim-backup
@@ -70,7 +72,9 @@ link:
 	ln -s ~/.dotfiles/fish/nvm.fish        ~/.config/fish/nvm.fish
 
 	ln -s ~/.dotfiles/zsh/rc.zsh           ~/.zshrc
+	ln -s ~/.dotfiles/zsh/profile.zsh      ~/.zprofile
 	ln -s ~/.dotfiles/bash/rc.bash         ~/.bashrc
+	ln -s ~/.dotfiles/bash/profile.bash    ~/.bash_profile
 
 	ln -s ~/.dotfiles/editorconfig         ~/.editorconfig
 	ln -s ~/.dotfiles/gitconfig            ~/.gitconfig
@@ -81,7 +85,7 @@ ifeq ($(OS),Darwin)
 	ln -s /Applications/Xcode.app/Contents/Developer/Applications/iOS\ Simulator.app /Applications/iOS\ Simulator.app
 endif
 
-install: brew-install cask-install mas-install unlink link gem-install vim-install git-install
+install: curl-install brew-install cask-install mas-install unlink link gem-install vim-install git-install
 
 unlink:
 	-unlink ~/.config/nvim/init.vim
@@ -93,7 +97,9 @@ unlink:
 	-unlink ~/.config/fish/config.fish
 	-unlink ~/.config/fish/nvm.fish
 	-unlink ~/.zshrc
+	-unlink ~/.zprofile
 	-unlink ~/.bashrc
+	-unlink ~/.bash_profile
 	-unlink ~/.editorconfig
 	-unlink ~/.gitconfig
 	-unlink ~/.tmux.conf
@@ -140,7 +146,7 @@ endif
 	-brew upgrade trash
 	-brew upgrade jq
 	-brew upgrade curl-openssl
-	-brew upgrade yarn
+	curl -o- -L https://yarnpkg.com/install.sh | bash
 	-brew upgrade coreutils
 	-brew upgrade watchman
 	-brew cleanup
