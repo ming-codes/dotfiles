@@ -81,3 +81,7 @@ pretty = format:%h %Cblue%ad%Creset %ae %Cgreen%s%Creset %C(auto)%d%Creset
 abbrevCommit = true
 date = relative
 decorate = true
+
+[pager]
+branch = false
+tag = false
