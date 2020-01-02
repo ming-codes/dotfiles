@@ -11,6 +11,7 @@ Plug 'tpope/vim-abolish'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'junegunn/vim-emoji'
 
 Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-multiple-cursors'
@@ -32,7 +33,7 @@ Plug 'vim-scripts/Tabmerge'
 " Style
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'edkolev/tmuxline.vim'
+Plug 'edkolev/tmuxline.vim' ", { 'do': ':TmuxlineSnapshot ~/.dotfiles/shell/tmuxline.sh' }
 Plug 'edkolev/promptline.vim'
 Plug 'NLKNguyen/papercolor-theme'
 

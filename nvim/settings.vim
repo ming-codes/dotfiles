@@ -11,6 +11,7 @@ let g:netrw_localrmdir                          = 'trash'
 let g:netrw_rm_cmd                              = 'trash'
 let g:netrw_rmf_cmd                             = 'trash'
 let g:netrw_rmdir_cmd                           = 'trash'
+let g:netrw_sizestyle                           = 'h'
 
 let g:syntastic_always_populate_loc_list        = 1
 let g:syntastic_auto_loc_list                   = 0
@@ -34,7 +35,7 @@ let g:coc_global_extensions = [
 let g:undotree_SplitWidth                       = 35
 
 set list lcs=trail:·,tab:¦\ ,eol:¬
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,__pycache__,.git,.svn
 
 set clipboard+=unnamedplus
 
