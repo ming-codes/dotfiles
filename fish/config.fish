@@ -22,4 +22,7 @@ end
 
 set -U fish_user_paths (find ~/.gem/ruby -type d -maxdepth 2 | grep 'bin$') ~/.fzf/bin ~/.dotfiles/bin
 
+set -gx VOLTA_HOME "/Users/minliu/.volta"
+string match -r ".volta" "$PATH" > /dev/null; or set -gx PATH "$VOLTA_HOME/bin" $PATH
+
 eval (direnv hook fish)

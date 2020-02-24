@@ -1,5 +1,6 @@
-
 OS:=$(shell uname -s)
+
+.PHONY: brew-install
 
 mas-install:
 	mas install 413857545  # Divvy
@@ -47,11 +48,12 @@ gem-install:
 vim-install:
 	nvim -c 'PlugInstall' -c 'xa'
 
-git-install:
-	git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
-
 curl-install:
-	curl -o- -L https://yarnpkg.com/install.sh | bash
+	curl https://get.volta.sh | bash 
+
+volta-install:
+	~/.volta/volta install yarn
+	~/.volta/volta install node
 
 link:
 	mkdir -p ~/.config/nvim/autoload
@@ -69,7 +71,6 @@ link:
 	mkdir -p ~/.config/fish
 
 	ln -s ~/.dotfiles/fish/config.fish     ~/.config/fish/config.fish
-	ln -s ~/.dotfiles/fish/nvm.fish        ~/.config/fish/nvm.fish
 
 	ln -s ~/.dotfiles/zsh/rc.zsh           ~/.zshrc
 	ln -s ~/.dotfiles/zsh/profile.zsh      ~/.zprofile
@@ -85,7 +86,7 @@ ifeq ($(OS),Darwin)
 	ln -s /Applications/Xcode.app/Contents/Developer/Applications/iOS\ Simulator.app /Applications/iOS\ Simulator.app
 endif
 
-install: curl-install brew-install cask-install mas-install unlink link gem-install vim-install git-install
+install: curl-install volta-install brew-install cask-install mas-install unlink link gem-install vim-install
 
 unlink:
 	-unlink ~/.config/nvim/init.vim
@@ -95,7 +96,6 @@ unlink:
 	-unlink ~/.config/nvim/plugins.vim
 	-unlink ~/.config/nvim/settings.vim
 	-unlink ~/.config/fish/config.fish
-	-unlink ~/.config/fish/nvm.fish
 	-unlink ~/.zshrc
 	-unlink ~/.zprofile
 	-unlink ~/.bashrc
@@ -138,7 +138,6 @@ endif
 	-brew upgrade zsh
 	-brew upgrade neovim
 	-brew upgrade git
-	-brew upgrade fzf
 	-brew upgrade tree
 	-brew upgrade ack
 	-brew upgrade wget
@@ -146,13 +145,11 @@ endif
 	-brew upgrade trash
 	-brew upgrade jq
 	-brew upgrade curl-openssl
-	curl -o- -L https://yarnpkg.com/install.sh | bash
+	curl -L https://get.volta.sh | bash 
 	-brew upgrade coreutils
 	-brew upgrade watchman
 	-brew cleanup
 	-mas upgrade
-	git submodule update --remote --merge -- nvm
-	./nvm/install.sh
 	nvim -c 'PlugUpgrade' -c 'xa'
 	nvim -c 'PlugUpdate' -c 'xa'
 	nvim -c 'PlugClean' -c 'xa'
