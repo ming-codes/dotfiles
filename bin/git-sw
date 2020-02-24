@@ -5,4 +5,9 @@ TAG_REF=$(git tag --list --sort=-committerdate)
 
 TARGET_REF=$(echo "$BRANCH_REF\n$TAG_REF" | fzf)
 
-git checkout $TARGET_REF
+if [[ $TARGET_REF == \** ]];
+then
+  echo "Already on the branch"
+else
+  git checkout $TARGET_REF
+fi
