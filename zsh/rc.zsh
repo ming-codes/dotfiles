@@ -24,7 +24,8 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
   ssh-add
 fi
 
-export VOLTA_HOME="/Users/minliu/.volta"
+export VOLTA_HOME=$HOME/.volta
+
 grep --silent "$VOLTA_HOME/bin" <<< $PATH || export PATH="$VOLTA_HOME/bin:$PATH"
 
 # This needs to be the last line
