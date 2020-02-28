@@ -63,6 +63,8 @@ set ruler
 set number
 set relativenumber
 
+set conceallevel=0
+
 set nostartofline
 
 set directory=~/.config/nvim/vim-swap//
