@@ -1,0 +1,142 @@
+#!/usr/bin/env sh
+
+# https://github.com/kevva/pid-from-port/blob/master/index.js
+
+QUERY=$1
+
+list_by_id() {
+  local id=$1
+  echo "match id $id"
+
+  echo '{"items": ['
+  #output_filter_item desktop Node ~/Desktop 12312
+  echo ']}'
+}
+
+list_by_port() {
+  local port=$1
+  local files=$(lsof -i $port | grep 'LISTEN' | tr -s ' ') # XXX do this for each file? but there's only one matching port
+  local name=$(echo $files | cut -f 1 -d ' ')
+  local pid=$(echo $files | cut -f 2 -d ' ')
+
+  if [[ ! -z "$pid" ]]; then
+    local cpu=$(ps -p $pid -o cpu=)
+    local cmd=$(ps -p $pid -o command=)
+    local bin=$(ps -p $pid -o comm=) # FIXME $(lsof -s $pid | grep "/$name")
+
+    echo '{"items": ['
+    output_filter_item $pid $name $cpu $bin "$cmd"
+    echo ']}'
+  else
+    echo '{"items": ['
+    echo ']}'
+  fi
+
+}
+
+list_by_name() {
+  local name=$1
+  local list=$(ps ux | grep ${name})
+
+  echo '{"items": ['
+  ps ux | tr -s ' ' | cut -d ' ' -f 2,3,11 | grep $name | while read line ; do
+    local pid=$(echo $line | cut -d ' ' -f 1)
+    local cpu=$(echo $line | cut -d ' ' -f 2)
+    local cmd=$(echo $line | cut -d ' ' -f 3)
+   # pid, %cpu, cmd
+   # pid name cpu bin cmd
+    echo $pid $(basename $cmd) $cpu $bin $cmd
+  done
+  #output_filter_item desktop Node ~/Desktop 12312
+  echo ']}'
+}
+
+output_filter_item() {
+  local pid=$1
+  local name=$2
+  local cpu=$3
+  local bin=$4
+  local cmd=$5
+
+  local uid="${pid}"
+  local title="${name}"
+  local subtitle="${cpu}% CPU @ ${cmd}"
+  local arg="${pid}"
+
+  if [[ $name == "node" ]]; then
+    title="node @ $(${bin} --version)"
+  fi
+
+  echo "{"
+  echo "  \"uid\": \"$uid\","
+  echo "  \"title\": \"$title\","
+  echo "  \"subtitle\": \"$subtitle\","
+  echo "  \"arg\": \"$arg\","
+  echo "  \"mods\": {"
+  echo "    \"cmd\": {"
+  echo "      \"subtitle\": \"Copy pid $pid to clipboard\","
+  echo "    },"
+  echo "    \"alt\": {"
+  echo "      \"subtitle\": \"$subtitle\","
+  echo "    }"
+  echo "  }"
+  #echo '        "autocomplete": "Desktop",'
+  #echo '        "icon": {'
+  #echo '            "type": "fileicon",'
+  #echo '            "path": "~/Desktop"'
+  #echo '        }'
+  echo "}"
+}
+
+main() {
+  if [[ $QUERY =~ :[[:digit:]]+ ]]; then
+    list_by_port $BASH_REMATCH
+  elif [[ $QUERY =~ [[:digit:]]+ ]]; then
+    list_by_id $BASH_REMATCH
+  else
+    list_by_name $QUERY
+  fi
+}
+
+# TODO given $pid, 
+# output 
+#  pid=$1
+#  name or basename of the executable
+#  cpu usage
+#  bin = full path of the executable
+#  arg = full argument list
+get_args_list() {
+}
+
+#grep_id() {
+#}
+
+#
+# Outputs $pid on each line
+#
+grep_name() {
+  local name=$1
+
+  pgrep $name
+  #| while read line; do
+  #  lsof -p $line
+  #done
+}
+
+#
+# grep_port <regex>
+#
+# Outputs $port $pid for each line
+#
+grep_port() {
+  local port=$1
+
+  netstat -anv | grep 'LISTEN' | tr -s ' ' | cut -d ' ' -f 4,9 | grep "\.$port" | cut -d '.' -f 2
+}
+
+grep_name $QUERY
+#| while read line; do
+#  echo $line
+#done
+
+#main
