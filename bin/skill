@@ -4,114 +4,175 @@
 
 QUERY=$1
 
+write_alfred_empty_list() {
+  local message=$1
+
+  echo '{"items": ['
+  echo "{"
+  echo "  \"uid\": \"empty\","
+  echo "  \"title\": \"$message\","
+  echo "}"
+  echo ']}'
+}
+
 list_by_id() {
-  local list=$(grep_id $1)
+  local list=$(grep_id $1 | sort -nr)
 
   if [[ ! -z "$list" ]]; then
+    echo '{"items": ['
     echo "$list" | while read cpu pid;
     do
+      local cpu=$(ps -p $pid -o %cpu=)
+      local name=$(ps -p $pid -c -o command=)
+      local bin=$(lsof -p $pid | tr -s ' ' | grep ' txt ' | grep "/$name" | cut -d ' ' -f 9-)
+      local comm=$(ps -p $pid -o comm=)
+      local command=$(ps -p $pid -o command=)
+      local len=$(echo $comm | wc -c)
+      local args=$(echo $command | cut -c $len-)
       echo $cpu $pid
+      echo "{"
+      echo "  \"uid\": \"$uid\","
+      echo "  \"title\": \"$title\","
+      echo "  \"subtitle\": \"$subtitle\","
+      echo "  \"arg\": \"$arg\","
+      echo "  \"mods\": {"
+      echo "    \"cmd\": {"
+      echo "      \"subtitle\": \"Copy pid $pid to clipboard\","
+      echo "    },"
+      echo "    \"alt\": {"
+      echo "      \"subtitle\": \"$subtitle\","
+      echo "    }"
+      echo "  }"
+      #echo '        "autocomplete": "Desktop",'
+      #echo '        "icon": {'
+      #echo '            "type": "fileicon",'
+      #echo '            "path": "~/Desktop"'
+      #echo '        }'
+      echo "}"
     done
+    echo ']}'
   else
-    echo "No process found by id: $1"
+    write_alfred_empty_list "No process found by id: $1"
   fi
 }
 
 list_by_port() {
-  local list=$(grep_port $1 | sort -n)
+  local list=$(grep_port $1 | sort -nr)
 
   if [[ ! -z "$list" ]]; then
+    echo '{"items": ['
     echo "$list" | while read cpu pid port;
     do
+      local cpu=$(ps -p $pid -o %cpu=)
+      local name=$(ps -p $pid -c -o command=)
+      local bin=$(lsof -p $pid | tr -s ' ' | grep ' txt ' | grep "/$name" | cut -d ' ' -f 9-)
+      local comm=$(ps -p $pid -o comm=)
+      local command=$(ps -p $pid -o command=)
+      local len=$(echo $comm | wc -c)
+      local args=$(echo $command | cut -c $len-)
       echo $cpu $pid $port
+      echo "{"
+      echo "  \"uid\": \"$uid\","
+      echo "  \"title\": \"$title\","
+      echo "  \"subtitle\": \"$subtitle\","
+      echo "  \"arg\": \"$arg\","
+      echo "  \"mods\": {"
+      echo "    \"cmd\": {"
+      echo "      \"subtitle\": \"Copy pid $pid to clipboard\","
+      echo "    },"
+      echo "    \"alt\": {"
+      echo "      \"subtitle\": \"$subtitle\","
+      echo "    }"
+      echo "  }"
+      #echo '        "autocomplete": "Desktop",'
+      #echo '        "icon": {'
+      #echo '            "type": "fileicon",'
+      #echo '            "path": "~/Desktop"'
+      #echo '        }'
+      echo "}"
     done
+    echo ']}'
   else
-    echo "No process found on port: $1"
+    write_alfred_empty_list "No process found on port: $1"
   fi
 }
 
 list_by_name() {
-  local name=$1
-  local list=$(grep_name $name)
+  local list=$(grep_name $1 | sort -nr)
 
   if [[ ! -z "$list" ]]; then
+    echo '{"items": ['
     echo "$list" | while read cpu pid;
     do
+      local cpu=$(ps -p $pid -o %cpu=)
+      local name=$(ps -p $pid -c -o command=)
+      local bin=$(lsof -p $pid | tr -s ' ' | grep ' txt ' | grep "/$name" | cut -d ' ' -f 9-)
+      local comm=$(ps -p $pid -o comm=)
+      local command=$(ps -p $pid -o command=)
+      local len=$(echo $comm | wc -c)
+      local args=$(echo $command | cut -c $len-)
       echo $cpu $pid
+      echo "{"
+      echo "  \"uid\": \"$uid\","
+      echo "  \"title\": \"$title\","
+      echo "  \"subtitle\": \"$subtitle\","
+      echo "  \"arg\": \"$arg\","
+      echo "  \"mods\": {"
+      echo "    \"cmd\": {"
+      echo "      \"subtitle\": \"Copy pid $pid to clipboard\","
+      echo "    },"
+      echo "    \"alt\": {"
+      echo "      \"subtitle\": \"$subtitle\","
+      echo "    }"
+      echo "  }"
+      #echo '        "autocomplete": "Desktop",'
+      #echo '        "icon": {'
+      #echo '            "type": "fileicon",'
+      #echo '            "path": "~/Desktop"'
+      #echo '        }'
+      echo "}"
     done
+    echo ']}'
   else
-    echo "No process found with name: $1"
+    write_alfred_empty_list "No process found with name: $1"
   fi
-
-  #echo '{"items": ['
-  #ps ux | tr -s ' ' | cut -d ' ' -f 2,3,11 | grep $name | while read line ; do
-  #  local pid=$(echo $line | cut -d ' ' -f 1)
-  #  local cpu=$(echo $line | cut -d ' ' -f 2)
-  #  local cmd=$(echo $line | cut -d ' ' -f 3)
-  # # pid, %cpu, cmd
-  # # pid name cpu bin cmd
-  #  echo $pid $(basename $cmd) $cpu $bin $cmd
-  #done
-  ##output_filter_item desktop Node ~/Desktop 12312
-  #echo ']}'
 }
 
-output_filter_item() {
-  local pid=$1
-  local name=$2
-  local cpu=$3
-  local bin=$4
-  local cmd=$5
+list_by_usage() {
+  local list=$(ps -x -o %cpu= -o %mem= -o pid= | sort -nr -k1,1 -k2,2)
 
-  local uid="${pid}"
-  local title="${name}"
-  local subtitle="${cpu}% CPU @ ${cmd}"
-  local arg="${pid}"
-
-  if [[ $name == "node" ]]; then
-    title="node @ $(${bin} --version)"
-  fi
-
-  echo "{"
-  echo "  \"uid\": \"$uid\","
-  echo "  \"title\": \"$title\","
-  echo "  \"subtitle\": \"$subtitle\","
-  echo "  \"arg\": \"$arg\","
-  echo "  \"mods\": {"
-  echo "    \"cmd\": {"
-  echo "      \"subtitle\": \"Copy pid $pid to clipboard\","
-  echo "    },"
-  echo "    \"alt\": {"
-  echo "      \"subtitle\": \"$subtitle\","
-  echo "    }"
-  echo "  }"
-  #echo '        "autocomplete": "Desktop",'
-  #echo '        "icon": {'
-  #echo '            "type": "fileicon",'
-  #echo '            "path": "~/Desktop"'
-  #echo '        }'
-  echo "}"
-}
-
-# TODO
-# input: $pid 
-# output:  
-#  pid 
-#  cpu usage
-#  name or basename of the executable
-#  bin = full path of the executable
-#  arg = full argument list
-pid_to_echo() {
-  local pid=$1
-  local cpu=$(ps -p $pid -o %cpu=)
-  local name=$(ps -p $pid -c -o command=)
-  local bin=$(lsof -p $pid | tr -s ' ' | grep ' txt ' | grep "/$name" | cut -d ' ' -f 9-)
-  local comm=$(ps -p $pid -o comm=)
-  local command=$(ps -p $pid -o command=)
-  local len=$(echo $comm | wc -c)
-  local args=$(echo $command | cut -c $len-)
-
-  echo $cpu $pid $name $bin $command
+  echo '{"items": ['
+  echo "$list" | while read cpu mem pid;
+  do
+    local cpu=$(ps -p $pid -o %cpu=)
+    local name=$(ps -p $pid -c -o command=)
+    local bin=$(lsof -p $pid | tr -s ' ' | grep ' txt ' | grep "/$name" | cut -d ' ' -f 9-)
+    local comm=$(ps -p $pid -o comm=)
+    local command=$(ps -p $pid -o command=)
+    local len=$(echo $comm | wc -c)
+    local args=$(echo $command | cut -c $len-)
+    echo $cpu $mem $pid
+    echo "{"
+    echo "  \"uid\": \"$uid\","
+    echo "  \"title\": \"$title\","
+    echo "  \"subtitle\": \"$subtitle\","
+    echo "  \"arg\": \"$arg\","
+    echo "  \"mods\": {"
+    echo "    \"cmd\": {"
+    echo "      \"subtitle\": \"Copy pid $pid to clipboard\","
+    echo "    },"
+    echo "    \"alt\": {"
+    echo "      \"subtitle\": \"$subtitle\","
+    echo "    }"
+    echo "  }"
+    #echo '        "autocomplete": "Desktop",'
+    #echo '        "icon": {'
+    #echo '            "type": "fileicon",'
+    #echo '            "path": "~/Desktop"'
+    #echo '        }'
+    echo "}"
+  done
+  echo ']}'
 }
 
 #
@@ -119,7 +180,7 @@ pid_to_echo() {
 # output: pid
 #
 grep_id() {
-  ps -o pid= | grep $1 | while read pid;
+  ps -x -o pid= | grep $1 | while read pid;
   do
     local cpu=$(ps -p $pid -o %cpu=)
 
@@ -164,8 +225,11 @@ main() {
   elif [[ $QUERY =~ [[:digit:]]+ ]];
   then # match id
     list_by_id $BASH_REMATCH
-  else # match name
+  elif [[ ! -z "$QUERY" ]];
+  then # match name
     list_by_name $QUERY
+  else
+    list_by_usage
   fi
 }
 
