@@ -5,50 +5,55 @@
 QUERY=$1
 
 list_by_id() {
-  local id=$1
-  echo "match id $id"
+  local list=$(grep_id $1)
 
-  echo '{"items": ['
-  #output_filter_item desktop Node ~/Desktop 12312
-  echo ']}'
+  if [[ ! -z "$list" ]]; then
+    echo "$list" | while read cpu pid;
+    do
+      echo $cpu $pid
+    done
+  else
+    echo "No process found by id: $1"
+  fi
 }
 
 list_by_port() {
-  local port=$1
-  local files=$(lsof -i $port | grep 'LISTEN' | tr -s ' ') # XXX do this for each file? but there's only one matching port
-  local name=$(echo $files | cut -f 1 -d ' ')
-  local pid=$(echo $files | cut -f 2 -d ' ')
+  local list=$(grep_port $1 | sort -n)
 
-  if [[ ! -z "$pid" ]]; then
-    local cpu=$(ps -p $pid -o cpu=)
-    local cmd=$(ps -p $pid -o command=)
-    local bin=$(ps -p $pid -o comm=) # FIXME $(lsof -s $pid | grep "/$name")
-
-    echo '{"items": ['
-    output_filter_item $pid $name $cpu $bin "$cmd"
-    echo ']}'
+  if [[ ! -z "$list" ]]; then
+    echo "$list" | while read cpu pid port;
+    do
+      echo $cpu $pid $port
+    done
   else
-    echo '{"items": ['
-    echo ']}'
+    echo "No process found on port: $1"
   fi
-
 }
 
 list_by_name() {
   local name=$1
-  local list=$(ps ux | grep ${name})
+  local list=$(grep_name $name)
 
-  echo '{"items": ['
-  ps ux | tr -s ' ' | cut -d ' ' -f 2,3,11 | grep $name | while read line ; do
-    local pid=$(echo $line | cut -d ' ' -f 1)
-    local cpu=$(echo $line | cut -d ' ' -f 2)
-    local cmd=$(echo $line | cut -d ' ' -f 3)
-   # pid, %cpu, cmd
-   # pid name cpu bin cmd
-    echo $pid $(basename $cmd) $cpu $bin $cmd
-  done
-  #output_filter_item desktop Node ~/Desktop 12312
-  echo ']}'
+  if [[ ! -z "$list" ]]; then
+    echo "$list" | while read cpu pid;
+    do
+      echo $cpu $pid
+    done
+  else
+    echo "No process found with name: $1"
+  fi
+
+  #echo '{"items": ['
+  #ps ux | tr -s ' ' | cut -d ' ' -f 2,3,11 | grep $name | while read line ; do
+  #  local pid=$(echo $line | cut -d ' ' -f 1)
+  #  local cpu=$(echo $line | cut -d ' ' -f 2)
+  #  local cmd=$(echo $line | cut -d ' ' -f 3)
+  # # pid, %cpu, cmd
+  # # pid name cpu bin cmd
+  #  echo $pid $(basename $cmd) $cpu $bin $cmd
+  #done
+  ##output_filter_item desktop Node ~/Desktop 12312
+  #echo ']}'
 }
 
 output_filter_item() {
@@ -88,55 +93,80 @@ output_filter_item() {
   echo "}"
 }
 
-main() {
-  if [[ $QUERY =~ :[[:digit:]]+ ]]; then
-    list_by_port $BASH_REMATCH
-  elif [[ $QUERY =~ [[:digit:]]+ ]]; then
-    list_by_id $BASH_REMATCH
-  else
-    list_by_name $QUERY
-  fi
-}
-
-# TODO given $pid, 
-# output 
-#  pid=$1
-#  name or basename of the executable
+# TODO
+# input: $pid 
+# output:  
+#  pid 
 #  cpu usage
+#  name or basename of the executable
 #  bin = full path of the executable
 #  arg = full argument list
-get_args_list() {
+pid_to_echo() {
+  local pid=$1
+  local cpu=$(ps -p $pid -o %cpu=)
+  local name=$(ps -p $pid -c -o command=)
+  local bin=$(lsof -p $pid | tr -s ' ' | grep ' txt ' | grep "/$name" | cut -d ' ' -f 9-)
+  local comm=$(ps -p $pid -o comm=)
+  local command=$(ps -p $pid -o command=)
+  local len=$(echo $comm | wc -c)
+  local args=$(echo $command | cut -c $len-)
+
+  echo $cpu $pid $name $bin $command
 }
 
-#grep_id() {
-#}
+#
+# input: pid
+# output: pid
+#
+grep_id() {
+  ps -o pid= | grep $1 | while read pid;
+  do
+    local cpu=$(ps -p $pid -o %cpu=)
+
+    echo $cpu $pid
+  done
+}
 
 #
-# Outputs $pid on each line
+# input: name
+# output: $cpu $pid
 #
 grep_name() {
   local name=$1
 
-  pgrep $name
-  #| while read line; do
-  #  lsof -p $line
-  #done
+  pgrep $name | while read pid;
+  do
+    local cpu=$(ps -p $pid -o %cpu=)
+
+    echo $cpu $pid
+  done
 }
 
 #
-# grep_port <regex>
-#
-# Outputs $port $pid for each line
+# input: port number
+# output: $cpu $pid $port
 #
 grep_port() {
-  local port=$1
+  local prefix=$1
 
-  netstat -anv | grep 'LISTEN' | tr -s ' ' | cut -d ' ' -f 4,9 | grep "\.$port" | cut -d '.' -f 2
+  netstat -anv | grep 'LISTEN' | tr -s ' ' | cut -d ' ' -f 4,9 | grep "\.$prefix" | cut -d '.' -f 2 | uniq | while read port pid;
+  do
+    local cpu=$(ps -p $pid -o %cpu=)
+
+    echo $cpu $pid $port
+  done
 }
 
-grep_name $QUERY
-#| while read line; do
-#  echo $line
-#done
+main() {
+  if [[ $QUERY =~ :([[:digit:]]+) ]];
+  then # match port
+    list_by_port ${BASH_REMATCH[1]}
+  elif [[ $QUERY =~ [[:digit:]]+ ]];
+  then # match id
+    list_by_id $BASH_REMATCH
+  else # match name
+    list_by_name $QUERY
+  fi
+}
 
-#main
+main
