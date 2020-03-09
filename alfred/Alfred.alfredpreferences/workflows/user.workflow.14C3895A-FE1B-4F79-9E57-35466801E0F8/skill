@@ -3,6 +3,7 @@
 # https://github.com/kevva/pid-from-port/blob/master/index.js
 
 QUERY=$1
+TOP=10
 
 write_alfred_empty_list() {
   local message=$1
@@ -22,32 +23,39 @@ list_by_id() {
     echo '{"items": ['
     echo "$list" | while read cpu pid;
     do
-      local cpu=$(ps -p $pid -o %cpu=)
       local name=$(ps -p $pid -c -o command=)
-      local bin=$(lsof -p $pid | tr -s ' ' | grep ' txt ' | grep "/$name" | cut -d ' ' -f 9-)
-      local comm=$(ps -p $pid -o comm=)
+      #local bin=$(lsof -p $pid | tr -s ' ' | grep ' txt ' | grep "/$name" | cut -d ' ' -f 9-)
+      #local comm=$(ps -p $pid -o comm=)
       local command=$(ps -p $pid -o command=)
-      local len=$(echo $comm | wc -c)
-      local args=$(echo $command | cut -c $len-)
-      echo $cpu $pid
+      #local len=$(echo $comm | wc -c)
+      #local args=$(echo $command | cut -c $len-)
+
+      local uid=$pid
+      local title=$name
+      local subtitle="$cpu%"
+      local arg=$pid
+
+      if [[ $name == "node" ]]; then
+        title="node @ $(${bin} --version)"
+      fi
+
       echo "{"
-      echo "  \"uid\": \"$uid\","
+      echo "  \"uid\": \"$pid\","
       echo "  \"title\": \"$title\","
       echo "  \"subtitle\": \"$subtitle\","
       echo "  \"arg\": \"$arg\","
       echo "  \"mods\": {"
       echo "    \"cmd\": {"
-      echo "      \"subtitle\": \"Copy pid $pid to clipboard\","
+      echo "      \"subtitle\": \"Copy pid $pid to clipboard\""
       echo "    },"
       echo "    \"alt\": {"
-      echo "      \"subtitle\": \"$subtitle\","
+      echo "      \"subtitle\": \"$subtitle\""
       echo "    }"
       echo "  }"
-      #echo '        "autocomplete": "Desktop",'
-      #echo '        "icon": {'
-      #echo '            "type": "fileicon",'
-      #echo '            "path": "~/Desktop"'
-      #echo '        }'
+      #echo ' "icon": {'
+      #echo '   "type": "fileicon",'
+      #echo '   "path": "~/Desktop"'
+      #echo ' }'
       echo "}"
     done
     echo ']}'
@@ -56,21 +64,32 @@ list_by_id() {
   fi
 }
 
+# FIXME how to handle process can open multiple ports?
 list_by_port() {
-  local list=$(grep_port $1 | sort -nr)
+  local list=$(grep_port $1 | sort -n -k1,1r -k2,2)
 
   if [[ ! -z "$list" ]]; then
     echo '{"items": ['
     echo "$list" | while read cpu pid port;
     do
-      local cpu=$(ps -p $pid -o %cpu=)
       local name=$(ps -p $pid -c -o command=)
-      local bin=$(lsof -p $pid | tr -s ' ' | grep ' txt ' | grep "/$name" | cut -d ' ' -f 9-)
-      local comm=$(ps -p $pid -o comm=)
+      #local bin=$(lsof -p $pid | tr -s ' ' | grep ' txt ' | grep "/$name" | cut -d ' ' -f 9-)
+      #local comm=$(ps -p $pid -o comm= -o command=)
       local command=$(ps -p $pid -o command=)
-      local len=$(echo $comm | wc -c)
-      local args=$(echo $command | cut -c $len-)
-      echo $cpu $pid $port
+      #local len=$(echo $comm | wc -c)
+      #local args=$(echo $command | cut -c $len-)
+
+      local uid=$pid
+      local title=$name
+      local subtitle="$cpu% CPU @ $command"
+      local arg=$pid
+
+      #if [[ $name == "node" ]]; then
+      #  title="node @ $(${bin} --version)"
+      #fi
+
+      title="$title (:$port)"
+
       echo "{"
       echo "  \"uid\": \"$uid\","
       echo "  \"title\": \"$title\","
@@ -78,10 +97,10 @@ list_by_port() {
       echo "  \"arg\": \"$arg\","
       echo "  \"mods\": {"
       echo "    \"cmd\": {"
-      echo "      \"subtitle\": \"Copy pid $pid to clipboard\","
+      echo "      \"subtitle\": \"Copy pid $pid to clipboard\""
       echo "    },"
       echo "    \"alt\": {"
-      echo "      \"subtitle\": \"$subtitle\","
+      echo "      \"subtitle\": \"$command\""
       echo "    }"
       echo "  }"
       #echo '        "autocomplete": "Desktop",'
@@ -98,20 +117,43 @@ list_by_port() {
 }
 
 list_by_name() {
-  local list=$(grep_name $1 | sort -nr)
+  local list=$(grep_name $1 | sort -n -k1,1r -k2,2)
 
   if [[ ! -z "$list" ]]; then
+    local first=""
+
     echo '{"items": ['
     echo "$list" | while read cpu pid;
     do
-      local cpu=$(ps -p $pid -o %cpu=)
       local name=$(ps -p $pid -c -o command=)
-      local bin=$(lsof -p $pid | tr -s ' ' | grep ' txt ' | grep "/$name" | cut -d ' ' -f 9-)
-      local comm=$(ps -p $pid -o comm=)
+      #local bin=$(lsof -p $pid | tr -s ' ' | grep ' txt ' | grep "/$name" | cut -d ' ' -f 9-)
       local command=$(ps -p $pid -o command=)
-      local len=$(echo $comm | wc -c)
-      local args=$(echo $command | cut -c $len-)
-      echo $cpu $pid
+
+      local uid=$pid
+      local title=$name
+      local subtitle="$cpu% CPU @ $command"
+      local arg=$pid
+
+      #if [[ $name == "node" ]]; then
+      #  local comm=$(ps -p $pid -o comm=)
+      #  local len=$(echo $comm | wc -c)
+      #  local args=$(echo $command | cut -c $len-)
+      #  echo $args
+      #  local script=$(basename $args)
+
+      #  echo $script
+      ##  local version=$(${bin} --version);
+      ##  echo $comm $bin
+      ##  title="node @ $version"
+      #fi
+
+      if [[ -z "$first" ]];
+      then
+        first="true"
+      else
+        echo ","
+      fi
+
       echo "{"
       echo "  \"uid\": \"$uid\","
       echo "  \"title\": \"$title\","
@@ -119,10 +161,10 @@ list_by_name() {
       echo "  \"arg\": \"$arg\","
       echo "  \"mods\": {"
       echo "    \"cmd\": {"
-      echo "      \"subtitle\": \"Copy pid $pid to clipboard\","
+      echo "      \"subtitle\": \"Copy pid $pid to clipboard\""
       echo "    },"
       echo "    \"alt\": {"
-      echo "      \"subtitle\": \"$subtitle\","
+      echo "      \"subtitle\": \"$subtitle\""
       echo "    }"
       echo "  }"
       #echo '        "autocomplete": "Desktop",'
@@ -139,19 +181,27 @@ list_by_name() {
 }
 
 list_by_usage() {
-  local list=$(ps -x -o %cpu= -o %mem= -o pid= | sort -nr -k1,1 -k2,2)
+  local list=$(ps -x -o %cpu= -o %mem= -o pid= | sort -nr -k1,1 -k2,2 | head -n $TOP)
 
   echo '{"items": ['
   echo "$list" | while read cpu mem pid;
   do
     local cpu=$(ps -p $pid -o %cpu=)
     local name=$(ps -p $pid -c -o command=)
-    local bin=$(lsof -p $pid | tr -s ' ' | grep ' txt ' | grep "/$name" | cut -d ' ' -f 9-)
-    local comm=$(ps -p $pid -o comm=)
+    #local bin=$(lsof -p $pid | tr -s ' ' | grep ' txt ' | grep "/$name" | cut -d ' ' -f 9-)
+    #local comm=$(ps -p $pid -o comm=)
     local command=$(ps -p $pid -o command=)
-    local len=$(echo $comm | wc -c)
-    local args=$(echo $command | cut -c $len-)
-    echo $cpu $mem $pid
+    #local len=$(echo $comm | wc -c)
+    #local args=$(echo $command | cut -c $len-)
+
+    local uid=$pid
+    local title=$name
+    local subtitle="$cpu%"
+
+    if [[ $name == "node" ]]; then
+      title="node @ $(${bin} --version)"
+    fi
+
     echo "{"
     echo "  \"uid\": \"$uid\","
     echo "  \"title\": \"$title\","
@@ -159,10 +209,10 @@ list_by_usage() {
     echo "  \"arg\": \"$arg\","
     echo "  \"mods\": {"
     echo "    \"cmd\": {"
-    echo "      \"subtitle\": \"Copy pid $pid to clipboard\","
+    echo "      \"subtitle\": \"Copy pid $pid to clipboard\""
     echo "    },"
     echo "    \"alt\": {"
-    echo "      \"subtitle\": \"$subtitle\","
+    echo "      \"subtitle\": \"$subtitle\""
     echo "    }"
     echo "  }"
     #echo '        "autocomplete": "Desktop",'
