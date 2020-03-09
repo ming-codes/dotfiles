@@ -51,11 +51,12 @@ list_by_id() {
       echo "    \"alt\": {"
       echo "      \"subtitle\": \"$subtitle\""
       echo "    }"
-      echo "  }"
-      #echo ' "icon": {'
-      #echo '   "type": "fileicon",'
-      #echo '   "path": "~/Desktop"'
-      #echo ' }'
+      echo "  },"
+      #echo '        "autocomplete": "Desktop",'
+      echo " \"icon\": {"
+      echo "   \"type\": \"\","
+      echo "   \"path\": \"/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/ExecutableBinaryIcon.icns\""
+      echo " }"
       echo "}"
     done
     echo ']}'
@@ -102,12 +103,12 @@ list_by_port() {
       echo "    \"alt\": {"
       echo "      \"subtitle\": \"$command\""
       echo "    }"
-      echo "  }"
+      echo "  },"
       #echo '        "autocomplete": "Desktop",'
-      #echo '        "icon": {'
-      #echo '            "type": "fileicon",'
-      #echo '            "path": "~/Desktop"'
-      #echo '        }'
+      echo " \"icon\": {"
+      echo "   \"type\": \"\","
+      echo "   \"path\": \"/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/ExecutableBinaryIcon.icns\""
+      echo " }"
       echo "}"
     done
     echo ']}'
@@ -166,12 +167,12 @@ list_by_name() {
       echo "    \"alt\": {"
       echo "      \"subtitle\": \"$subtitle\""
       echo "    }"
-      echo "  }"
+      echo "  },"
       #echo '        "autocomplete": "Desktop",'
-      #echo '        "icon": {'
-      #echo '            "type": "fileicon",'
-      #echo '            "path": "~/Desktop"'
-      #echo '        }'
+      echo " \"icon\": {"
+      echo "   \"type\": \"\","
+      echo "   \"path\": \"/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/ExecutableBinaryIcon.icns\""
+      echo " }"
       echo "}"
     done
     echo ']}'
@@ -180,11 +181,12 @@ list_by_name() {
   fi
 }
 
-list_by_usage() {
-  local list=$(ps -x -o %cpu= -o %mem= -o pid= | sort -nr -k1,1 -k2,2 | head -n $TOP)
+list_by_port_usage() {
+  local list=$(netstat -anv | grep 'LISTEN' | tr -s ' ' | cut -d ' ' -f 4,9 | cut -d '.' -f 2 | uniq)
+  local first=""
 
   echo '{"items": ['
-  echo "$list" | while read cpu mem pid;
+  echo "$list" | while read port pid;
   do
     local cpu=$(ps -p $pid -o %cpu=)
     local name=$(ps -p $pid -c -o command=)
@@ -196,10 +198,61 @@ list_by_usage() {
 
     local uid=$pid
     local title=$name
-    local subtitle="$cpu%"
+    local subtitle="$cpu% CPU @ $command"
 
-    if [[ $name == "node" ]]; then
-      title="node @ $(${bin} --version)"
+    if [[ -z "$first" ]];
+    then
+      first="true"
+    else
+      echo ","
+    fi
+
+    echo "{"
+    echo "  \"uid\": \"$uid\","
+    echo "  \"title\": \"$title\","
+    echo "  \"subtitle\": \"$subtitle\","
+    echo "  \"arg\": \"$arg\","
+    echo "  \"mods\": {"
+    echo "    \"cmd\": {"
+    echo "      \"subtitle\": \"Copy pid $pid to clipboard\""
+    echo "    },"
+    echo "    \"alt\": {"
+    echo "      \"subtitle\": \"$subtitle\""
+    echo "    }"
+    echo "  }"
+    #echo '        "autocomplete": "Desktop",'
+    #echo '        "icon": {'
+    #echo '            "type": "fileicon",'
+    #echo '            "path": "~/Desktop"'
+    #echo '        }'
+    echo "}"
+  done
+  echo ']}'
+}
+
+list_by_usage() {
+  local list=$(ps -x -o %cpu= -o %mem= -o pid= | sort -nr -k1,1 -k2,2 | head -n $TOP)
+  local first=""
+
+  echo '{"items": ['
+  echo "$list" | while read cpu mem pid;
+  do
+    local name=$(ps -p $pid -c -o command=)
+    #local bin=$(lsof -p $pid | tr -s ' ' | grep ' txt ' | grep "/$name" | cut -d ' ' -f 9-)
+    #local comm=$(ps -p $pid -o comm=)
+    local command=$(ps -p $pid -o command=)
+    #local len=$(echo $comm | wc -c)
+    #local args=$(echo $command | cut -c $len-)
+
+    local uid=$pid
+    local title=$name
+    local subtitle="$cpu% CPU @ $command"
+
+    if [[ -z "$first" ]];
+    then
+      first="true"
+    else
+      echo ","
     fi
 
     echo "{"
@@ -245,7 +298,7 @@ grep_id() {
 grep_name() {
   local name=$1
 
-  pgrep $name | while read pid;
+  pgrep -i $name | while read pid;
   do
     local cpu=$(ps -p $pid -o %cpu=)
 
@@ -269,7 +322,10 @@ grep_port() {
 }
 
 main() {
-  if [[ $QUERY =~ :([[:digit:]]+) ]];
+  if [ "$QUERY" == ':' ];
+  then
+    list_by_port_usage
+  elif [[ $QUERY =~ :([[:digit:]]+) ]];
   then # match port
     list_by_port ${BASH_REMATCH[1]}
   elif [[ $QUERY =~ [[:digit:]]+ ]];
