@@ -1,14 +1,14 @@
 DISABLE_AUTO_UPDATE=true
 
-plugins=(git history-substring-search vi-mode)
+plugins=(history-substring-search vi-mode)
 
 # Raise file descriptor limit
 ulimit -n 8192
 
-source $DOTFILES/shell/promptline.sh
-source $ZSH/oh-my-zsh.sh             # FIXME This is second slow
+source $DOTFILES/shell/promptline.sh     # 7ms
+source $ZSH/oh-my-zsh.sh                 # 122ms FIXME This is second slow
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh   # 11ms
 
 echo "Welcome to ZSH"
 
