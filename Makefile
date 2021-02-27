@@ -49,7 +49,7 @@ vim-install:
 	nvim -c 'PlugInstall' -c 'xa'
 
 curl-install:
-	curl https://get.volta.sh | bash 
+	curl https://get.volta.sh | bash
 
 volta-install:
 	~/.volta/volta install yarn
@@ -60,6 +60,7 @@ link:
 	mkdir -p ~/.config/nvim/vim-backup
 	mkdir -p ~/.config/nvim/vim-swap
 	mkdir -p ~/.config/nvim/vim-undo
+	mkdir -p ~/.ssh
 
 	ln -s ~/.dotfiles/nvim/autoload/plug.vim    ~/.config/nvim/autoload/plug.vim
 	ln -s ~/.dotfiles/nvim/init.vim             ~/.config/nvim/init.vim
@@ -81,10 +82,6 @@ link:
 	ln -s ~/.dotfiles/gitconfig            ~/.gitconfig
 	ln -s ~/.dotfiles/gemrc                ~/.gemrc
 	ln -s ~/.dotfiles/tmuxconf             ~/.tmux.conf
-
-ifeq ($(OS),Darwin)
-	ln -s /Applications/Xcode.app/Contents/Developer/Applications/iOS\ Simulator.app /Applications/iOS\ Simulator.app
-endif
 
 install: curl-install volta-install brew-install cask-install mas-install unlink link gem-install vim-install
 
@@ -120,15 +117,10 @@ clean: unlink
 	-brew cask cleanup
 	-trash -s
 
-upgrade: update
-
 update:
-ifeq ($(OS),Darwin)
-	-xcode-select --install
-endif
 	git checkout master
 	git pull --rebase origin master --tags
-	sh ./zsh/oh-my-zsh/tools/upgrade.sh
+	-sh ./zsh/oh-my-zsh/tools/upgrade.sh
 	brew update
 ifeq ($(OS),Darwin)
 	-brew upgrade mas
