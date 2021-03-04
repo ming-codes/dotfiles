@@ -1,5 +1,3 @@
-
-DOTFILES=~/.dotfiles
 BASH_IT=$DOTFILES/bash/bash-it
 
 # Raise file descriptor limit
@@ -18,8 +16,6 @@ alias vim="nvim"
 alias vi="nvim"
 alias ll="ls -l"
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-# This needs to be the last line
 export VOLTA_HOME="$HOME/.volta"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$VOLTA_HOME/bin:$PATH"
