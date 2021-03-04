@@ -81,7 +81,7 @@ link:
 	ln -s ~/.dotfiles/gemrc                ~/.gemrc
 	ln -s ~/.dotfiles/tmuxconf             ~/.tmux.conf
 
-install: curl-install volta-install brew-install cask-install mas-install unlink link gem-install vim-install
+install: brew-install curl-install volta-install cask-install mas-install unlink link gem-install vim-install
 
 unlink:
 	-unlink ~/.config/nvim/init.vim
