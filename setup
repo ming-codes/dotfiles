@@ -4,33 +4,11 @@
 
 echo "Installing Homebrew..."
 
-# Debian/Ubuntu
-if hash apt-get 2>/dev/null; then
-  sudo apt-get install build-essential curl git m4 python-setuptools ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/linuxbrew/go/install)"
-
-# CentOS/RHEL
-elif hash yum 2>/dev/null; then
-  sudo yum groupinstall 'Development Tools' && sudo yum install curl git irb m4 python-setuptools ruby texinfo bzip2-devel curl-devel expat-devel ncurses-devel zlib-devel
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/linuxbrew/go/install)"
-
-# OSX
-elif [ ! $(xcode-select -p) ]; then
+if [ ! $(xcode-select -p) ]; then
   xcode-select --install
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-echo "Configuring ownership of /usr/local"
-
-sudo chown -R $(whoami) $(brew --prefix)/*
-
-echo "Generating ssh key..."
-
-if [ ! -f "$HOME/.ssh/id_rsa" ]; then
-  ssh-keygen -t rsa -b 4096 -C "$(whoami)@$(hostname)"
-fi
-
-ssh-add
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 echo "Cloning repository into ~/.dotfiles"
 
