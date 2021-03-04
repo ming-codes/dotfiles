@@ -12,20 +12,18 @@ brew-install:
 ifeq ($(OS),Darwin)
 	brew tap caskroom/cask
 	brew install mas
+	brew install trash
 endif
 	brew install tmux
 	brew link tmux
 	brew install fish
 	brew install zsh
-	brew install thefuck
 	brew install neovim
 	brew install git
 	brew install curl-openssl
 	brew install tree
 	brew install ack
 	brew install wget
-	brew install direnv
-	brew install trash
 	brew install jq
 	brew install rename
 	brew install coreutils
@@ -133,7 +131,6 @@ endif
 	-brew upgrade tree
 	-brew upgrade ack
 	-brew upgrade wget
-	-brew upgrade direnv
 	-brew upgrade trash
 	-brew upgrade jq
 	-brew upgrade curl-openssl

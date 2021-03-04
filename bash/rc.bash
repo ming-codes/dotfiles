@@ -17,15 +17,9 @@ echo "Welcome to BASH"
 alias vim="nvim"
 alias vi="nvim"
 alias ll="ls -l"
-alias f="fuck"
-
-eval $(thefuck --alias)
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-export VOLTA_HOME=$HOME/.volta
-
-grep --silent "$VOLTA_HOME/bin" <<< $PATH || export PATH="$VOLTA_HOME/bin:$PATH"
-
 # This needs to be the last line
-eval "$(direnv hook bash)"
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
