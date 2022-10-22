@@ -1,0 +1,103 @@
+[core]
+editor = nvim
+excludesfile = ~/.gitignore
+pager = delta
+
+[interactive]
+diffFilter = delta --color-only
+
+[delta]
+navigate = true    # use n and N to move between diff sections
+light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+side-by-side = true
+
+[color]
+branch = auto
+diff = auto
+status = auto
+
+[color "branch"]
+current = yellow reverse
+local = yellow
+remote = green
+
+[color "diff"]
+meta = yellow
+frag = cyan bold
+old = red bold
+new = green bold
+
+[color "status"]
+added = yellow
+changed = green
+untracked = cyan
+
+[color "decorate"]
+tag = magenta
+
+[web]
+browser = google-chrome
+
+[alias]
+; credit goes to https://gist.github.com/datagrok/5080545
+serve = !bash -c '"echo \"Usage: git clone git://`hostname`/ <local-dirname>\"; git daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/"'
+today = log --author=Ming --since="6am" --branches
+co = checkout
+br = branch
+ci = commit
+st = status
+
+[user]
+name = Ming Liu
+email = {{ .email | quote }}
+
+[push]
+default = current
+followTags = true
+
+[pull]
+default = current
+
+[grep]
+extendRegexp = true
+lineNumber = true
+
+[diff]
+tool = Kaleidoscope
+colorMoved = default
+
+[merge]
+tool = Kaleidoscope
+conflictstyle = diff3
+
+[difftool "Kaleidoscope"]
+cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+
+[mergetool]
+prompt = false
+
+[mergetool "Kaleidoscope"]
+prompt = false
+cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+trustExitCode = true
+
+[rebase]
+autostash = true
+
+[credential]
+helper = osxkeychain
+
+[format]
+pretty = format:%h %Cblue%ad%Creset %ae %Cgreen%s%Creset %C(auto)%d%Creset
+
+[log]
+abbrevCommit = true
+date = relative
+decorate = true
+
+[pager]
+branch = false
+tag = false
+
+[fetch]
+prune = true

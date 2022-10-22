@@ -1,0 +1,6 @@
+host github.com
+  HostName github.com
+  UseKeychain yes
+  AddKeysToAgent yes
+  User git
+  IdentityFile ~/.ssh/ming-codes_id_ed25519

@@ -1,0 +1,9 @@
+{{ $email := promptString "gitconfig email" -}}
+
+encryption = "gpg"
+
+[data]
+email={{ $email | quote }}
+
+[gpg]
+recipient="688160DB111217044776E9A2C285FB8048B48EE6"

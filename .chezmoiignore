@@ -1,0 +1,5 @@
+{{ if ne .chezmoi.os "darwin" -}}
+Library
+{{ else }}
+Library/Application Support/Alfred/Alfred.alfredpreferences/workflows/user.workflow.20558A27-C0CB-42C9-9078-748F817B1742
+{{ end -}}

@@ -1,0 +1,58 @@
+#!/usr/bin/env sh
+
+{{ if eq .chezmoi.os "darwin" -}}
+brew bundle --no-lock --file=/dev/stdin <<EOF
+
+cask_args appdir: "~/Applications", require_sha: true
+
+brew "git"
+brew "mas"
+brew "trash"
+brew "tmux"
+brew "zsh"
+brew "neovim"
+brew "git"
+brew "curl"
+brew "tree"
+brew "gpg"
+brew "asdf"
+brew "gawk"
+brew "ripgrep"
+brew "wget"
+brew "jq"
+brew "fzf"
+brew "chafa"
+brew "git-delta"
+brew "bat"
+brew "gh"
+brew "sf-pwgen"
+
+brew "rename"
+brew "coreutils"
+brew "watchman"
+brew "direnv"
+
+cask "figma"
+cask "dash"
+cask "alfred"
+cask "slack"
+cask "brave-browser"
+cask "figma"
+cask "iterm2"
+cask "kaleidoscope"
+cask "divvy"
+cask "pixelsnap"
+cask "cleanshot"
+
+mas "amphetamine", id: 937984704
+
+EOF
+{{ else if eq .chezmoi.os "linux" -}}
+{{ end -}}
+
+#cask "caffeine"
+#brew search amphetamine
+
+#  brew install --cask --appdir=~/Applications colour-contrast-analyser
+
+#  mas install 407963104  # Pixelmator
