@@ -1,11 +1,12 @@
 
+local state = require('ming-codes.dap.state')
+local config = require('ming-codes.dap.configurations')
+
 local dap = require("dap")
 local dapui = require("dapui")
 local js = require("dap-vscode-js")
 local vt = require("nvim-dap-virtual-text")
 
-local fn = require("ming-codes.dap.fn")
-local config = require("ming-codes.dap.config")
 
 js.setup({
   -- node_path = "node", -- Path of node executable. Defaults to $NODE_PATH, and then "node"
@@ -18,42 +19,6 @@ js.setup({
   -- log_file_level = false -- Logging level for output to file. Set to false to disable file logging.
   -- log_console_level = vim.log.levels.ERROR -- Logging level for output to console. Set to false to disable console output.
 })
-
--- for _, language in ipairs({ "typescript", "javascript" }) do
---   dap.configurations[language] = {
---     {
---       type = "pwa-node",
---       request = "launch",
---       name = "Launch file",
---       program = "${file}",
---       cwd = "${workspaceFolder}",
---     },
---     {
---       type = "pwa-node",
---       request = "attach",
---       name = "Attach",
---       processId = require'dap.utils'.pick_process,
---       cwd = "${workspaceFolder}",
---     },
---     {
---       name = "Launch Vitest",
---       type = "pwa-node",
---       request = "launch",
---       runtimeExecutable = "node",
---       runtimeArgs = {
---         "./node_modules/.bin/vitest",
---         "run",
---         "--no-threads",
---         "src/pages/views/components.common.rw/timeline/__tests__/TimelineLabel.spec.ts"
---       },
---       rootPath = "${workspaceFolder}",
---       cwd = "${workspaceFolder}",
---       console = "integratedTerminal",
---       internalConsoleOptions = "neverOpen",
---     },
---   }
--- end
-
 
 dapui.setup({
   icons = { expanded = "▾", collapsed = "▸", current_frame = "▸" },
@@ -137,18 +102,59 @@ dapui.setup({
 
 vt.setup()
 
-dap.listeners.after.event_initialized["dapui_config"] = function()
-  dapui.open()
-end
-
 vim.api.nvim_create_user_command('DapContinueToCursor', dap.run_to_cursor, {
   nargs = 0
 })
 
-vim.api.nvim_create_user_command('DapUiOpen', dapui.open, {
-  nargs = 0
-})
+function launch_options(configurations)
+  local choices = vim.tbl_map(function(config)
+    configurations[config.name] = config
 
-vim.api.nvim_create_user_command('DapUiClose', dapui.close, {
-  nargs = 0
-})
+    return config.name
+  end, configurations)
+
+  dap.terminate(nil, nil, function()
+    vim.ui.select(choices, {}, function(choice)
+      print(choices[choice])
+
+      dapui.open()
+      dap.run(configurations[choice])
+    end)
+  end)
+end
+
+-- TODO if paused, resume, else restart
+function step_resume_or_restart()
+  if (state.has_paused_thread()) then
+    dap.continue()
+  elseif (state.get_last_config()) then
+    dap.run_last()
+  else
+    launch_options(config.load_configurations())
+  end
+end
+
+return {
+  step_over = dap.step_over,
+  step_into = dap.step_into,
+  step_out = dap.step_out,
+  resume_smart = step_resume_or_restart,
+  launch_last = function()
+    local session = dap.session()
+
+    if (session) then
+      dap.terminate(nil, nill, function()
+        dap.close()
+        dap.run_last()
+      end)
+    else
+      dap.run_last()
+    end
+  end,
+  quit = function()
+    dapui.close()
+    dap.terminate(nil, nil, function()
+      dap.close()
+    end)
+  end
+}

@@ -1,5 +1,3 @@
-vim.keymap.set('n', '<leader>u', '<Cmd>UndotreeShow<cr>')
-
 vim.api.nvim_create_user_command('UndotreeCustom', function(cmd)
   local bufname = unpack(cmd.fargs)
 
@@ -7,6 +5,3 @@ vim.api.nvim_create_user_command('UndotreeCustom', function(cmd)
 end, {
   nargs = 1
 })
-
-vim.g.undotree_CustomUndotreeCmd = 'UndotreeCustom'
-vim.g.undotree_SetFocusWhenToggle = 1

@@ -59,15 +59,20 @@
   url = "https://github.com/mbbill/undotree.git"
   refreshPeriod = "168h"
 
-[".local/share/nvim/site/pack/plugins/start/vim-airline"]
+[".local/share/nvim/site/pack/plugins/start/lightline.vim"]
   type = "git-repo"
-  url = "https://github.com/vim-airline/vim-airline"
+  url = "https://github.com/itchyny/lightline.vim"
   refreshPeriod = "168h"
 
-[".local/share/nvim/site/pack/plugins/start/vim-airline-themes"]
-  type = "git-repo"
-  url = "https://github.com/vim-airline/vim-airline-themes"
-  refreshPeriod = "168h"
+#[".local/share/nvim/site/pack/plugins/start/vim-airline"]
+#  type = "git-repo"
+#  url = "https://github.com/vim-airline/vim-airline"
+#  refreshPeriod = "168h"
+#
+#[".local/share/nvim/site/pack/plugins/start/vim-airline-themes"]
+#  type = "git-repo"
+#  url = "https://github.com/vim-airline/vim-airline-themes"
+#  refreshPeriod = "168h"
 
 #Plug 'edkolev/tmuxline.vim' ", { 'do': ':TmuxlineSnapshot ~/.dotfiles/shell/tmuxline.sh' }
 
@@ -202,15 +207,6 @@
 [".local/share/nvim/site/pack/plugins/start/coc.nvim"]
   type = "git-repo"
   url = "https://github.com/neoclide/coc.nvim.git"
-  branch = "release"
-  refreshPeriod = "168h"
-
-#
-# Syntax
-#
-[".local/share/nvim/site/pack/plugins/start/vim-polyglot.nvim"]
-  type = "git-repo"
-  url = "https://github.com/sheerun/vim-polyglot.git"
   branch = "release"
   refreshPeriod = "168h"
 
