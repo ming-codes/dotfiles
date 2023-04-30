@@ -1,0 +1,14 @@
+#!/bin/sh
+
+CWD=$(pwd)
+GIT_DIR="$CWD/$(git rev-parse --git-dir)"
+HOOKS_PATH=$GIT_DIR/hooks
+HOOK=$(basename "$0")
+
+if [[ -e "$HOOKS_PATH/$HOOK" ]]; then
+  source "$HOOKS_PATH/$HOOK"
+fi
+
+if [[ -e "$CWD/Makefile" && $(make -q $HOOK 1> /dev/null 2> /dev/null; echo $?) -eq 1 ]]; then
+  make "$HOOK"
+fi

@@ -140,11 +140,6 @@
   url = "https://github.com/christoomey/vim-tmux-navigator"
   refreshPeriod = "168h"
 
-[".local/share/nvim/site/pack/plugins/start/vim-tmux-resizer"]
-  type = "git-repo"
-  url = "https://github.com/melonmanchan/vim-tmux-resizer"
-  refreshPeriod = "168h"
-
 [".local/share/nvim/site/pack/plugins/start/better-vim-tmux-resizer"]
   type = "git-repo"
   url = "https://github.com/RyanMillerC/better-vim-tmux-resizer"

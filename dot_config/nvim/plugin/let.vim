@@ -20,6 +20,20 @@ let g:lightline.inactive.right                           = []
 let g:lightline.tabline                                  = {}
 let g:lightline.tabline.right                            = [ [ 'gitbranch' ], [ 'coc' ] ]
 
+"let g:treesitter = {}
+"let g:treesitter.ensure_installed = [ "lua", "vim", "vimdoc", "javascript", "typescript", "vue" ]
+"let g:treesitter.sync_install = 0
+"let g:treesitter.auto_install = 1
+"let g:treesitter.ignore_install = { }
+"let g:treesitter.highlight = {}
+"let g:treesitter.highlight.enable = 1
+
+let g:dapui = {}
+"let g:dapui.icons = { expanded = "▾", collapsed = "▸", current_frame = "▸" },
+
+let g:dap_vscode_js = {}
+let g:dap_vscode_js.debugger_path = printf('%s/.local/share/vscode-js-debug', $HOME)
+let g:dap_vscode_js.adapters = { 'pwa-node' }
 
 let g:tmuxline_preset                                    = 'minimal'
 let g:gh_line_map                                        = 'gh'
@@ -60,6 +74,9 @@ let &splitright                                          = 1
 let &updatetime                                          = 300
 
 let &signcolumn                                          = 'yes'
+
+let &timeout                                             = 1
+let &timeoutlen                                          = 300
 
 let &ruler                                               = 1
 let &number                                              = 1
