@@ -21,11 +21,6 @@ alias vim="nvim"
 alias vi="nvim"
 alias vd="vd $VISIDATA_DEFAULT_OPTS"
 
-if [ -z "$SSH_AUTH_SOCK" ]; then
-  eval $(ssh-agent)
-  ssh-add
-fi
-
 zstyle ':completion:*' menu select
 #zstyle ':completion:*:*:git:*' script ~/.git-completion.bash
 # `compinit` scans $fpath, so do this before calling it.

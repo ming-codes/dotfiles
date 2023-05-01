@@ -1,0 +1,5 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+for FILE in ~/.ssh/*.pub; do
+  ssh-add --apple-use-keychain "$(dirname "$FILE")/$(basename -s .pub "$FILE")"
+done
