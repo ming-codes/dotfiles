@@ -1,4 +1,22 @@
-local state = require('ming-codes.dap.state')
+
+-- function resolve()
+-- end
+-- 
+-- resolve({
+--   vitest = function(bin, bufnr)
+--     return {
+--       name = "vitest run",
+--       type = "pwa-node",
+--       request = "launch",
+--       runtimeExecutable = "node",
+--       runtimeArgs = { bin, "run" },
+--       rootPath = "${workspaceFolder}",
+--       cwd = "${workspaceFolder}",
+--       console = "integratedTerminal",
+--       internalConsoleOptions = "neverOpen",
+--     }
+--   end
+-- })
 
 return {
   load_configurations = function()
@@ -72,9 +90,6 @@ return {
         console = "integratedTerminal",
         internalConsoleOptions = "neverOpen",
       },
-      {
-        name = "cypress (WIP)"
-      }
     }
   end
 }
