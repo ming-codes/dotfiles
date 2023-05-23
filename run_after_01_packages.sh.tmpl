@@ -7,7 +7,7 @@ cask_args appdir: "~/Applications", require_sha: true
 
 brew "git"
 brew "mas"
-brew "trash"
+brew "trash-cli"
 brew "tmux"
 brew "zsh"
 brew "neovim"
@@ -20,17 +20,27 @@ brew "gawk"
 brew "ripgrep"
 brew "wget"
 brew "jq"
+brew "yq"
 brew "fzf"
 brew "chafa"
 brew "git-delta"
 brew "bat"
 brew "gh"
 brew "sf-pwgen"
+brew "shfmt"
+brew "black"
+# brew "dprint"
 
 brew "rename"
 brew "coreutils"
+brew "moreutils"
 brew "watchman"
 brew "direnv"
+brew "shfmt"
+
+tap "fsouza/prettierd"
+
+brew "fsouza/prettierd/prettierd"
 
 cask "figma"
 cask "dash"
@@ -56,3 +66,6 @@ EOF
 #  brew install --cask --appdir=~/Applications colour-contrast-analyser
 
 #  mas install 407963104  # Pixelmator
+
+asdf plugin add bun
+asdf plugin add nodejs

@@ -4,15 +4,10 @@ return {
   g = {
     mapleader = " ",
     symbol_indent = "▏",
-    icon_diagnostic_error = "",
-    icon_diagnostic_hint = "󰌵",
-    icon_diagnostic_info = "󰋼",
-    icon_diagnostic_warn = "",
-    icon_dap_breakpoint = "",
-    icon_dap_breakpoint_condition = "",
-    icon_dap_breakpoint_rejected = "",
-    icon_dap_log_point = ".>",
-    icon_dap_stopped = "󰁕",
+    symbol_arrow_left = "",
+    symbol_arrow_right = "",
+    goyo_width = 120,
+    skip_ts_context_commentstring_module = true,
   },
   o = {
     clipboard = 'unnamed,unnamedplus',
@@ -36,8 +31,8 @@ return {
     shiftwidth = 2,
     mouse = '',
     autoindent = true,
-    wrap = 0,
-    encoding ='utf-8',
+    wrap = false,
+    encoding = 'utf-8',
 
     splitbelow = true,
     splitright = true,
@@ -64,4 +59,7 @@ return {
     undodir = string.format('%s/nvim/undo//', tmpdir),
     backupdir = string.format('%s/nvim/backup//', tmpdir),
   },
+  wo = {
+    foldcolumn = 1,
+  }
 }

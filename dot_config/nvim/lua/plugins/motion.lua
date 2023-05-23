@@ -9,10 +9,13 @@ return {
   },
   {
     "ggandor/leap.nvim",
-    event = "VeryLazy",
+    event = "InsertCharPre",
     init = function()
       require("leap").add_default_mappings()
     end
   },
-  { "tpope/vim-repeat", event = "VeryLazy" },
+  {
+    "tpope/vim-repeat",
+    event = "InsertCharPre",
+  },
 }

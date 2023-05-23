@@ -8,3 +8,7 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply ming-codes
 ```
 git config core.sshCommand "ssh -F ~/.ssh/ming-codes_config"
 ```
+
+TODO
+
+coc require npx which depends on asdf

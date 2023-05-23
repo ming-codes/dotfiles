@@ -1,29 +1,5 @@
 export SHELL=$(command -v zsh)
 
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_LOCAL_HOME=$HOME/.local
-export XDG_DATA_HOME=$XDG_LOCAL_HOME/share
-
-export ASDF_HOME=$HOME/.asdf
-export FZF_CONFIG_HOME=$XDG_CONFIG_HOME/fzf
-export VD_CONFIG_HOME=$XDG_CONFIG_HOME/visidata
-export POWERLINE_CONFIG_HOME=$XDG_CONFIG_HOME/powerline
-export ZSH_COMPLETION_HOME=$XDG_LOCAL_HOME/share/completions
-
-export ZSH=$HOME/.oh-my-zsh
-export CHEZMOI_HOME=$HOME/.local/share/chezmoi
-export FZF_DEFAULT_OPTS="--bind alt-a:select-all"
-export VISIDATA_DEFAULT_OPTS="--config=$VD_CONFIG_HOME/config.py --visidata-dir=$VD_CONFIG_HOME --undo"
-
-#export PATH=$DOTFILES/bin:$PATH
-export PATH=/opt/cisco/anyconnect/bin:$PATH
-export PATH=/opt/homebrew/bin:$PATH
-export PATH=$HOME/bin:$PATH
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH=$HOME/.asdf/shims:$PATH
-
 export NODE_OPTIONS=--max_old_space_size=4096
 
 fpath=( ~/.local/share/completions "${fpath[@]}" )
-
-eval "$(/opt/homebrew/bin/brew shellenv)"

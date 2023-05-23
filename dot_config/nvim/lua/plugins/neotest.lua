@@ -1,0 +1,28 @@
+return {
+  {
+    "nvim-neotest/neotest",
+    cmd = "Neotest",
+    dependencies = {
+      "marilari88/neotest-vitest",
+      "nvim-neotest/neotest-jest",
+    },
+    opts = function()
+      return {
+        adapters = {
+          require('neotest-vitest')({
+            -- vitestCommand = "npx vitest -- -w"
+          }),
+          require('neotest-jest')({
+            jestCommand = "npm test --",
+            jestConfigFile = "custom.jest.config.ts",
+            env = { CI = true },
+            cwd = function(path)
+              return vim.fn.getcwd()
+            end,
+          }),
+        }
+      }
+    end,
+    config = true
+  }
+}

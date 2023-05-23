@@ -21,33 +21,14 @@ alias vim="nvim"
 alias vi="nvim"
 alias vd="vd $VISIDATA_DEFAULT_OPTS"
 
-if [ -z "$SSH_AUTH_SOCK" ]; then
-  eval $(ssh-agent)
-  ssh-add
-fi
-
 zstyle ':completion:*' menu select
 #zstyle ':completion:*:*:git:*' script ~/.git-completion.bash
 # `compinit` scans $fpath, so do this before calling it.
 fpath=(~/.zsh/functions $fpath)
 autoload -Uz compinit && compinit
 
-_fzf_complete_git() {
-  local args="$@"
-
-  if [[ $args == *'--'* ]]; then
-    _fzf_complete --reverse --multi --prompt="refs> " -- "$@" < <(
-      _fzf_compgen_dir .
-    )
-    
-  elif [[ $args == 'git co'* || $args == 'git br'* ]]; then
-    _fzf_complete --reverse --multi --prompt="refs> " -- "$@" < <(
-      git show-ref  | cut -d '/' -f 3- | sed  '/^$/d'
-    )
-  else
-      eval "zle ${fzf_default_completion:-expand-or-complete}"
-  fi
-}
+source ~/.config/fzf/git_complete.zsh
+source ~/.config/fzf/gh_complete.zsh
 
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 [ -f "${ASDF_HOME:-$HOME/.asdf}"/plugins/java/set-java-home.zsh ] && source "${ASDF_HOME:-$HOME/.asdf}"/plugins/java/set-java-home.zsh

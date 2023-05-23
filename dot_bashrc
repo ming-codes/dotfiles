@@ -1,0 +1,3 @@
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash
+
+[ -s "/Users/mliu4/.jabba/jabba.sh" ] && source "/Users/mliu4/.jabba/jabba.sh"
