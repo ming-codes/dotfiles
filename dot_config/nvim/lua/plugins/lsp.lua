@@ -48,7 +48,7 @@ return {
               vim.lsp.buf.hover()
           end
         end, {
-          buffer = bufnr or 0
+          buffer = bufnr or 0,
         })
       end)
 

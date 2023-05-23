@@ -3,6 +3,15 @@ return {
   { "folke/neoconf.nvim", cmd = "Neoconf" },
   "folke/neodev.nvim",
 
+  "mrjones2014/legendary.nvim",
+
+  "jbyuki/one-small-step-for-vimkind",
+
+}
+-- vim-illuminate
+-- nvim-dap
+-- nvim-dap-ui
+-- project.nvim
 -- LSP
 -- bufferline.nvim
 -- flit.nvim
@@ -15,15 +24,6 @@ return {
 -- nvim-treesitter
 -- persistence.nvim
 -- telescope.nvim
-"mrjones2014/legendary.nvim",
-
--- vim-illuminate
--- nvim-dap
--- nvim-dap-ui
-  "jbyuki/one-small-step-for-vimkind",
-
--- project.nvim
-}
 -- return {
 --   {
 --     "nvim-tree/nvim-web-devicons",

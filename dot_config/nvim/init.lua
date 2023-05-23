@@ -23,3 +23,6 @@ for key, value in pairs(options.o) do
 end
 
 require("lazy").setup("plugins")
+
+vim.cmd("colorscheme PaperColor")
+vim.cmd("highlight VertSplit guifg=24 guibg=255")

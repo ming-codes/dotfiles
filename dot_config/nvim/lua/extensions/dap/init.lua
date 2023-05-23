@@ -2,8 +2,6 @@
 -- local state = require('ming-codes.dap.state')
 local config = require("extensions.dap.configurations")
 
-local dap = require("dap")
-local dapui = require("dapui")
 -- local js = require("dap-vscode-js")
 -- local vt = require("nvim-dap-virtual-text")
 -- 
@@ -143,6 +141,7 @@ local dapui = require("dapui")
 
 return {
   launch_last = function()
+    local dap = require("dap")
     local session = dap.session()
 
     if (session) then
@@ -155,11 +154,16 @@ return {
     end
   end,
   quit = function()
+    local dap = require("dap")
+
     dap.terminate(nil, nil, function()
       dap.close()
     end)
   end,
   quit_all = function()
+    local dap = require("dap")
+    local dapui = require("dapui")
+
     dap.terminate(nil, nil, function()
       dapui.close()
       dap.close()

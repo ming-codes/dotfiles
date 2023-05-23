@@ -25,7 +25,6 @@ return {
   },
   {
     "mfussenegger/nvim-dap",
-    event = "VeryLazy", -- TODO use keys instead
     dependencies = {
       { "theHamsta/nvim-dap-virtual-text" },
       {

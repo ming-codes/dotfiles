@@ -21,34 +21,25 @@ return {
   -- { "marko-cerovac/material.nvim" },
   {
     "NLKNguyen/papercolor-theme",
-    build = "colorscheme PaperColor",
-    init = function()
-      vim.cmd("colorscheme PaperColor")
-      vim.cmd("highlight VertSplit ctermfg=24 ctermbg=255")
-    end
   },
   {
     "mrjones2014/smart-splits.nvim",
-    keys = function()
-      local splits = require("smart-splits")
-
-      return {
-        { "<A-h>", splits.resize_left, desc = "Resize window left" },
-        { "<A-j>", splits.resize_down, desc = "Resize window down" },
-        { "<A-k>", splits.resize_up, desc = "Resize window up" },
-        { "<A-l>", splits.resize_right, desc = "Resize window down" },
-        -- moving between splits
-        { "<C-h>", splits.move_cursor_left, desc = "Move to window left" },
-        { "<C-j>", splits.move_cursor_down, desc = "Move to window below" },
-        { "<C-k>", splits.move_cursor_up, desc = "Move to window above" },
-        { "<C-l>", splits.move_cursor_right, desc = "Move to window right" },
-        -- swapping buffers between windows
-        { "<leader>uh", splits.swap_buf_left, desc = "Swap window with left" },
-        { "<leader>uj", splits.swap_buf_down, desc = "Swap window with down" },
-        { "<leader>uk", splits.swap_buf_up, desc = "Swap window with up" },
-        { "<leader>ul", splits.swap_buf_right, desc = "Swap window with right" },
-      }
-    end
+    keys = {
+      { "<A-h>", "<cmd>lua require('smart-splits').resize_left()<cr>", desc = "Resize window left" },
+      { "<A-j>", "<cmd>lua require('smart-splits').resize_down()<cr>", desc = "Resize window down" },
+      { "<A-k>", "<cmd>lua require('smart-splits').resize_up()<cr>", desc = "Resize window up" },
+      { "<A-l>", "<cmd>lua require('smart-splits').resize_right()<cr>", desc = "Resize window down" },
+      -- moving between splits
+      { "<C-h>", "<cmd>lua require('smart-splits').move_cursor_left()<cr>", desc = "Move to window left" },
+      { "<C-j>", "<cmd>lua require('smart-splits').move_cursor_down()<cr>", desc = "Move to window below" },
+      { "<C-k>", "<cmd>lua require('smart-splits').move_cursor_up()<cr>", desc = "Move to window above" },
+      { "<C-l>", "<cmd>lua require('smart-splits').move_cursor_right()<cr>", desc = "Move to window right" },
+      -- swapping buffers between windows
+      { "<leader>uh", "<cmd>lua require('smart-splits').swap_buf_left()<cr>", desc = "Swap window with left" },
+      { "<leader>uj", "<cmd>lua require('smart-splits').swap_buf_down()<cr>", desc = "Swap window with down" },
+      { "<leader>uk", "<cmd>lua require('smart-splits').swap_buf_up()<cr>", desc = "Swap window with up" },
+      { "<leader>ul", "<cmd>lua require('smart-splits').swap_buf_right()<cr>", desc = "Swap window with right" },
+    }
   },
   {
     "echasnovski/mini.indentscope",
