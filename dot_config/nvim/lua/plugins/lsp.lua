@@ -12,6 +12,34 @@ return {
       )
     end
   },
+--   {
+--     "L3MON4D3/LuaSnip",
+--     build = (not jit.os:find("Windows"))
+--         and "echo -e 'NOTE: jsregexp is optional, so not a big deal if it fails to build\n'; make install_jsregexp"
+--       or nil,
+--     dependencies = {
+--       "rafamadriz/friendly-snippets",
+--       config = function()
+--         require("luasnip.loaders.from_vscode").lazy_load()
+--       end,
+--     },
+--     opts = {
+--       history = true,
+--       delete_check_events = "TextChanged",
+--     },
+--     -- stylua: ignore
+--     keys = {
+--       {
+--         "<tab>",
+--         function()
+--           return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
+--         end,
+--         expr = true, silent = true, mode = "i",
+--       },
+--       { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
+--       { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
+--     },
+--   },
   {
     "williamboman/mason-lspconfig.nvim"
   },
@@ -21,6 +49,7 @@ return {
   {
     "VonHeikemen/lsp-zero.nvim",
     branch = "v2.x",
+    event = "VimEnter",
     dependencies = {
       "kevinhwang91/nvim-ufo",
       -- LSP Support
@@ -37,6 +66,13 @@ return {
       {'hrsh7th/cmp-nvim-lsp'}, -- Required
       "L3MON4D3/LuaSnip",
     },
+    keys = {
+      -- TODO code action { "<leader><leader>f", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "code action" }
+      -- TODO code action quick fix { "" }
+      -- TODO code action rename { "?c" }
+      -- TODO code lens??
+      -- TODO toggle diagnostics
+    },
     config = function()
       local lsp = require("lsp-zero").preset({})
 
@@ -44,8 +80,9 @@ return {
         vim.keymap.set("n", "K", function()
           local winid = require('ufo').peekFoldedLinesUnderCursor()
           if not winid then
-              -- choose one of coc.nvim and nvim lsp
-              vim.lsp.buf.hover()
+            -- choose one of coc.nvim and nvim lsp
+            vim.lsp.buf.hover()
+            vim.diagnostic.open_float()
           end
         end, {
           buffer = bufnr or 0,

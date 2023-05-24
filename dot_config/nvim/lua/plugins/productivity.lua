@@ -44,99 +44,94 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
-    version = false, -- telescope did only one release, so use HEAD for now
-    keys = function()
-      local telescope = require("extensions.telescope")
-      local builtin = require("telescope.builtin")
+    version = false,
+    keys = {
+      { "<leader>f?", "<cmd>Telescope builtin<cr>", desc = "Find Telescope builtins" },
 
-      return {
-        { "<leader>f?", "<cmd>Telescope builtin<cr>", desc = "Find Telescope builtins" },
+      { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find file" },
+      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find buffer" },
+      { "<leader>fw", "<cmd>Telescope live_grep<cr>", desc = "Find word (grep)" },
+      -- { "<leader>fw", "<cmd>Telescope grep_string<cr>", desc = "Find word (grep)" },
 
-        { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find file" },
-        { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find buffer" },
-        { "<leader>fw", "<cmd>Telescope live_grep<cr>", desc = "Find word (grep)" },
-        -- { "<leader>fw", "<cmd>Telescope grep_string<cr>", desc = "Find word (grep)" },
+      { "<leader>fd", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Find diagnostics" },
+      { "<leader>fD", "<cmd>Telescope diagnostics<cr>", desc = "Find diagnostics in workspace" },
 
-        { "<leader>fd", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Find diagnostics" },
-        { "<leader>fD", "<cmd>Telescope diagnostics<cr>", desc = "Find diagnostics in workspace" },
+      { "gd", "<cmd>Telescope lsp_definitions<cr>", desc = "Go to definition" },
+      -- gD: Jumps to the declaration of the symbol under the cursor. Some servers don't implement this feature. See :help vim.lsp.buf.declaration().
+      -- { "gD", "<cmd>Telescope lsp_", desc = "" },
+      { "gi", "<cmd>Telescope lsp_implementations<cr>", desc = "Go to implementations" },
+      { "go", "<cmd>Telescope lsp_type_definitions", desc = "Go to type definitions" },
+      { "gr", "<cmd>Telescope lsp_references<cr>", desc = "Go to references" },
+      -- gs: Displays signature information about the symbol under the cursor in a floating window. See :help vim.lsp.buf.signature_help(). If a mapping already exists for this key this function is not bound.
+      -- { "gs", "<cmd>Telescope lsp_", desc = "" },
 
-        { "gd", "<cmd>Telescope lsp_definitions<cr>", desc = "Go to definition" },
-        -- gD: Jumps to the declaration of the symbol under the cursor. Some servers don't implement this feature. See :help vim.lsp.buf.declaration().
-        -- { "gD", "<cmd>Telescope lsp_", desc = "" },
-        { "gi", "<cmd>Telescope lsp_implementations<cr>", desc = "Go to implementations" },
-        { "go", "<cmd>Telescope lsp_type_definitions", desc = "Go to type definitions" },
-        { "gr", "<cmd>Telescope lsp_references<cr>", desc = "Go to references" },
-        -- gs: Displays signature information about the symbol under the cursor in a floating window. See :help vim.lsp.buf.signature_help(). If a mapping already exists for this key this function is not bound.
-        -- { "gs", "<cmd>Telescope lsp_", desc = "" },
-
-        -- 
-        -- { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
-        -- { "<leader>/", Util.telescope("live_grep"), desc = "Grep (root dir)" },
-        -- { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
-        -- { "<leader><space>", Util.telescope("files"), desc = "Find Files (root dir)" },
-        -- -- find
-        -- { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
-        -- { "<leader>fR", Util.telescope("oldfiles", { cwd = vim.loop.cwd() }), desc = "Recent (cwd)" },
-        -- -- git
-        -- { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
-        -- { "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
-        -- -- search
-        -- { "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Auto Commands" },
-        -- { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer" },
-        -- { "<leader>sc", "<cmd>Telescope command_history<cr>", desc = "Command History" },
-        -- { "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
-        -- { "<leader>sd", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Document diagnostics" },
-        -- { "<leader>sD", "<cmd>Telescope diagnostics<cr>", desc = "Workspace diagnostics" },
-        -- { "<leader>sg", Util.telescope("live_grep"), desc = "Grep (root dir)" },
-        -- { "<leader>sG", Util.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
-        -- { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
-        -- { "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
-        -- { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
-        -- { "<leader>sM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
-        -- { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
-        -- { "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
-        -- { "<leader>sR", "<cmd>Telescope resume<cr>", desc = "Resume" },
-        -- { "<leader>sw", Util.telescope("grep_string"), desc = "Word (root dir)" },
-        -- { "<leader>sW", Util.telescope("grep_string", { cwd = false }), desc = "Word (cwd)" },
-        -- { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
-        -- {
-        --   "<leader>ss",
-        --   Util.telescope("lsp_document_symbols", {
-        --     symbols = {
-        --       "Class",
-        --       "Function",
-        --       "Method",
-        --       "Constructor",
-        --       "Interface",
-        --       "Module",
-        --       "Struct",
-        --       "Trait",
-        --       "Field",
-        --       "Property",
-        --     },
-        --   }),
-        --   desc = "Goto Symbol",
-        -- },
-        -- {
-        --   "<leader>sS",
-        --   Util.telescope("lsp_dynamic_workspace_symbols", {
-        --     symbols = {
-        --       "Class",
-        --       "Function",
-        --       "Method",
-        --       "Constructor",
-        --       "Interface",
-        --       "Module",
-        --       "Struct",
-        --       "Trait",
-        --       "Field",
-        --       "Property",
-        --     },
-        --   }),
-        --   desc = "Goto Symbol (Workspace)",
-        -- },
-      }
-    end,
+      -- 
+      -- { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
+      -- { "<leader>/", Util.telescope("live_grep"), desc = "Grep (root dir)" },
+      -- { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+      -- { "<leader><space>", Util.telescope("files"), desc = "Find Files (root dir)" },
+      -- -- find
+      -- { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
+      -- { "<leader>fR", Util.telescope("oldfiles", { cwd = vim.loop.cwd() }), desc = "Recent (cwd)" },
+      -- -- git
+      -- { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
+      -- { "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
+      -- -- search
+      -- { "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Auto Commands" },
+      -- { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer" },
+      -- { "<leader>sc", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+      -- { "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
+      -- { "<leader>sd", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Document diagnostics" },
+      -- { "<leader>sD", "<cmd>Telescope diagnostics<cr>", desc = "Workspace diagnostics" },
+      -- { "<leader>sg", Util.telescope("live_grep"), desc = "Grep (root dir)" },
+      -- { "<leader>sG", Util.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
+      -- { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
+      -- { "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
+      -- { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
+      -- { "<leader>sM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
+      -- { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
+      -- { "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
+      -- { "<leader>sR", "<cmd>Telescope resume<cr>", desc = "Resume" },
+      -- { "<leader>sw", Util.telescope("grep_string"), desc = "Word (root dir)" },
+      -- { "<leader>sW", Util.telescope("grep_string", { cwd = false }), desc = "Word (cwd)" },
+      -- { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+      -- {
+      --   "<leader>ss",
+      --   Util.telescope("lsp_document_symbols", {
+      --     symbols = {
+      --       "Class",
+      --       "Function",
+      --       "Method",
+      --       "Constructor",
+      --       "Interface",
+      --       "Module",
+      --       "Struct",
+      --       "Trait",
+      --       "Field",
+      --       "Property",
+      --     },
+      --   }),
+      --   desc = "Goto Symbol",
+      -- },
+      -- {
+      --   "<leader>sS",
+      --   Util.telescope("lsp_dynamic_workspace_symbols", {
+      --     symbols = {
+      --       "Class",
+      --       "Function",
+      --       "Method",
+      --       "Constructor",
+      --       "Interface",
+      --       "Module",
+      --       "Struct",
+      --       "Trait",
+      --       "Field",
+      --       "Property",
+      --     },
+      --   }),
+      --   desc = "Goto Symbol (Workspace)",
+      -- },
+    },
     opts = {
       defaults = {
         prompt_prefix = " ",
@@ -275,6 +270,41 @@ return {
       },
     },
   },
+--   {
+--     "lewis6991/gitsigns.nvim",
+--     event = { "BufReadPre", "BufNewFile" },
+--     opts = {
+--       signs = {
+--         add = { text = "▎" },
+--         change = { text = "▎" },
+--         delete = { text = "" },
+--         topdelete = { text = "" },
+--         changedelete = { text = "▎" },
+--         untracked = { text = "▎" },
+--       },
+--       on_attach = function(buffer)
+--         local gs = package.loaded.gitsigns
+-- 
+--         local function map(mode, l, r, desc)
+--           vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
+--         end
+-- 
+--         -- stylua: ignore start
+--         map("n", "]h", gs.next_hunk, "Next Hunk")
+--         map("n", "[h", gs.prev_hunk, "Prev Hunk")
+--         map({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
+--         map({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
+--         map("n", "<leader>ghS", gs.stage_buffer, "Stage Buffer")
+--         map("n", "<leader>ghu", gs.undo_stage_hunk, "Undo Stage Hunk")
+--         map("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
+--         map("n", "<leader>ghp", gs.preview_hunk, "Preview Hunk")
+--         map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, "Blame Line")
+--         map("n", "<leader>ghd", gs.diffthis, "Diff This")
+--         map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
+--         map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
+--       end,
+--     },
+--   },
   {
     "rcarriga/nvim-notify",
     opts = {

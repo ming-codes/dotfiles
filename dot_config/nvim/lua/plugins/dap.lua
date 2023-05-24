@@ -14,7 +14,7 @@ return {
         dapui.open()
       end
       dap.listeners.before.event_terminated["dapui_config"] = function()
-        dapui.close()
+        -- dapui.close()
       end
       dap.listeners.before.event_exited["dapui_config"] = function()
         dapui.close()
@@ -26,6 +26,15 @@ return {
   {
     "mfussenegger/nvim-dap",
     dependencies = {
+      -- {
+      --   "mxsdev/nvim-dap-vscode-js",
+      --   opts = {
+      --     node_path = 'node',
+      --     -- debugger_path = os.getenv('HOME') .. '/.local/share/nvim/mason/packages/js-debug-adapter',
+      --     debugger_cmd = { 'js-debug-adapter' },
+      --     adapters = { 'pwa-node' },
+      --   }
+      -- },
       { "theHamsta/nvim-dap-virtual-text" },
       {
         "jay-babu/mason-nvim-dap.nvim",
@@ -42,12 +51,17 @@ return {
         { "<leader>dq", extensions.quit, desc = "Terminate debugger session" },
         { "<leader>dQ", extensions.quit_all, desc = "Terminate debugger session and close UI" },
         { "t", "<cmd>DapToggleBreakpoint<cr>", desc = "Toggle breakpoint" },
+        { "<Up>", "<cmd>DapContinue<cr>", desc = "Continue" },
         { "<Down>", "<cmd>DapStepOver<cr>", desc = "Step over" },
         { "<Right>", "<cmd>DapStepInto<cr>", desc = "Step into" },
         { "<Left>", "<cmd>DapStepOut<cr>", desc = "Step out" },
       }
     end,
     config = function()
+      local dap = require("dap")
+
+      dap.adapters = require("extensions.dap.adapters")
+
       vim.fn.sign_define("DapBreakpoint", {
         text = vim.g.icon_dap_breakpoint,
         texthl = "DapBreakpoint",

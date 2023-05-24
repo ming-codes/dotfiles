@@ -24,5 +24,16 @@ end
 
 require("lazy").setup("plugins")
 
-vim.cmd("colorscheme PaperColor")
-vim.cmd("highlight VertSplit guifg=24 guibg=255")
+vim.api.nvim_create_autocmd('VimEnter', {
+  callback = function()
+    vim.cmd("colorscheme PaperColor")
+    vim.cmd("highlight VertSplit guifg=24 guibg=255")
+  end
+})
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*',
+  callback = function()
+    vim.lsp.buf.format({ async = true })
+  end,
+})
