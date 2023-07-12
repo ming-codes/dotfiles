@@ -5,8 +5,6 @@ return {
 
   "mrjones2014/legendary.nvim",
 
-  "jbyuki/one-small-step-for-vimkind",
-
 }
 -- vim-illuminate
 -- nvim-dap

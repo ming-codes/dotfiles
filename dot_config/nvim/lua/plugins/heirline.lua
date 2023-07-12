@@ -1,3 +1,5 @@
+vim.cmd('hi TablineActiveArrow guifg=red guibg=blue')
+
 return {
   "itchyny/lightline.vim",
   init = function()
@@ -11,24 +13,162 @@ return {
         left = "\\ue0b1",
         right = "\\ue0b3",
       },
-      -- component                                = {}
+      -- component = { },
       -- component.coc                            = "%{coc#status()}%{get(b:,'coc_current_function','')}"
-      -- component_function                       = {}
-      -- component_function.gitbranch             = 'FugitiveHead'
+      component_function = {
+        gitbranch = 'FugitiveHead'
+      },
       active = {
-        left = { { 'filename'  } },
-        right = { }
+        left = { { 'filename' } },
+        right = {}
       },
       inactive = {
-        left = {{  'filename'  }},
-        right = { }
+        left = { { 'filename' } },
+        right = {}
       },
       tabline = {
-        -- right                            = [ [ 'gitbranch' ], [ 'coc' ] ]
-        right = { }
+        right = { { 'gitbranch' } }
       }
     }
-  end
+  end,
+
+  -- {
+  --   "rebelot/heirline.nvim",
+  --   event = "BufEnter",
+  --   config = true,
+  --   opts = function()
+  --     local table = require("utils.table")
+  --     local conditions = require("heirline.conditions")
+  --     local utils = require("heirline.utils")
+
+  --     local function enrich(buffers)
+  --       local init = buffers.init
+
+  --       buffers.init = function(self)
+  --         init(self)
+
+  --         _G.Bufs = table.i_map(self, function(item)
+  --           return {
+  --             is_active = item.is_active,
+  --             is_visible = item.is_visible,
+  --           }
+  --         end)
+
+  --         for i, child in ipairs(self) do
+  --           child.prev = self[i - 1] or nil
+  --           child.next = self[i + 1] or nil
+  --         end
+  --       end
+
+  --       return buffers
+  --     end
+
+  --     local function get_color(node)
+  --       if (node == nil) then
+  --         return utils.get_highlight("TabLineFill")
+  --       elseif (node.is_visible) then
+  --         return utils.get_highlight("TabLineSel")
+  --       else
+  --         return utils.get_highlight("TabLine")
+  --       end
+  --     end
+
+  --     return {
+  --       -- statuscolumn = vim.fn.has "nvim-0.9" == 1 and {
+  --       --    status.component.foldcolumn(),
+  --       --    status.component.fill(),
+  --       --    status.component.numbercolumn(),
+  --       --    status.component.signcolumn(),
+  --       -- } or nil,
+  --       tabline = {
+  --         enrich(utils.make_buflist({
+  --           {
+  --             provider = function(self)
+  --               local bufname = vim.api.nvim_buf_get_name(self.bufnr)
+
+  --               if (bufname == "") then
+  --                 return "[No Name]"
+  --               else
+  --                 return vim.fs.basename(vim.api.nvim_buf_get_name(self.bufnr))
+  --               end
+  --             end,
+  --             hl = function(self)
+  --               return get_color(self)
+  --             end
+  --           },
+  --           {
+  --             -- provider = ''
+  --             provider = function(self)
+  --               local icons = require("powerline")
+
+  --               if (self.next == nil) then
+  --                 return icons.arrow_right
+  --               elseif (self.prev == nil) then
+  --                 return icons.chevron_right
+  --               elseif (self.prev.is_visible == self.next.is_visible) then
+  --                 return icons.chevron_right
+  --               else
+  --                 return icons.arrow_right
+  --               end
+
+  --               -- elseif (self.prev == nil) then
+  --               --   return icons.arrow_right
+  --               -- elseif (self.prev.is_visible == self.next.is_visible) then
+  --               --   return icons.chevron_right
+  --               -- elseif (self.prev.is_active == self.next.is_active) then
+  --               --   return icons.chevron_right
+  --               -- else
+  --               --   return icons.arrow_right
+  --               -- end
+  --             end,
+  --             hl = function(self)
+  --               local left = get_color(self.prev)
+  --               local right = get_color(self.next)
+
+  --               if (self.next == nil) then
+  --                 if (self.prev == nil) then
+  --                   return ("TabLine")
+  --                 elseif (self.prev.is_active) then
+  --                   return ("TabLine")
+  --                 elseif (self.prev.is_visible) then
+  --                   return ("TabLine")
+  --                 else
+  --                   return ("TabLine")
+  --                 end
+  --               else
+  --                 return "TabLine"
+  --               end
+  --               -- if (self.prev.is_active == self.next.is_active) then
+  --               --   return "TabLineSel"
+  --               -- else
+  --               -- end
+  --             end
+  --           },
+  --           -- {
+  --           --   init = function(self, index)
+  --           --     self.index = index
+  --           --   end,
+  --           --   provider = function(self)
+  --           --     return vim.fs.basename(vim.api.nvim_buf_get_name(self.bufnr)) .. " " .. vim.g.symbol_arrow_right
+  --           --   end,
+  --           --   hl = function(self)
+  --           --     if (self.is_active) then
+  --           --       return "TabLineSel"
+  --           --     elseif (self.is_visible) then
+  --           --       return "TabLine"
+  --           --     end
+  --           --     return "Normal"
+  --           --     -- exec 'hi BufTabLineCurrent' . s:fg_buftabline_current_fg . s:bg_buftabline_current_bg . s:ft_none
+  --           --     -- exec 'hi BufTabLineActive' . s:fg_buftabline_active_fg . s:bg_buftabline_active_bg . s:ft_none
+  --           --     -- exec 'hi BufTabLineHidden' . s:fg_buftabline_inactive_fg . s:bg_buftabline_inactive_bg . s:ft_none
+  --           --     -- exec 'hi BufTabLineFill'  . s:bg_buftabline_bg . s:ft_none
+  --           --   end
+  --           -- }
+  --         })),
+  --       }
+  --     }
+  --   end
+  -- }
 }
 -- return {
 --   "rebelot/heirline.nvim",
