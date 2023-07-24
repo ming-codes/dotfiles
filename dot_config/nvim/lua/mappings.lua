@@ -15,8 +15,8 @@ end
 
 --
 -- Mapping Pattern
--- <leader> -- global menu
--- <leader><leader> -- contextual menu
+-- <leader> -- global menu or contextual action to the current buffer
+-- <leader><leader> -- contextual action to the current cursor position
 --
 -- y -- Yank
 -- % -- current file
@@ -35,6 +35,9 @@ return {
       ["<leader>fg"] = { "<cmd>Telescope my git_diff ref=origin<cr>", "Git diff" },
       ["<leader>fG"] = { "<cmd>Telescope my git_diff<cr>", "Git diff" },
       -- git rev-parse --abbrev-ref origin/HEAD
+
+      ["<leader><leader>f"] = { "󰍉 Find (grep)" },
+      ["<leader><leader>fw"] = { "<cmd>Telescope grep_string<cr>", "Word" },
 
       ["<leader>p"] = { "󰏖 Packages" },
       ["<leader>pm"] = { "<cmd>Mason<cr>", "Mason" },
@@ -71,18 +74,22 @@ return {
       ["<leader>dq"] = { "<cmd>DapQuit<cr>", "Terminate session" },
       ["<leader>dQ"] = { "<cmd>DapQuitAll<cr>", "Terminate session and close" },
       ["<leader>dd"] = { "<cmd>DapRunLast<cr>", "Run last" },
+      -- run current file?
       ["<leader>dD"] = { "<cmd>Telescope dap configurations<cr>", "Run" },
       ["<leader>dl"] = { "<cmd>DapShowLog<cr>", "DAP Log" },
 
+      ["<leader><leader>d"] = { " Debugger" },
+
       ["<leader>r"] = { "Run" },
-      ["<leader>rt"] = { "<cmd>Neotest run<cr>", "" },
+      ["<leader>rt"] = { "<cmd>Neotest run<cr>", "Neotest" },
 
       ["<leader>g"] = { "󰊢 Git" },
       ["<leader>gg"] = { "<cmd>lua require('extensions.toggleterm').toggle_persist('lazygit')<cr>", "Launch LazyGit" }, -- TODO use toggle term to persist it, astronvim have example
-
-      ["<leader>gb"] = { "<cmd>lua require('gitsigns').blame_line { full = true }<cr>", "Blame line" },
-      ["<leader>gB"] = { "<cmd>Git blame<CR>", "Blame file" },
+      ["<leader>gb"] = { "<cmd>Git blame<CR>", "Blame file" },
       ["<leader>gl"] = { "<cmd>Git log<CR>", "Log file" },
+
+      ["<leader><leader>g"] = { "󰊢 Git" },
+      ["<leader><leader>gb"] = { "<cmd>lua require('gitsigns').blame_line { full = true }<cr>", "Blame line" },
       -- ["<leader>gp"] = { "<cmd>lua require('gitsigns').preview_hunk()<cr>", "Preview Git hunk" },
       -- ["<leader>gh"] = { "<cmd>lua require('gitsigns').reset_hunk()<cr>", "Reset Git hunk" },
       -- ["<leader>gr"] = { "<cmd>lua require('gitsigns').reset_buffer()<cr>", "Reset Git buffer" },
@@ -101,11 +108,45 @@ return {
 
       ["<leader>t"] = { " Terminal" },
       ["<leader>tt"] = { "<cmd>ToggleTerm direction=float<cr>", "Floating terminal" },
+      -- ["<leader>tk"] = { "", "" }, kill ** TODO 
 
-      ["<leader><leader>l"] = { "LSP" },
+      ["<leader><leader>l"] = { " LSP" },
       ["<leader><leader>la"] = { "<cmd>Lspsaga code_action<CR>", "LSP code action" },
       ["<leader><leader>lr"] = { "<cmd>Lspsaga rename<CR>", "LSP rename" },
       ["<leader><leader>lR"] = { "<cmd>Lspsaga rename ++project<CR>", "LSP rename in project" },
+
+      ["<leader>y"] = { " Yank" },
+      ["<leader>yp"] = { "<cmd>let @* = fnamemodify(expand('%'), ':~:.')<cr>", "Path of current file" },
+      -- FIXME  ^ doesnt work for Oil or Netrw buffers
+      ["<leader>yP"] = { "<cmd>let @* = expand('%:p')<cr>", "Absolute path of current file" },
+      ["<leader>yf"] = { "<cmd>echo 'Not implemented'<cr>", "Name of current file" },
+      ["<leader>yF"] = { "<cmd>echo 'Not implemented'<cr>", "Name of current file with extension" },
+      -- ["<leader>yh"] = { "", "Github path of current file" }, -- TODO  yank github path of current file
+      -- https://github.com/tpope/vim-fugitive/issues/1053
+
+      ["<leader><leader>y"] = { " Yank" },
+      -- ["<leader>yh"] = { "", "Github path of current line" }, -- TODO  yank github path of current file
+      -- https://github.com/tpope/vim-fugitive/issues/1053
+      -- :[range]GBrowse! [args] Like :GBrowse, but put the URL on the clipboard rather
+      --                  than opening it.
+      -- :'<,'>GBrowse master:%
+      -- :'<,'>GBrowse master:%@mliu4-te
+      -- 1. Use blame to find the commit,
+      --    `systemlist("git -C ".. shellescape(expand('%:p:h')) .." log --no-merges -n 1 -L ".. line(".") ..":" .. shellescape(resolve(expand("%:t"))))[0]->split()[0]`
+      -- 2. Find the remote/branch tracking branch that contains the commit
+      --    `git branch --remote --sort=-committerdate --contains dbd0ded872e `
+      -- 3. Use the remote to construct the fugitive object
+
+
+
+      ["<leader>x"] = { " External" },
+      ["<leader>xh"] = { "<cmd>echo 'not implemented'<cr>", "Open current file in Github" },
+      ["<leader>xx"] = { "<cmd>lua require('open').open(require('extensions.fs').get_buffer_abspath())<cr>", "Open current file with default application" },
+
+      ["<leader><leader>x"] = { " External" },
+      ["<leader><leader>xh"] = { "<cmd>echo 'not implemented'<cr>", "Open current line in Github" },
+      -- https://github.com/tpope/vim-fugitive/issues/1053
+      ["<leader><leader>xx"] = { "<cmd>lua require('open').open(require('extensions.fs').get_line_abspath())<cr>", "Open current file with default application" },
 
       ["g"] = { "Jump" },
       ["gj"] = { "<cmd>Telescope jumplist<cr>", "List" },
@@ -130,11 +171,6 @@ return {
       ["[q"] = { "<cmd>TroublePrevious<cr>", "Previous trouble/quickfix item" },
       ["]q"] = { "<cmd>TroubleNext<cr>", "Next trouble/quickfix item" },
 
-      ["y%"] = { "<cmd>let @* = expand('%')<cr>", "Path of current file" },
-      ["y%%"] = { "<cmd>let @* = expand('%:p')<cr>", "Absolute path of current file" },
-      -- ["<leader>y"] = { "Yank" },
-      -- ["<leader>y"] = { "Yank" },
-
       ["-"] = { "<cmd>Oil<cr>", "Open parent directory" },
       ["t"] = { "<cmd>DapToggleBreakpoint<cr>", "Absolute path of current file" }, -- TODO remap this to something better
       ["K"] = { "<cmd>Lspsaga hover_doc<cr>", "Hover doc" },
@@ -150,13 +186,15 @@ return {
       ["<Right>"] = { "<cmd>DapStepInto<cr>", "Step into" },
       ["<Left>"] = { "<cmd>DapStepOut<cr>", "Step out" },
 
+      -- ["<C-v"] = { "", "" }, -- TODO open line in new split
+      -- ["<C-t"] = { "", "" }, -- TODO open line in new tab
     },
   },
   {
     {
-      ["<leader>f"] = { "󰍉 Find (grep)" },
-      ["<leader>fw"] = { "<cmd>Telescope grep_string<cr>", "Word" },
-      ["<leader>fW"] = { "<cmd>Telescope grep_visual_selection<cr>", "Word with args" },
+      ["<leader><leader>f"] = { "󰍉 Find (grep)" },
+      ["<leader><leader>fw"] = { "<cmd>Telescope grep_string<cr>", "Word" },
+      ["<leader><leader>fW"] = { "<cmd>Telescope grep_visual_selection<cr>", "Word with args" },
       -- ["/"] = { "<Plug>(comment_toggle_linewise)", "Toggle comment" },
       --  K('n', cfg.opleader.line, '', { desc = 'Comment toggle linewise' })
       --      K('n', cfg.opleader.block, '<Plug>(comment_toggle_blockwise)', { desc = 'Comment toggle blockwise' })

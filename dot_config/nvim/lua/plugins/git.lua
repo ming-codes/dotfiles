@@ -1,7 +1,11 @@
 return {
   {
+    "tpope/vim-rhubarb",
+    -- cmd = "GBrowse",
+  },
+  {
     "tpope/vim-fugitive",
-    event = "VimEnter" -- need this for tabline
+    -- event = "VimEnter" -- need this for tabline
   },
   {
     "lewis6991/gitsigns.nvim",

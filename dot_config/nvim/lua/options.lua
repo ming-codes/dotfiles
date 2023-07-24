@@ -11,6 +11,8 @@ return {
     clipboard = 'unnamed,unnamedplus',
     termguicolors = true,
 
+    noinsertmode = true,
+
     showtabline = 2,
 
     pumwidth = 25,

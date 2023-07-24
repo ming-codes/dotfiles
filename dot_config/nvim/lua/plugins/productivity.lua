@@ -1,5 +1,48 @@
 return {
   {
+    "elentok/format-on-save.nvim",
+    opts = function()
+      local formatters = require("format-on-save.formatters")
+
+      return {
+        partial_update = true,
+        exclude_path_patterns = {
+          "/node_modules/",
+        },
+        formatter_by_ft = {
+          css = formatters.lsp,
+          html = formatters.lsp,
+          java = formatters.lsp,
+          javascript = formatters.prettierd,
+          json = formatters.lsp,
+          lua = formatters.lsp,
+          markdown = formatters.prettierd,
+          python = formatters.black,
+          scss = formatters.lsp,
+          sh = formatters.shfmt,
+          typescript = formatters.prettierd,
+          typescriptreact = formatters.prettierd,
+          yaml = formatters.lsp,
+          vue = formatters.prettierd,
+        }
+      }
+    end
+  },
+  {
+    "ofirgall/open.nvim",
+    dependencies = {
+      {
+        "ofirgall/open-jira.nvim",
+        opts = {
+          url = os.getenv("JIRA_URL")
+        }
+      }
+    },
+    lazy = true,
+    opts = {
+    },
+  },
+  {
     "folke/trouble.nvim",
     cmd = { "TroubleToggle", "Trouble", "TroublePrevious", "TroubleNext" },
     opts = { use_diagnostic_signs = true },

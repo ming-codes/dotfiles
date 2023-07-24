@@ -1,0 +1,7 @@
+customCommands:
+  - key: '<C-p>'
+    command: 'git remote prune {{.SelectedRemote.Name}}'
+    context: 'remotes'
+
+gui:
+  scrollHeight: 15

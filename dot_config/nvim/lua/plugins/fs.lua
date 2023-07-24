@@ -26,6 +26,15 @@ return {
     cmd = "Oil",
     opts = {
       delete_to_trash = true,
+      skip_confirm_for_simple_edits = true,
+      keymaps = {
+        ["<C-h>"] = false,
+        ["<C-s>"] = false,
+        ["<C-v>"] = "actions.select_vsplit",
+        ["<C-p>"] = false,
+        ["K"] = "actions.preview",
+        ["g."] = "actions.toggle_hidden",
+      },
     },
     -- Optional dependencies
     dependencies = { "nvim-tree/nvim-web-devicons" },
