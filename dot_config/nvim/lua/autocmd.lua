@@ -5,13 +5,16 @@ return {
       pattern = "LazyDone",
       callback = function()
         vim.cmd("colorscheme PaperColor")
+        vim.cmd("highlight VertSplit guifg=24 guibg=255")
       end
     }
   },
   {
-    "BufEnter",
+    "ColorScheme",
     {
-      command = "highlight VertSplit guifg=24 guibg=255"
+      callback = function()
+        vim.cmd("highlight VertSplit guifg=24 guibg=255")
+      end
     }
   },
   -- {

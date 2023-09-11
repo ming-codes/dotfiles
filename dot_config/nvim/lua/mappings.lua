@@ -32,12 +32,17 @@ return {
       ["<leader>ft"] = { "<cmd>TodoTelescope<cr>", "TODO lists" },
       ["<leader>fw"] = { "<cmd>Telescope live_grep<cr>", "Word" },
       ["<leader>fW"] = { "<cmd>Telescope live_grep_args live_grep_args<cr>", "Word with args" },
-      ["<leader>fg"] = { "<cmd>Telescope my git_diff ref=origin<cr>", "Git diff" },
+      ["<leader>fs"] = { "<cmd>Telescope git_status<cr>", "Git status" },
+      ["<leader>fg"] = { "<cmd>Telescope my git_diff ref=origin<cr>", "Git diff origin" },
       ["<leader>fG"] = { "<cmd>Telescope my git_diff<cr>", "Git diff" },
+      -- git diff, but filter by content?
       -- git rev-parse --abbrev-ref origin/HEAD
+      -- ["<leader>fh"] = { "", "Help" },
 
       ["<leader><leader>f"] = { "󰍉 Find (grep)" },
-      ["<leader><leader>fw"] = { "<cmd>Telescope grep_string<cr>", "Word" },
+      ["<leader><leader>ff"] = { "<cmd>Telescope my find_files<cr>", "File" },
+      ["<leader><leader>fw"] = { "<cmd>Telescope grep_string<cr>", "Word under cursor" },
+      -- ["<leader><leader>fh"] = { "<cmd>h <cr>", "Help" },  TODO search <cword> in :h
 
       ["<leader>p"] = { "󰏖 Packages" },
       ["<leader>pm"] = { "<cmd>Mason<cr>", "Mason" },
@@ -52,6 +57,7 @@ return {
       ["<leader>u"] = { " UI" },
       -- toggle signcolumn	Leader + ug
       ["<leader>uu"] = { "<cmd>Telescope undo undo<cr>", "Go to undotree" },
+      ["<leader>ut"] = { "<cmd>lua require('dap').list_breakpoints(true)<cr>", "Go to undotree" },
       ["<leader>uf"] = { "<cmd>Goyo<cr>", "Toggle focus mode (Goyo)" },
       ["<leader>ug"] = { "<cmd>Gitsigns toggle_signs`<cr>", "Toggle Gitsigns" },
       ["<leader>uc"] = { "<cmd>ColorizerToggle<cr>", "Toggle Colorizer" },
@@ -108,7 +114,7 @@ return {
 
       ["<leader>t"] = { " Terminal" },
       ["<leader>tt"] = { "<cmd>ToggleTerm direction=float<cr>", "Floating terminal" },
-      -- ["<leader>tk"] = { "", "" }, kill ** TODO 
+      -- ["<leader>tk"] = { "", "" }, kill ** TODO
 
       ["<leader><leader>l"] = { " LSP" },
       ["<leader><leader>la"] = { "<cmd>Lspsaga code_action<CR>", "LSP code action" },
@@ -121,11 +127,11 @@ return {
       ["<leader>yP"] = { "<cmd>let @* = expand('%:p')<cr>", "Absolute path of current file" },
       ["<leader>yf"] = { "<cmd>echo 'Not implemented'<cr>", "Name of current file" },
       ["<leader>yF"] = { "<cmd>echo 'Not implemented'<cr>", "Name of current file with extension" },
-      -- ["<leader>yh"] = { "", "Github path of current file" }, -- TODO  yank github path of current file
+      ["<leader>yh"] = { "<cmd>GBrowse!<cr>", "Github path of current file" }, -- TODO  yank github path of current file
       -- https://github.com/tpope/vim-fugitive/issues/1053
 
       ["<leader><leader>y"] = { " Yank" },
-      -- ["<leader>yh"] = { "", "Github path of current line" }, -- TODO  yank github path of current file
+      ["<leader><leader>yh"] = { "<cmd>GBrowse!<cr>", "Github path of current line" }, -- TODO  yank github path of current file
       -- https://github.com/tpope/vim-fugitive/issues/1053
       -- :[range]GBrowse! [args] Like :GBrowse, but put the URL on the clipboard rather
       --                  than opening it.
@@ -140,13 +146,15 @@ return {
 
 
       ["<leader>x"] = { " External" },
-      ["<leader>xh"] = { "<cmd>echo 'not implemented'<cr>", "Open current file in Github" },
-      ["<leader>xx"] = { "<cmd>lua require('open').open(require('extensions.fs').get_buffer_abspath())<cr>", "Open current file with default application" },
+      ["<leader>xh"] = { "<cmd>GBrowse<cr>", "Open current file in Github" },
+      ["<leader>xx"] = { "<cmd>lua require('open').open(require('extensions.fs').get_buffer_abspath())<cr>",
+        "Open current file with default application" },
 
       ["<leader><leader>x"] = { " External" },
-      ["<leader><leader>xh"] = { "<cmd>echo 'not implemented'<cr>", "Open current line in Github" },
+      ["<leader><leader>xh"] = { "<cmd>GBrowse<cr>", "Open current line in Github" },
       -- https://github.com/tpope/vim-fugitive/issues/1053
-      ["<leader><leader>xx"] = { "<cmd>lua require('open').open(require('extensions.fs').get_line_abspath())<cr>", "Open current file with default application" },
+      ["<leader><leader>xx"] = { "<cmd>lua require('open').open(require('extensions.fs').get_line_abspath())<cr>",
+        "Open current file with default application" },
 
       ["g"] = { "Jump" },
       ["gj"] = { "<cmd>Telescope jumplist<cr>", "List" },
@@ -221,6 +229,8 @@ return {
       --          '<Plug>(comment_toggle_blockwise_visual)',
       --          { desc = 'Comment toggle blockwise (visual)' }
       --      )
+      ["<leader>x"] = { " External" },
+      ["<leader>xh"] = { "<cmd>GBrowse<cr>", "Open current file in Github" },
     },
     {
       mode = "v"

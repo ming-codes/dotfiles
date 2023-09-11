@@ -6,6 +6,7 @@ return {
     symbol_indent = "▏",
     symbol_arrow_left = "",
     symbol_arrow_right = "",
+    goyo_width = 120,
   },
   o = {
     clipboard = 'unnamed,unnamedplus',

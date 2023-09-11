@@ -1,12 +1,53 @@
 return {
+  -- git_diff = function(opts)
+  --   local putils = require "telescope.previewers.utils"
+  --   local Previewer = require "telescope.previewers.previewer"
+  --   local conf = require("telescope.config").values
+  --
+  --   -- git --no-pager diff BRANCH -- entry.value
+  --
+  --   return conf.file_previewer(opts)
+  -- end
   git_diff = function(opts)
+    local previewers = require "telescope.previewers"
     local putils = require "telescope.previewers.utils"
-    local Previewer = require "telescope.previewers.previewer"
 
-    return {
+    return previewers.new_buffer_previewer {
+      title = "Git File Diff Preview",
+
+      get_buffer_by_name = function(_, entry)
+        return entry.value
+      end,
+
+      --   -- git --no-pager diff BRANCH -- entry.value
+      define_preview = function(self, entry, status)
+        --       if entry.status and (entry.status == "??" or entry.status == "A ") then
+        --         local p = from_entry.path(entry, true)
+        --         if p == nil or p == "" then
+        --           return
+        --         end
+        --         conf.buffer_previewer_maker(p, self.state.bufnr, {
+        --           bufname = self.state.bufname,
+        --           winid = self.state.winid,
+        --         })
+        --       else
+        --         putils.job_maker({ "git", "--no-pager", "diff", "HEAD", "--", entry.value }, self.state.bufnr, {
+        --           value = entry.value,
+        --           bufname = self.state.bufname,
+        --           cwd = opts.cwd,
+        --           callback = function(bufnr)
+        --             if vim.api.nvim_buf_is_valid(bufnr) then
+        --               putils.regex_highlighter(bufnr, "diff")
+        --             end
+        --           end,
+        --         })
+        --       end
+      end,
     }
   end
 }
+
+
 -- previewers.git_file_diff = defaulter(function(opts)
 --   return previewers.new_buffer_previewer {
 --     title = "Git File Diff Preview",
