@@ -2,7 +2,7 @@
 _fzf_complete_git() {
   local args="$@"
 
-  if [[ $args == *'--'* ]]; then
+  if [[ $args == *'--'* || $args == 'git rm'* ]]; then
     _fzf_complete --reverse --multi --prompt="refs> " -- "$@" < <(
       _fzf_compgen_dir .
     )

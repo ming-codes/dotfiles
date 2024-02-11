@@ -179,6 +179,7 @@ return {
     },
     config = function()
       local lsp = require("lsp-zero").preset({})
+      local lspconfig = require('lspconfig')
 
       -- lsp.on_attach(function(client, bufnr)
       --   require("lsp-format-modifications").attach(client, bufnr, {
@@ -197,8 +198,17 @@ return {
       -- end)
 
       -- (Optional) Configure lua language server for neovim
-      require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+      lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
       -- jdtls
+      lspconfig.tsserver.setup({
+        init_options = {
+          preferences = {
+            -- other preferences...
+            importModuleSpecifierPreference = 'relative',
+            importModuleSpecifierEnding = 'minimal',
+          },
+        }
+      })
 
       lsp.setup()
     end
