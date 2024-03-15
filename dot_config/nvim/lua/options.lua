@@ -7,6 +7,7 @@ return {
     symbol_arrow_left = "",
     symbol_arrow_right = "",
     goyo_width = 120,
+    skip_ts_context_commentstring_module = true,
   },
   o = {
     clipboard = 'unnamed,unnamedplus',

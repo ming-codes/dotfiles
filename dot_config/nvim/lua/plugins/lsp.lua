@@ -148,6 +148,12 @@ return {
     end,
   },
   {
+    "apple/pkl-neovim",
+    dependencies = {
+      { "nvim-treesitter/nvim-treesitter" }
+    },
+  },
+  {
     "nvimdev/lspsaga.nvim",
     cmd = "Lspsaga",
     config = true,

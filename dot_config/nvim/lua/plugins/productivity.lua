@@ -5,7 +5,9 @@ return {
       local formatters = require("format-on-save.formatters")
 
       return {
-        partial_update = true,
+        experiments = {
+          partial_update = 'diff', -- or 'line-by-line'
+        },
         exclude_path_patterns = {
           "/node_modules/",
         },
@@ -20,7 +22,10 @@ return {
           python = formatters.black,
           scss = formatters.lsp,
           sh = formatters.shfmt,
-          typescript = formatters.prettierd,
+          typescript = {
+            formatters.lazy_eslint_d_fix,
+            formatters.prettierd,
+          },
           typescriptreact = formatters.prettierd,
           yaml = formatters.lsp,
           vue = formatters.prettierd,

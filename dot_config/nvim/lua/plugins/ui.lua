@@ -168,14 +168,13 @@ return {
       autotag = {
         enable = true
       },
-      context_commentstring = {
-        enable = true,
-        enable_autocmd = false
-      },
     },
     config = function(plugin, opts)
       require("nvim-treesitter.configs").setup(opts)
     end
+  },
+  {
+    'JoosepAlviste/nvim-ts-context-commentstring',
   },
   {
     "onsails/lspkind.nvim",
