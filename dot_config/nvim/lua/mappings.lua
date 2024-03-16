@@ -77,11 +77,12 @@ return {
 
 
       ["<leader>d"] = { " Debugger" },
-      ["<leader>dq"] = { "<cmd>DapQuit<cr>", "Terminate session" },
-      ["<leader>dQ"] = { "<cmd>DapQuitAll<cr>", "Terminate session and close" },
-      ["<leader>dd"] = { "<cmd>DapRunLast<cr>", "Run last" },
-      -- run current file?
-      ["<leader>dD"] = { "<cmd>Telescope dap configurations<cr>", "Run" },
+      ["<leader>dq"] = { "<cmd>DapExtensionsQuit<cr>", "Terminate session" },
+      ["<leader>dQ"] = { "<cmd>DapExtensionsQuitAll<cr>", "Terminate session and close" },
+      ["<leader>dd"] = { "<cmd>DapExtensionsRunLast<cr>", "Run last" },
+      ["<leader>dD"] = { "<cmd>DapExtensionsLoadAll<cr><cmd>Telescope dap configurations<cr>", "Run" },
+      ["<leader>de"] = { "<cmd>DapExtensionsEvaluate<cr>", "Evaluate expression" },
+      -- ["<leader>dE"] = { "<cmd>DapExtensionsEvaluate<cr>", "Evaluate expression" }, TODO copy expression to floating console
       ["<leader>dl"] = { "<cmd>DapShowLog<cr>", "DAP Log" },
 
       ["<leader><leader>d"] = { " Debugger" },
@@ -231,6 +232,9 @@ return {
       --      )
       ["<leader>x"] = { " External" },
       ["<leader>xh"] = { "<cmd>GBrowse<cr>", "Open current file in Github" },
+
+      ["<leader><leader>de"] = { "<cmd>DapExtensionsEvaluate<cr>", "Evaluate expression" },
+      -- ["<leader><leader>dE"] = { "<cmd>DapExtensionsEvaluate<cr>", "Evaluate expression" }, TODO copy expression to floating console
     },
     {
       mode = "v"

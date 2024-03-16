@@ -1,5 +1,8 @@
 return {
   load = function()
+    local absolutePath = vim.api.nvim_buf_get_name(0)
+    local relativePath = vim.fn.fnamemodify(vim.fn.expand("%"), ":~:.")
+
     return {
       javascript = {
         {
@@ -14,11 +17,11 @@ return {
           internalConsoleOptions = "neverOpen",
         },
         {
-          name = "jest --runInBand ${relativeFile}",
+          name = string.format("jest --runInBand %s", relativePath),
           type = "pwa-node",
           request = "launch",
           runtimeExecutable = "node",
-          runtimeArgs = { "./node_modules/.bin/jest", "--runInBand", "${relativeFile}" },
+          runtimeArgs = { "./node_modules/.bin/jest", "--runInBand", absolutePath },
           rootPath = "${workspaceFolder}",
           cwd = "${workspaceFolder}",
           console = "integratedTerminal",
@@ -36,11 +39,11 @@ return {
           internalConsoleOptions = "neverOpen",
         },
         {
-          name = "vitest run --no-threads ${relativeFile}",
+          name = string.format("vitest run --no-threads %s", relativePath),
           type = "pwa-node",
           request = "launch",
           runtimeExecutable = "node",
-          runtimeArgs = { "./node_modules/.bin/vitest", "run", "--no-threads", "${relativeFile}" },
+          runtimeArgs = { "./node_modules/.bin/vitest", "run", "--no-threads", absolutePath },
           rootPath = "${workspaceFolder}",
           cwd = "${workspaceFolder}",
           console = "integratedTerminal",
@@ -92,7 +95,7 @@ return {
 --     }
 -- end
 --
--- 
+--
 -- dap.configurations.rust = {
 --     {
 --         name = "Attach",

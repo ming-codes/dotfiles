@@ -42,7 +42,15 @@ return {
       },
       "rcarriga/nvim-dap-ui",
     },
-    cmd = { "DapQuit", "DapQuitAll", "DapRunLast", "DapToggleBreakpoint", "DapShowLog" },
+    cmd = {
+      "DapExtensionsLoadAll",
+      "DapExtensionsRunLast",
+      "DapExtensionsQuit",
+      "DapExtensionsQuitAll",
+      "DapExtensionsEvaluate",
+      "DapToggleBreakpoint",
+      "DapShowLog",
+    },
     config = function()
       local extensions = require("extensions.dap")
 
@@ -55,9 +63,12 @@ return {
       dap.adapters = require("extensions.dap.adapters").load()
       dap.configurations = require('extensions.dap.configurations').load()
 
-      vim.api.nvim_create_user_command('DapQuit', extensions.quit, {})
-      vim.api.nvim_create_user_command('DapQuitAll', extensions.quit_all, {})
-      vim.api.nvim_create_user_command('DapRunLast', dap.run_last, {})
+      vim.api.nvim_create_user_command('DapExtensionsEvaluate', extensions.evaluate, {})
+      vim.api.nvim_create_user_command('DapExtensionsLoadAll', extensions.load_all, {})
+      vim.api.nvim_create_user_command('DapExtensionsRunLast', extensions.run_last, {})
+
+      vim.api.nvim_create_user_command('DapExtensionsQuit', extensions.quit, {})
+      vim.api.nvim_create_user_command('DapExtensionsQuitAll', extensions.quit_all, {})
     end
   }
 }
