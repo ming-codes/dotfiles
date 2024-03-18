@@ -122,6 +122,10 @@ return {
       }
     }
   },
+  {
+    "mbbill/undotree",
+    cmd = { "UndotreeToggle" }
+  },
 }
 -- return {
 --   "nvim-telescope/telescope.nvim",

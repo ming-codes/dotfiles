@@ -56,8 +56,8 @@ return {
 
       ["<leader>u"] = { " UI" },
       -- toggle signcolumn	Leader + ug
-      ["<leader>uu"] = { "<cmd>Telescope undo undo<cr>", "Go to undotree" },
-      ["<leader>ut"] = { "<cmd>lua require('dap').list_breakpoints(true)<cr>", "Go to undotree" },
+      ["<leader>uu"] = { "<cmd>UndotreeToggle<cr>", "Toggle Undotree" },
+      ["<leader>ut"] = { "<cmd>Neotest summary<cr>", "Toggle Neotest summary" },
       ["<leader>uf"] = { "<cmd>Goyo<cr>", "Toggle focus mode (Goyo)" },
       ["<leader>ug"] = { "<cmd>Gitsigns toggle_signs`<cr>", "Toggle Gitsigns" },
       ["<leader>uc"] = { "<cmd>ColorizerToggle<cr>", "Toggle Colorizer" },

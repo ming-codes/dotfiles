@@ -10,7 +10,7 @@ return {
       return {
         adapters = {
           require('neotest-vitest')({
-            vitestCommand = "npm run --"
+            -- vitestCommand = "npm run test --"
           }),
           require('neotest-jest')({
             jestCommand = "npm test --",
