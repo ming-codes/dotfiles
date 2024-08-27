@@ -28,6 +28,12 @@ return {
       delete_to_trash = true,
       skip_confirm_for_simple_edits = true,
       experimental_watch_for_changes = true,
+      columns = {
+        "permissions",
+        "icon",
+        -- "size",
+        -- "mtime",
+      },
       keymaps = {
         ["<C-h>"] = false,
         ["<C-s>"] = false,

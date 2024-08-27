@@ -51,6 +51,7 @@
   "papercolor-theme": { "branch": "master", "commit": "0cfe64ffb24c21a6101b5f994ca342a74c977aef" },
   "pkl-neovim": { "branch": "main", "commit": "a0ae099c7eb926150ee0a126b1dd78086edbe3fc" },
   "plenary.nvim": { "branch": "master", "commit": "a3e3bc82a3f95c5ed0d7201546d5d2c19b20d683" },
+  "render-markdown": { "branch": "main", "commit": "467ad24c4d74c47f6ad346966a577f87f041f0e7" },
   "resession.nvim": { "branch": "master", "commit": "460759570451a37bd7d9684f5e060016055a89af" },
   "smart-splits.nvim": { "branch": "master", "commit": "d99162711fa619595b8cb0e1f0981e3d301debc9" },
   "telescope-dap.nvim": { "branch": "master", "commit": "8c88d9716c91eaef1cdea13cb9390d8ef447dbfe" },

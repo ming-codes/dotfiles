@@ -46,6 +46,12 @@ return {
             ["<A-q>"] = function(...)
               return require("trouble.providers.telescope").open_selected_with_trouble(...)
             end,
+            ["<c-f>"] = function(prompt_bufnr)
+              require("telescope.actions.generate").refine(prompt_bufnr, {
+                prompt_to_prefix = true,
+                sorter = false,
+              })
+            end,
             --["<a-i>"] = function()
             --  local action_state = require("telescope.actions.state")
             --  local line = action_state.get_current_line()

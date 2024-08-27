@@ -8,6 +8,10 @@ return {
     },
     opts = function()
       return {
+        summary = {
+          mappings = {
+          }
+        },
         adapters = {
           require('neotest-vitest')({
             -- vitestCommand = "npx vitest -- -w"

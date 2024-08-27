@@ -13,14 +13,18 @@ return {
         },
         formatter_by_ft = {
           css = formatters.lsp,
-          html = formatters.lsp,
+          html = formatters.prettierd,
           java = formatters.lsp,
           javascript = formatters.prettierd,
-          json = formatters.lsp,
+          javascriptreact = formatters.prettierd,
+          json = formatters.prettierd,
           lua = formatters.lsp,
           markdown = formatters.prettierd,
           python = formatters.black,
-          scss = formatters.lsp,
+          scss = {
+            formatters.lsp,
+            formatters.prettierd,
+          },
           sh = formatters.shfmt,
           typescript = {
             -- formatters.custom({
@@ -41,8 +45,9 @@ return {
             formatters.prettierd,
             formatters.remove_trailing_whitespace,
           },
-          yaml = formatters.lsp,
+          yaml = formatters.prettierd,
           vue = formatters.prettierd,
+          less = formatters.prettierd,
         }
       }
     end

@@ -89,8 +89,17 @@ return {
 
       ["<leader><leader>d"] = { " Debugger" },
 
-      ["<leader>r"] = { "Run" },
-      ["<leader>rt"] = { "<cmd>Neotest run<cr>", "Neotest" },
+      ["<leader>r"] = { " Run" },
+      ["<leader>rf"] = { "<cmd>lua require('neotest').run.run({status = 'failed' })<cr>", "Neotest run failed tests" },
+
+      -- Plan:
+      -- dd Neotest debug last -- smart function that need to figure out what was ran last
+      -- dt Neotest debug nearest test
+      -- dT Neotest debug all test
+
+      ["<leader><leader>r"] = { " Run" },
+      ["<leader><leader>rr"] = { "<cmd>Neotest run<cr>", "Neotest run nearest test" },
+      ["<leader><leader>rR"] = { "<cmd>lua require('neotest').run.run({ strategy = 'dap' })<cr>", "Neotest debug nearest test" },
 
       ["<leader>g"] = { "󰊢 Git" },
       ["<leader>gg"] = { "<cmd>lua require('extensions.toggleterm').toggle_persist('lazygit')<cr>", "Launch LazyGit" }, -- TODO use toggle term to persist it, astronvim have example
