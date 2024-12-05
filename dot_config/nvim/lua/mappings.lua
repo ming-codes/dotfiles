@@ -86,6 +86,8 @@ return {
       ["<leader>dB"] = { "<cmd>DapBreakpointsClear<cr>", "Clear all breakpoints" },
       -- ["<leader>dE"] = { "<cmd>DapExtensionsEvaluate<cr>", "Evaluate expression" }, TODO copy expression to floating console
       ["<leader>dl"] = { "<cmd>DapShowLog<cr>", "DAP Log" },
+      ["<leader>dj"] = { "<cmd>lua require('dap').down()<cr>", "Go down stack" },
+      ["<leader>dk"] = { "<cmd>lua require('dap').up()<cr>", "Go up stack" },
 
       ["<leader><leader>d"] = { " Debugger" },
 
