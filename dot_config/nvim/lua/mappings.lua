@@ -180,6 +180,8 @@ return {
       -- :Telescope dap commands
       -- :Telescope dap variables
       -- :Telescope dap frames
+      ["g<Right>"] = { "<cmd>lua require('dap').down()<cr>", "Go down stack" },
+      ["g<Left>"] = { "<cmd>lua require('dap').up()<cr>", "Go up stack" },
 
       ["]g"] = { "<cmd>lua require('gitsigns').next_hunk()<cr>", "Next Git hunk" },
       ["[g"] = { "<cmd>lua require('gitsigns').prev_hunk()<cr>", "Previous Git hunk" },
