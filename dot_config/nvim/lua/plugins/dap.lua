@@ -11,32 +11,32 @@ return {
       floating = {
         border = "rounded"
       },
-      layouts = {
-        {
-          elements = { {
-            id = "repl",
-            size = 0.5
-          }, {
-            id = "console",
-            size = 0.5
-          } },
-          position = "bottom",
-          size = 10
-        }
-      }
+      -- layouts = {
+      --   {
+      --     elements = { {
+      --       id = "repl",
+      --       size = 0.5
+      --     }, {
+      --       id = "console",
+      --       size = 0.5
+      --     } },
+      --     position = "bottom",
+      --     size = 10
+      --   }
+      -- }
     },
     config = function(_, opts)
       local dap = require("dap")
       local dapui = require("dapui")
 
       dap.listeners.after.event_initialized["dapui_config"] = function()
-        dapui.open()
+        -- dapui.open()
       end
       dap.listeners.before.event_terminated["dapui_config"] = function()
         -- dapui.close()
       end
       dap.listeners.before.event_exited["dapui_config"] = function()
-        dapui.close()
+        -- dapui.close()
       end
 
       dapui.setup(opts)
@@ -47,7 +47,6 @@ return {
     dependencies = {
       "rcarriga/cmp-dap",
       "williamboman/mason.nvim",
-      { "theHamsta/nvim-dap-virtual-text" },
       {
         "jay-babu/mason-nvim-dap.nvim",
         dependencies = { "nvim-dap" },
@@ -72,6 +71,8 @@ return {
       local fn = require("utils.fn")
       local dap = require("dap")
 
+      local vtext = require("nvim-dap-virtual-text")
+
       -- dap.run = fn.wrap(dap.run, function(run, config, opts)
       --   run(config, opts)
       -- end)
@@ -88,6 +89,19 @@ return {
       vim.api.nvim_create_user_command('DapBreakpointsClear', function()
         dap.clear_breakpoints()
       end, {})
+
+      vtext.setup({
+        enabled = false,
+        virt_lines = true,
+      })
     end
+  },
+  {
+    "theHamsta/nvim-dap-virtual-text",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+    },
+    opts = {
+    }
   }
 }

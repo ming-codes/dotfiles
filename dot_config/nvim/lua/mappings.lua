@@ -56,17 +56,17 @@ return {
 
       ["<leader>u"] = { " UI" },
       -- toggle signcolumn	Leader + ug
-      ["<leader>uu"] = { "<cmd>UndotreeToggle<cr>", "Toggle Undotree" },
+      -- ["<leader>uu"] = { "<cmd>UndotreeToggle<cr>", "Toggle Undotree" },
       ["<leader>ut"] = { "<cmd>Neotest summary<cr>", "Toggle Neotest summary" },
-      ["<leader>uf"] = { "<cmd>Goyo<cr>", "Toggle focus mode (Goyo)" },
-      ["<leader>ug"] = { "<cmd>Gitsigns toggle_signs`<cr>", "Toggle Gitsigns" },
-      ["<leader>uc"] = { "<cmd>ColorizerToggle<cr>", "Toggle Colorizer" },
-      ["<leader>ux"] = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document Diagnostics (Trouble)" },
-      ["<leader>uX"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics (Trouble)" },
-      ["<leader>uh"] = { "<cmd>require('oil').toggle_hidden()<cr>", "Toggle hidden (Oil)" },
-      ["<leader>ud"] = { "<cmd>diffthis<cr>", "diffthis" },
-      ["<leader>uD"] = { "<cmd>diffoff<cr>", "diffoff" },
-      ["<leader>ub"] = { "<cmd>lua require('dapui').toggle()<cr>", "Toggle DAP UI" },
+      -- ["<leader>uf"] = { "<cmd>Goyo<cr>", "Toggle focus mode (Goyo)" },
+      -- ["<leader>ug"] = { "<cmd>Gitsigns toggle_signs<cr>", "Toggle Gitsigns" },
+      -- ["<leader>uc"] = { "<cmd>ColorizerToggle<cr>", "Toggle Colorizer" },
+      -- ["<leader>ux"] = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document Diagnostics (Trouble)" },
+      -- ["<leader>uX"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics (Trouble)" },
+      -- ["<leader>uh"] = { "<cmd>require('oil').toggle_hidden()<cr>", "Toggle hidden (Oil)" },
+      -- ["<leader>ud"] = { "<cmd>diffthis<cr>", "diffthis" },
+      -- ["<leader>uD"] = { "<cmd>diffoff<cr>", "diffoff" },
+      -- ["<leader>ub"] = { "<cmd>lua require('dapui').toggle()<cr>", "Toggle DAP UI" },
       -- ["<leader>uL"] = { "<cmd>TroubleToggle loclist<cr>", "Location List (Trouble)" },
       -- ["<leader>uQ"] = { "<cmd>TroubleToggle quickfix<cr>", "Quickfix List (Trouble)" },
 
@@ -78,30 +78,35 @@ return {
 
 
       ["<leader>d"] = { " Debugger" },
+      ["<leader>dd"] = { "<cmd>lua require('neotest').run.run_last({ strategy = 'dap' })<cr>", "Debug last test" },
+      ["<leader>dD"] = { "<cmd>lua require('neotest').run.run({ strategy = 'dap' })<cr>", "Debug nearest test" },
+
+      ["<leader>du"] = { "<cmd>lua require('dapui').toggle()<cr>", "Toggle DAP UI" },
       ["<leader>dq"] = { "<cmd>DapExtensionsQuit<cr>", "Terminate session" },
       ["<leader>dQ"] = { "<cmd>DapExtensionsQuitAll<cr>", "Terminate session and close" },
-      ["<leader>dd"] = { "<cmd>DapExtensionsRunLast<cr>", "Run last" },
-      ["<leader>dD"] = { "<cmd>DapExtensionsLoadAll<cr><cmd>Telescope dap configurations<cr>", "Run" },
       ["<leader>de"] = { "<cmd>DapExtensionsEvaluate<cr>", "Evaluate expression" },
-      ["<leader>dB"] = { "<cmd>DapBreakpointsClear<cr>", "Clear all breakpoints" },
+      ["<leader>dE"] = { "<cmd>lua require('dapui').float_element('repl', { ['width'] = 180, ['height'] = 40, ['position'] ='center' })<cr>", "REPL as float" },
+      ["<leader>dt"] = { "<cmd>lua require('dapui').float_element('console', { ['width'] = 180, ['height'] = 40, ['position'] ='center' })<cr>", "Console as float" },
+      -- ["<leader>dB"] = { "<cmd>DapBreakpointsClear<cr>", "Clear all breakpoints" },
       -- ["<leader>dE"] = { "<cmd>DapExtensionsEvaluate<cr>", "Evaluate expression" }, TODO copy expression to floating console
       ["<leader>dl"] = { "<cmd>DapShowLog<cr>", "DAP Log" },
-      ["<leader>dj"] = { "<cmd>lua require('dap').down()<cr>", "Go down stack" },
-      ["<leader>dk"] = { "<cmd>lua require('dap').up()<cr>", "Go up stack" },
+      ["<leader>dv"] = { "<cmd>DapVirtualTextToggle<cr>", "Toggle variable virtual text" },
 
-      ["<leader><leader>d"] = { " Debugger" },
+      -- ["<leader><leader>d"] = { " Debugger" },
 
       ["<leader>r"] = { " Run" },
-      ["<leader>rf"] = { "<cmd>lua require('neotest').run.run({status = 'failed' })<cr>", "Neotest run failed tests" },
+      ["<leader>rT"] = { "<cmd>lua require('neotest').run.run(vim.fn.getcwd())<cr>", "Neotest run all tests" },
+      -- ["<leader>dd"] = { "<cmd>DapExtensionsRunLast<cr>", "Run last" },
+      ["<leader>rR"] = { "<cmd>DapExtensionsLoadAll<cr><cmd>Telescope dap configurations<cr>", "Run" },
 
       -- Plan:
       -- dd Neotest debug last -- smart function that need to figure out what was ran last
       -- dt Neotest debug nearest test
       -- dT Neotest debug all test
 
-      ["<leader><leader>r"] = { " Run" },
-      ["<leader><leader>rr"] = { "<cmd>Neotest run<cr>", "Neotest run nearest test" },
-      ["<leader><leader>rR"] = { "<cmd>lua require('neotest').run.run({ strategy = 'dap' })<cr>", "Neotest debug nearest test" },
+      -- ["<leader><leader>r"] = { " Run" },
+      -- ["<leader><leader>rr"] = { "<cmd>Neotest run<cr>", "Neotest run nearest test" },
+      -- ["<leader><leader>rR"] = { "<cmd>lua require('neotest').run.run({ strategy = 'dap' })<cr>", "Neotest debug nearest test" },
 
       ["<leader>g"] = { "󰊢 Git" },
       ["<leader>gg"] = { "<cmd>lua require('extensions.toggleterm').toggle_persist('lazygit')<cr>", "Launch LazyGit" }, -- TODO use toggle term to persist it, astronvim have example
@@ -171,8 +176,11 @@ return {
         "Open current file with default application" },
 
       ["g"] = { "Jump" },
-      ["gj"] = { "<cmd>Telescope jumplist<cr>", "List" },
+      ["gJ"] = { "<cmd>Telescope jumplist<cr>", "Telescope Jump List" },
       ["gd"] = { "<cmd>Telescope lsp_definitions<cr>", "Go to definitions" },
+      ["gj"] = { "<cmd>lua require('dap').down()<cr>", "Go down frame stack" },
+      ["gk"] = { "<cmd>lua require('dap').up()<cr>", "Go up frame stack" },
+      ["gD"] = { "<cmd>Telescope dap frames<cr>", "Go to frame" },
       ["gi"] = { "<cmd>Telescope lsp_implementations<cr>", "Go to implementations" },
       ["gr"] = { "<cmd>Telescope lsp_references<cr>", "Go to references" },
       ["go"] = { "<cmd>Telescope lsp_type_definitions", "Go to type definitions" },
@@ -180,8 +188,6 @@ return {
       -- :Telescope dap commands
       -- :Telescope dap variables
       -- :Telescope dap frames
-      ["g<Right>"] = { "<cmd>lua require('dap').down()<cr>", "Go down stack" },
-      ["g<Left>"] = { "<cmd>lua require('dap').up()<cr>", "Go up stack" },
 
       ["]g"] = { "<cmd>lua require('gitsigns').next_hunk()<cr>", "Next Git hunk" },
       ["[g"] = { "<cmd>lua require('gitsigns').prev_hunk()<cr>", "Previous Git hunk" },
@@ -249,6 +255,7 @@ return {
       ["<leader>xh"] = { "<cmd>GBrowse<cr>", "Open current file in Github" },
 
       ["<leader><leader>de"] = { "<cmd>DapExtensionsEvaluate<cr>", "Evaluate expression" },
+      -- ["<leader><leader>de"] = { "<cmd>DapExtensionsEvaluate<cr>", "Evaluate expression" },
       -- ["<leader><leader>dE"] = { "<cmd>DapExtensionsEvaluate<cr>", "Evaluate expression" }, TODO copy expression to floating console
     },
     {

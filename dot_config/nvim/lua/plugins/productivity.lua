@@ -145,6 +145,17 @@ return {
     "mbbill/undotree",
     cmd = { "UndotreeToggle" }
   },
+  {
+    "github/copilot.vim",
+    cmd = { "Copilot" }
+  }
+  -- {
+  --   "jiaoshijie/undotree",
+  --   dependencies = { "nvim-lua/plenary.nvim" },
+  --   config = function(_, opts)
+  --     require("undotree").setup()
+  --   end
+  -- }
 }
 -- return {
 --   "nvim-telescope/telescope.nvim",

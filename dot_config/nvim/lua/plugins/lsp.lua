@@ -206,7 +206,7 @@ return {
       -- (Optional) Configure lua language server for neovim
       lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
       -- jdtls
-      lspconfig.tsserver.setup({
+      lspconfig.ts_ls.setup({
         init_options = {
           preferences = {
             -- other preferences...

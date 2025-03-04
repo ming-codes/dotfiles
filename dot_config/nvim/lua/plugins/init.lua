@@ -5,6 +5,11 @@ return {
 
   "mrjones2014/legendary.nvim",
 
+  {
+    "rafcamlet/nvim-luapad",
+    cmd = { "Luapad", "LuaRun" },
+  }
+
 }
 -- vim-illuminate
 -- nvim-dap
@@ -235,7 +240,7 @@ return {
 --       "    ██   ████   ████   ██ ██      ██",
 --     }
 --     dashboard.section.header.opts.hl = "DashboardHeader"
--- 
+--
 --     local button = require("astronvim.utils").alpha_button
 --     dashboard.section.buttons.val = {
 --       button("LDR n  ", "  New File  "),
@@ -245,7 +250,7 @@ return {
 --       button("LDR f '", "  Bookmarks  "),
 --       button("LDR S l", "  Last Session  "),
 --     }
--- 
+--
 --     dashboard.config.layout[1].val = vim.fn.max { 2, vim.fn.floor(vim.fn.winheight(0) * 0.2) }
 --     dashboard.config.layout[3].val = 5
 --     dashboard.config.opts.noautocmd = true
@@ -253,7 +258,7 @@ return {
 --   end,
 --   config = require "plugins.configs.alpha",
 -- }
--- 
+--
 -- return {
 --   {
 --     "nvim-tree/nvim-web-devicons",
@@ -341,9 +346,9 @@ return {
 --   },
 -- }
 --
--- 
+--
 -- return {
--- 
+--
 --   -- measure startuptime
 --   {
 --     "dstein64/vim-startuptime",
@@ -352,7 +357,7 @@ return {
 --       vim.g.startuptime_tries = 10
 --     end,
 --   },
--- 
+--
 --   -- session management
 --   {
 --     "folke/persistence.nvim",
@@ -365,10 +370,10 @@ return {
 --       { "<leader>qd", function() require("persistence").stop() end, desc = "Don't Save Current Session" },
 --     },
 --   },
--- 
+--
 --   -- library used by other plugins
 --   { "nvim-lua/plenary.nvim", lazy = true },
--- 
+--
 -- }
 -- return {
 --   -- Better `vim.notify()`
@@ -402,7 +407,7 @@ return {
 --       end
 --     end,
 --   },
--- 
+--
 --   -- better vim.ui
 --   {
 --     "stevearc/dressing.nvim",
@@ -420,7 +425,7 @@ return {
 --       end
 --     end,
 --   },
--- 
+--
 --   -- bufferline
 --   {
 --     "akinsho/bufferline.nvim",
@@ -454,7 +459,7 @@ return {
 --       },
 --     },
 --   },
--- 
+--
 --   -- statusline
 --   {
 --     "nvim-lualine/lualine.nvim",
@@ -462,7 +467,7 @@ return {
 --     opts = function()
 --       local icons = require("lazyvim.config").icons
 --       local Util = require("lazyvim.util")
--- 
+--
 --       return {
 --         options = {
 --           theme = "auto",
@@ -533,12 +538,12 @@ return {
 --       }
 --     end,
 --   },
--- 
--- 
+--
+--
 --   -- noicer ui
--- 
+--
 --   -- dashboard
--- 
+--
 --   -- lsp symbol navigation for lualine
 --   {
 --     "SmiteshP/nvim-navic",
@@ -560,10 +565,10 @@ return {
 --       }
 --     end,
 --   },
--- 
+--
 --   -- icons
 --   { "nvim-tree/nvim-web-devicons", lazy = true },
--- 
+--
 --   -- ui components
 --   { "MunifTanjim/nui.nvim", lazy = true },
 -- }
@@ -651,9 +656,9 @@ return {
 --   },
 -- }
 -- local Util = require("lazyvim.util")
--- 
+--
 -- return {
--- 
+--
 --   -- file explorer
 --   {
 --     "nvim-neo-tree/neo-tree.nvim",
@@ -720,7 +725,7 @@ return {
 --       })
 --     end,
 --   },
--- 
+--
 --   -- search/replace in multiple files
 --   {
 --     "nvim-pack/nvim-spectre",
@@ -729,9 +734,9 @@ return {
 --       { "<leader>sr", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
 --     },
 --   },
--- 
+--
 --   -- fuzzy finder
--- 
+--
 --   -- easily jump to any location and enhanced f/t motions for Leap
 --   {
 --     "ggandor/flit.nvim",
@@ -762,7 +767,7 @@ return {
 --       vim.keymap.del({ "x", "o" }, "X")
 --     end,
 --   },
--- 
+--
 --   -- which-key
 --   {
 --     "folke/which-key.nvim",
@@ -794,9 +799,9 @@ return {
 --       wk.register(opts.defaults)
 --     end,
 --   },
--- 
+--
 --   -- git signs
--- 
+--
 --   -- references
 --   {
 --     "RRethy/vim-illuminate",
@@ -804,16 +809,16 @@ return {
 --     opts = { delay = 200 },
 --     config = function(_, opts)
 --       require("illuminate").configure(opts)
--- 
+--
 --       local function map(key, dir, buffer)
 --         vim.keymap.set("n", key, function()
 --           require("illuminate")["goto_" .. dir .. "_reference"](false)
 --         end, { desc = dir:sub(1, 1):upper() .. dir:sub(2) .. " Reference", buffer = buffer })
 --       end
--- 
+--
 --       map("]]", "next")
 --       map("[[", "prev")
--- 
+--
 --       -- also set it after loading ftplugins, since a lot overwrite [[ and ]]
 --       vim.api.nvim_create_autocmd("FileType", {
 --         callback = function()
@@ -828,7 +833,7 @@ return {
 --       { "[[", desc = "Prev Reference" },
 --     },
 --   },
--- 
+--
 --   -- buffer remove
 --   {
 --     "echasnovski/mini.bufremove",
@@ -838,30 +843,30 @@ return {
 --       { "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
 --     },
 --   },
--- 
+--
 --   -- better diagnostics list and others
--- 
+--
 -- }
--- 
+--
 --   -- snippets
--- 
--- 
+--
+--
 --   -- auto pairs
 --   {
 --     "echasnovski/mini.pairs",
 --     event = "VeryLazy",
 --     opts = {},
 --   },
--- 
+--
 --   -- surround
--- 
+--
 --   -- comments
 --   {
 --     "echasnovski/mini.comment",
 --     event = "VeryLazy",
 --     opts = {},
 --   },
--- 
+--
 --   -- better text-objects
 --   {
 --     "echasnovski/mini.ai",
@@ -917,7 +922,7 @@ return {
 --         for k, v in pairs(a) do
 --           a[k] = v:gsub(" including.*", "")
 --         end
--- 
+--
 --         local ic = vim.deepcopy(i)
 --         local ac = vim.deepcopy(a)
 --         for key, name in pairs({ n = "Next", l = "Last" }) do

@@ -33,6 +33,12 @@ return {
             action = "debugWithChrome"
           }
         },
+        -- {
+        --   We don't know the port it's launched on
+        --   - default port is 9229
+        --   - nextjs port is 9230
+        --   name = "Attach to node process",
+        -- },
         {
           name = "jest",
           type = "pwa-node",
