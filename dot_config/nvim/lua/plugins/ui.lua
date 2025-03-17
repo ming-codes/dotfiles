@@ -219,11 +219,9 @@ return {
       end
     },
     config = function(_, opts)
-      local notify = require("notify")
+      require("notify").setup(opts)
 
-      notify.setup(opts)
-
-      vim.notify = notify
+      -- vim.notify = notify
     end,
   },
   {

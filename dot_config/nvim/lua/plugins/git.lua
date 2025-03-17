@@ -21,6 +21,29 @@ return {
       },
     },
   },
+  {
+    'pwntester/octo.nvim',
+    cmd = "Octo",
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'nvim-tree/nvim-web-devicons',
+    },
+    opts = {
+    },
+    init = function()
+      require("octo").setup()
+    end
+  }
+  --   use {
+  --   requires = {
+  --     -- OR 'ibhagwan/fzf-lua',
+  --     -- OR 'folke/snacks.nvim',
+  --   },
+  --   config = function ()
+  --     require"octo".setup()
+  --   end
+  -- }
   --   {
   --     "lewis6991/gitsigns.nvim",
   --     event = { "BufReadPre", "BufNewFile" },

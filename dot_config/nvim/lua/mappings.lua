@@ -112,6 +112,7 @@ return {
       ["<leader>gg"] = { "<cmd>lua require('extensions.toggleterm').toggle_persist('lazygit')<cr>", "Launch LazyGit" }, -- TODO use toggle term to persist it, astronvim have example
       ["<leader>gb"] = { "<cmd>Git blame<CR>", "Blame file" },
       ["<leader>gl"] = { "<cmd>Git log<CR>", "Log file" },
+      ["<leader>gh"] = { "<cmd>Octo pr search<cr>", "Search Pull Requests" },
 
       ["<leader><leader>g"] = { "󰊢 Git" },
       ["<leader><leader>gb"] = { "<cmd>lua require('gitsigns').blame_line { full = true }<cr>", "Blame line" },
