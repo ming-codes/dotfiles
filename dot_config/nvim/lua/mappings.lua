@@ -114,6 +114,10 @@ return {
       ["<leader>gl"] = { "<cmd>Git log<CR>", "Log file" },
       ["<leader>gh"] = { "<cmd>Octo pr search<cr>", "Search Pull Requests" },
 
+      ["<leader>h"] = { " GitHub" },
+      ["<leader>hh"] = { "<cmd>Octo pr search<cr>", "Search Pull Request" },
+      ["<leader>hc"] = { "<cmd>Octo pr create<cr>", "Create Pull Request" },
+
       ["<leader><leader>g"] = { "󰊢 Git" },
       ["<leader><leader>gb"] = { "<cmd>lua require('gitsigns').blame_line { full = true }<cr>", "Blame line" },
       -- ["<leader>gp"] = { "<cmd>lua require('gitsigns').preview_hunk()<cr>", "Preview Git hunk" },
