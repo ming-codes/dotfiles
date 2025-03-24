@@ -106,6 +106,9 @@ return {
       context_char = vim.g.symbol_indent,
       show_current_context = true,
     },
+    main = "ibl",
+    ---@module "ibl"
+    ---@type ibl.config
   },
   {
     "echasnovski/mini.surround",
