@@ -64,7 +64,11 @@ return {
     main = "ibl",
     ---@module "ibl"
     ---@type ibl.config
-    opts = {},
+    opts = {
+      indent = {
+        char = vim.g.symbol_indent,
+      }
+    },
   },
   {
     "echasnovski/mini.surround",

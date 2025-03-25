@@ -114,7 +114,7 @@ return {
       wk.setup(opts)
 
       table.each(mappings, function(rargs)
-        wk.register(unpack(rargs))
+        wk.add(rargs)
       end)
     end
   },
