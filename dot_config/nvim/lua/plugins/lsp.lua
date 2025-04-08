@@ -208,12 +208,34 @@ return {
       -- jdtls
       lspconfig.ts_ls.setup({
         init_options = {
-          preferences = {
-            -- other preferences...
-            importModuleSpecifierPreference = 'relative',
-            importModuleSpecifierEnding = 'minimal',
+          typescript = {
+            preferences = {
+              -- other preferences...
+              importModuleSpecifierPreference = 'relative',
+              importModuleSpecifierEnding = 'minimal',
+              includeCompletionsForModuleExports = true,
+              includeCompletionsForImportStatements = true,
+              importModuleSpecifier = 'project-relative',
+            },
           },
-        }
+        },
+        settings = {
+          typescript = {
+            tsserver = {
+              useSyntaxServer = false,
+            },
+            inlayHints = {
+              includeInlayParameterNameHints = 'all',
+              includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+              includeInlayFunctionParameterTypeHints = true,
+              includeInlayVariableTypeHints = true,
+              includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+              includeInlayPropertyDeclarationTypeHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+              includeInlayEnumMemberValueHints = true,
+            },
+          },
+        },
       })
 
       lsp.setup()

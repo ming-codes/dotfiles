@@ -198,6 +198,11 @@ return {
       require('render-markdown').setup({})
     end,
   },
+  {
+    "davidmh/mdx.nvim",
+    config = true,
+    dependencies = { "nvim-treesitter/nvim-treesitter" }
+  },
   --{
   --  "kevinhwang91/nvim-ufo",
   --  dependencies = { "kevinhwang91/promise-async" },

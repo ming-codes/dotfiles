@@ -24,6 +24,9 @@ end
 
 return {
   {
+    { "<C-t>", "<cmd>tabe %<cr>" },
+    { "<C-v>", "<cmd>vs %<cr>" },
+
     { "<leader>f", desc = "󰍉 Find (grep)" },
     { "<leader>f?", "<cmd>Telescope builtin<cr>", desc = "Find Telescope builtins" },
     { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "File" },
@@ -49,7 +52,6 @@ return {
 
     { "<leader>l", desc = " LSP" },
     { "<leader>lr", "<cmd>LspRestart<cr>", desc = "Restart" },
-    -- ["<leader>lf"] = { " LSP" }, -- TODO lsp code format
     { "<leader>li", "<cmd>LspInfo<cr>", desc = "LSP information" }, -- TODO this shouldnt be needed
     { "<leader>lf", "<cmd>LspZeroFormat<cr>", desc = "LSP Format" },
 
@@ -74,6 +76,9 @@ return {
     { "<leader>bd", "<cmd>bd<cr>", desc = "Delete" },   -- picker
     { "<leader>bD", "<cmd>bd!<cr>", desc = "Delete!" }, -- picker
     { "<leader>bb", "<cmd>Telescope buffers<cr>", desc = "Pick" },
+    { "<leader>bt", "<cmd>tabe %<cr>", desc = "Open buffer in new tab" },
+    { "<leader>bv", "<cmd>vs %<cr>", desc = "Open buffer in new vertical split" },
+    { "<leader>bu", "<cmd>tabe %<cr><cmd>UndotreeToggle<cr>", desc = "Open buffer in Undotree with new tab" },
 
     { "<leader>d", desc = " Debugger" },
     { "<leader>dd", "<cmd>lua require('neotest').run.run_last({ strategy = 'dap' })<cr>", desc = "Debug last test" },
