@@ -136,6 +136,9 @@ return {
   --   end
   -- },
   {
+    'Issafalcon/lsp-overloads.nvim',
+  },
+  {
     -- Optional
     "williamboman/mason.nvim",
     cmd = { "Mason", "MasonUpdate" },
@@ -211,31 +214,31 @@ return {
           typescript = {
             preferences = {
               -- other preferences...
-              importModuleSpecifierPreference = 'relative',
-              importModuleSpecifierEnding = 'minimal',
-              includeCompletionsForModuleExports = true,
-              includeCompletionsForImportStatements = true,
+              -- importModuleSpecifierPreference = 'relative',
+              -- importModuleSpecifierEnding = 'minimal',
               importModuleSpecifier = 'project-relative',
+              -- includeCompletionsForModuleExports = true,
+              -- includeCompletionsForImportStatements = true,
             },
           },
         },
-        settings = {
-          typescript = {
-            tsserver = {
-              useSyntaxServer = false,
-            },
-            inlayHints = {
-              includeInlayParameterNameHints = 'all',
-              includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-              includeInlayFunctionParameterTypeHints = true,
-              includeInlayVariableTypeHints = true,
-              includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-              includeInlayPropertyDeclarationTypeHints = true,
-              includeInlayFunctionLikeReturnTypeHints = true,
-              includeInlayEnumMemberValueHints = true,
-            },
-          },
-        },
+        -- settings = {
+        --   typescript = {
+        --     tsserver = {
+        --       useSyntaxServer = false,
+        --     },
+        --     inlayHints = {
+        --       -- includeInlayParameterNameHints = 'all',
+        --       -- includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+        --       -- includeInlayFunctionParameterTypeHints = true,
+        --       -- includeInlayVariableTypeHints = true,
+        --       -- includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+        --       -- includeInlayPropertyDeclarationTypeHints = true,
+        --       -- includeInlayFunctionLikeReturnTypeHints = true,
+        --       -- includeInlayEnumMemberValueHints = true,
+        --     },
+        --   },
+        -- },
       })
 
       lsp.setup()

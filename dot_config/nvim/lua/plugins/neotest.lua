@@ -17,7 +17,7 @@ return {
             -- vitestCommand = "npx vitest -- -w"
           }),
           require('neotest-jest')({
-            jestCommand = "npm test --",
+            jestCommand = "npm test -- --runInBand --testTimeout=60000",
             jestConfigFile = "custom.jest.config.ts",
             env = { CI = true },
             cwd = function(path)

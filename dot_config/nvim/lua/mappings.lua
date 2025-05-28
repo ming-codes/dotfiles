@@ -25,14 +25,16 @@ end
 return {
   {
     { "<C-t>", "<cmd>tabe %<cr>" },
-    { "<C-v>", "<cmd>vs %<cr>" },
+    -- { "<C-v>", "<cmd>vs %<cr>" },
 
     { "<leader>f", desc = "󰍉 Find (grep)" },
     { "<leader>f?", "<cmd>Telescope builtin<cr>", desc = "Find Telescope builtins" },
-    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "File" },
+    -- { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "File" },
+    { "<leader>ff", "<cmd>lua Snacks.picker.files()<cr>", desc = "File" },
     { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffer" },
     { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "TODO lists" },
-    { "<leader>fw", "<cmd>Telescope live_grep<cr>", desc = "Word" },
+    -- { "<leader>fw", "<cmd>Telescope live_grep<cr>", desc = "Word" },
+    { "<leader>fw", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Word" },
     { "<leader>fW", "<cmd>Telescope live_grep_args live_grep_args<cr>", desc = "Word with args" },
     { "<leader>fs", "<cmd>Telescope git_status<cr>", desc = "Git status" },
     { "<leader>fg", "<cmd>Telescope my git_diff ref=origin<cr>", desc = "Git diff origin" },
@@ -118,8 +120,9 @@ return {
     { "<leader>gh", "<cmd>Octo pr search<cr>", desc = "Search Pull Requests" },
 
     { "<leader>h", desc = " GitHub" },
-    { "<leader>hh", "<cmd>Octo pr search<cr>", desc = "Search Pull Request" },
+    { "<leader>h/", "<cmd>Octo pr search<cr>", desc = "Search Pull Request" },
     { "<leader>hc", "<cmd>Octo pr create<cr>", desc = "Create Pull Request" },
+    { "<leader>hx", "<cmd>Octo pr browser<cr>", desc = "Open Pull Request in Browser" },
 
     { "<leader><leader>g", desc = "󰊢 Git" },
     { "<leader><leader>gb", "<cmd>lua require('gitsigns').blame_line { full = true }<cr>", desc = "Blame line" },
@@ -180,6 +183,9 @@ return {
       desc = "Open current file with default application"
     },
 
+    { "<leader>.", "<cmd>lua Snacks.scratch()<cr>", desc = "Toggle Scratch Buffer" },
+    { "<leader>S", "<cmd>lua Snacks.scratch.select()<cr>", desc = "Select Scratch Buffer" },
+
     { "<leader><leader>x", desc = " External" },
     { "<leader><leader>xh", "<cmd>GBrowse<cr>", desc = "Open current line in Github" },
     -- https://github.com/tpope/vim-fugitive/issues/1053
@@ -188,6 +194,11 @@ return {
       "<cmd>lua require('open').open(require('extensions.fs').get_line_abspath())<cr>",
       desc = "Open current file with default application"
     },
+
+    { "<leader>R", desc = "Run HTTP Request (kulala)" },
+    { "<leader>Rs", "<cmd>lua require('kulala').run()<cr>", desc = "Run nearest" },
+    { "<leader>Ra", "<cmd>lua require('kulala').run_all()<cr>", desc = "Run all" },
+    { "<leader>Rr", "<cmd>lua require('kulala').replay()<cr>", desc = "Run last" },
 
     { "g", desc = "Jump" },
     { "gJ", "<cmd>Telescope jumplist<cr>", desc = "Telescope Jump List" },
