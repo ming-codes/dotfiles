@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 {{ if eq .chezmoi.os "darwin" -}}
-brew bundle --no-lock --file=/dev/stdin <<EOF
+brew bundle --file=/dev/stdin <<EOF
 
 cask_args appdir: "~/Applications", require_sha: true
 
@@ -48,8 +48,7 @@ cask "alfred"
 cask "slack"
 cask "brave-browser"
 cask "figma"
-cask "iterm2"
-cask "kaleidoscope@3"
+cask "kitty"
 cask "divvy"
 cask "pixelsnap"
 cask "cleanshot"
