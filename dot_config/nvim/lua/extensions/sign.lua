@@ -1,4 +1,0 @@
-return {
-  define = function()
-  end
-}

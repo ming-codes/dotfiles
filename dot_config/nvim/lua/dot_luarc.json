@@ -4,5 +4,9 @@
         "/Users/mliu4/.config/nvim/lua",
         "/Users/mliu4/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/6572d25d",
         "/Users/mliu4/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/10cfc252"
+    ],
+    "diagnostics.globals": [
+        "vim",
+        "Snacks"
     ]
 }

@@ -1,0 +1,13 @@
+{
+  "nativeMCPServers": [],
+  "mcpServers": {
+    "github": {
+      "url": "https://api.githubcopilot.com/mcp/",
+      "disabled": false
+    },
+    "atlassian": {
+      "url": "https://mcp.atlassian.com/v1/sse",
+      "disabled": false
+    }
+  }
+}
