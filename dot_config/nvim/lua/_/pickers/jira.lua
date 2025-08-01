@@ -1,4 +1,4 @@
-local Async = require('snacks.picker.util.async')
+local Async = require('plenary.async')
 local Job = require('plenary.job')
 
 local M = {}
@@ -29,10 +29,9 @@ function M.search()
       return function(add) -- add is an async function
         local self = ctx.async
 
-        -- "assignee = currentUser() AND Sprint in openSprints()"
         Job:new({
           command = 'acli',
-          args = { 'jira', 'workitem', 'search', '--json', '--jql', 'assignee = currentUser()', '-f', table.concat({ "summary", "description", "status" }, ',') },
+          args = { 'jira', 'workitem', 'search', '--json', '--jql', 'assignee = currentUser() AND Sprint in openSprints()', '-f', table.concat({ "summary", "description", "status" }, ',') },
           on_exit = function(job)
             local items = vim.json.decode(table.concat(job:result()))
             local max_key = 0
@@ -72,15 +71,30 @@ function M.search()
       return { { item.key, "TabLineSel" }, { key_spacer }, { item.status }, { status_spacer }, { item.summary, offset = 1 } }
     end,
     confirm = coroutine.wrap(function(picker, item)
-      local target = item.key .. "/" .. string.gsub(item.summary, " ", "_")
+      Async.run(function()
+        local target = item.key .. "/" .. string.lower(string.gsub(item.summary, " ", "_"))
+        local git = require('_.jobs.git')
 
-      picker:close()
+        Snacks.notify.info('Ensuring ' .. target .. ' branch exists', {
+          title = 'git',
+        })
 
-      Snacks.debug.inspect(target)
-      -- Git branch <name> main
-      -- !git show-ref
-      -- !git show-ref --quiet refs/heads/master
-      -- vim.cmd(('WorkspacesOpen %s'):format(item.name))
+        git.ensure_branch(target)
+
+        if git.does_changes_exist(target) then
+          Snacks.notify.warn('File conflict exists, please manually switch branch', {
+            title = 'git'
+          })
+        else
+          git.checkout_branch(target)
+
+          Snacks.notify.warn('Checked out branch ' .. target, {
+            title = 'git'
+          })
+        end
+
+        picker:close()
+      end)
     end),
   })
 end

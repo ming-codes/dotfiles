@@ -81,6 +81,8 @@ return {
       image = {
         enabled = true,
         force = true,
+        inline = true,
+        float = false,
         doc = {
           max_width = 20,
           max_height = 10,
@@ -185,6 +187,7 @@ return {
       { "<leader>sD", function() Snacks.picker.diagnostics_buffer() end,    desc = "Buffer Diagnostics" },
       { "<leader>sh", function() Snacks.picker.help() end,                  desc = "Help Pages" },
       { "<leader>sH", function() Snacks.picker.highlights() end,            desc = "Highlights" },
+      { "<leader>sJ", function() require('_.pickers.jira').search() end,    desc = "JIRA" },
       -- { "<leader>si", function() Snacks.picker.icons() end, desc = "Icons" },
       -- { "<leader>sj", function() Snacks.picker.jumps() end, desc = "Jumps" },
       -- { "<leader>sk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
@@ -311,9 +314,16 @@ return {
         desc = "Run test suite in file"
       },
       {
-        "<leader>ed",
+        "<leader>ee",
         function()
           require('neotest').run.run()
+        end,
+        desc = "Test debug closest"
+      },
+      {
+        "<leader>ed",
+        function()
+          require('neotest').run.run({ strategy = 'dap' })
         end,
         desc = "Test debug closest"
       },
@@ -394,11 +404,15 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     opts = {
-      picker = "snacks"
+      picker = "snacks",
+      pull_requests = {
+        use_branch_name_as_title = true
+      }
     },
     keys = {
       { "<leader>h/", "<cmd>Octo pr search<cr>",   desc = "Search Pull Request" },
       { "<leader>hc", "<cmd>Octo pr create<cr>",   desc = "Create Pull Request" },
+      { "<leader>hC", "<cmd>Octo pr checkout<cr>", desc = "Checkout the Pull Request" },
       { "<leader>hx", "<cmd>Octo pr browser<cr>",  desc = "Open Pull Request in Browser" },
       { "<leader>ho", "<cmd>Octo comment add<cr>", desc = "Add comment" },
     },

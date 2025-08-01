@@ -188,7 +188,7 @@ return {
           end
 
           return vim.bo[buf].ft == 'markdown'
-              or vim.bo[buf].ft == 'oil'           -- enable in oil buffers
+              -- or vim.bo[buf].ft == 'oil'           -- enable in oil buffers
               or vim.bo[buf].ft == 'fugitive'      -- enable in fugitive buffers
               or vim.bo[buf].ft == 'fugitiveblame' -- enable in fugitive buffers
               or pcall(vim.treesitter.get_parser, buf)
@@ -299,6 +299,8 @@ return {
       vim.cmd('hi TabLineSel guibg=#0087AF guifg=#EEEEEE')
       vim.cmd('hi TabLine guibg=#E4E4E4 guifg=#444444')
       vim.cmd('hi TabLineFill guibg=#E4E4E4 guifg=#444444')
+      vim.cmd('hi DropBarMenuHoverEntry guibg=#005f87 guifg=#EEEEEE')
+      vim.cmd('hi DropBarMenuCurrentContext guibg=#0087af guifg=#EEEEEE')
     end
   },
 }
