@@ -2,7 +2,7 @@
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-brew bundle --no-lock --file=/dev/stdin <<EOF
+brew bundle --file=/dev/stdin <<EOF
 brew "gpg"
 EOF
 
