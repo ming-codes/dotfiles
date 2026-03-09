@@ -39,13 +39,12 @@ brew "moreutils"
 brew "watchman"
 brew "direnv"
 brew "shfmt"
+brew "prettierd"
 
-tap "fsouza/prettierd"
+brew "anomalyco/tap/opencode"
 
-brew "fsouza/prettierd/prettierd"
-
-tap "atlassian/homebrew-acli"
-brew "acli"
+#tap "atlassian/homebrew-acli"
+#brew "acli"
 
 cask "figma"
 cask "dash"
@@ -58,7 +57,7 @@ cask "divvy"
 cask "pixelsnap"
 cask "cleanshot"
 
-mas "amphetamine", id: 937984704
+#mas "amphetamine", id: 937984704
 
 EOF
 {{ else if eq .chezmoi.os "linux" -}}
