@@ -6,6 +6,7 @@
   "mcp": {
     "chrome-devtools": {
       "type": "local",
+      "enabled": false,
       "command": [
         "npx",
         "-y",
@@ -13,6 +14,14 @@
         "--autoConnect",
         "--user-data-dir",
         "{env:HOME}/Library/Application Support/BraveSoftware/Brave-Browser/"
+      ]
+    },
+    "blender": {
+      "type": "local",
+      "enabled": false,
+      "command": [
+        "uvx",
+        "blender-mcp"
       ]
     }
   }
