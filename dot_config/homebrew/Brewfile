@@ -1,0 +1,61 @@
+
+# Core
+brew "jq"
+brew "lazygit"
+brew "moreutils"
+brew "coreutils"
+brew "gh"
+brew "git"
+brew "neovim"
+brew "ripgrep"
+brew "shfmt"
+brew "tmux"
+brew "trash-cli"
+brew "tree"
+
+# Utils
+
+#tap "anomalyco/tap"
+#tap "atlassian/acli"
+#tap "fsouza/prettierd"
+#brew "agent-browser"
+#brew "asdf"
+#brew "bat"
+#brew "black"
+#brew "librsvg"
+#brew "chafa"
+#brew "curl"
+#brew "dash-shell"
+#brew "direnv"
+#brew "fzf"
+#brew "gawk"
+#brew "git-delta"
+#brew "gnupg"
+#brew "imagemagick"
+#brew "mas"
+#brew "pngpaste"
+#brew "rename"
+#brew "ruby"
+#brew "sf-pwgen"
+#brew "uv"
+#brew "watchman"
+#brew "wget"
+#brew "yq"
+#brew "zsh"
+#brew "anomalyco/tap/opencode"
+#brew "fsouza/prettierd/prettierd"
+##cask "alfred", args: { appdir: "~/Applications" }
+##cask "blender"
+#cask "brave-browser", args: { appdir: "~/Applications" }
+#cask "cleanshot", args: { appdir: "~/Applications" }
+#cask "dash", args: { appdir: "~/Applications" }
+##cask "divvy", args: { appdir: "~/Applications" }
+##cask "figma", args: { appdir: "~/Applications" }
+##cask "firefox"
+#cask "kitty", args: { appdir: "~/Applications" }
+##cask "miro"
+##cask "mockoon"
+#cask "pixelsnap", args: { appdir: "~/Applications" }
+##cask "quip"
+##cask "slack", args: { appdir: "~/Applications" }
+##cask "wrike"
