@@ -1,4 +1,3 @@
-
 # Core
 brew "jq"
 brew "lazygit"
@@ -12,8 +11,20 @@ brew "shfmt"
 brew "tmux"
 brew "trash-cli"
 brew "tree"
+brew "watchman"
+brew "wget"
+brew "yq"
+brew "zsh"
 
 # Utils
+brew "anomalyco/tap/opencode"
+brew "fsouza/prettierd/prettierd"
+
+cask "brave-browser"
+cask "firefox"
+cask "pixelsnap"
+cask "cleanshot"
+cask "dash"
 
 #tap "anomalyco/tap"
 #tap "atlassian/acli"
@@ -38,24 +49,13 @@ brew "tree"
 #brew "ruby"
 #brew "sf-pwgen"
 #brew "uv"
-#brew "watchman"
-#brew "wget"
-#brew "yq"
-#brew "zsh"
-#brew "anomalyco/tap/opencode"
-#brew "fsouza/prettierd/prettierd"
 ##cask "alfred", args: { appdir: "~/Applications" }
 ##cask "blender"
-#cask "brave-browser", args: { appdir: "~/Applications" }
-#cask "cleanshot", args: { appdir: "~/Applications" }
-#cask "dash", args: { appdir: "~/Applications" }
 ##cask "divvy", args: { appdir: "~/Applications" }
 ##cask "figma", args: { appdir: "~/Applications" }
-##cask "firefox"
 #cask "kitty", args: { appdir: "~/Applications" }
 ##cask "miro"
 ##cask "mockoon"
-#cask "pixelsnap", args: { appdir: "~/Applications" }
 ##cask "quip"
 ##cask "slack", args: { appdir: "~/Applications" }
 ##cask "wrike"
