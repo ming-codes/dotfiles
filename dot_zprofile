@@ -1,0 +1,5 @@
+source ~/.profile
+
+export SHELL=$(command -v zsh)
+
+fpath=( ~/.local/share/completions "${fpath[@]}" )
