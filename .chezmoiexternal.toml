@@ -1,0 +1,24 @@
+[".config/tmux/plugins/tpm"]
+type = "git-repo"
+url = "https://github.com/tmux-plugins/tpm"
+refreshPeriod = "168h"
+
+#[".zsh/_git"]
+#type = "file"
+#url = "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh"
+#refreshPeriod = "168h"
+#
+#[".local/share/completions/history-substring-search.zsh"]
+#type = "file"
+#url = "https://raw.githubusercontent.com/zsh-users/zsh-history-substring-search/master/zsh-history-substring-search.zsh"
+#refreshPeriod = "168h"
+#
+#["Library/Fonts/MonacoNerdFont-Regular.ttf"]
+#type = "file"
+#url = "https://github.com/Karmenzind/monaco-nerd-fonts/raw/master/fonts/MonacoNerdFont-Regular.ttf"
+#refreshPeriod = "168h"
+#
+#["Library/Fonts/MonacoNerdFontMono-Regular.ttf"]
+#type = "file"
+#url = "https://github.com/Karmenzind/monaco-nerd-fonts/raw/master/fonts/MonacoNerdFontMono-Regular.ttf"
+#refreshPeriod = "168h"

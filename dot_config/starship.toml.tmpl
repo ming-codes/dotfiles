@@ -1,0 +1,50 @@
+"$schema" = "https://starship.rs/config-schema.json"
+
+format = """
+$hostname\
+$username\
+$directory\
+$status\
+[](fg:prev_bg)\
+$character"""
+
+right_format = """
+$git_branch"""
+
+add_newline = false
+
+[hostname]
+ssh_only = true
+format = "[](fg:254)[ $hostname ](bg:254 fg:240)[](bg:31 fg:254)"
+disabled = false
+
+[username]
+show_always = true
+format = "([](fg:#0087af))[ $user ](bg:{{.starship.a.bg}} fg:{{.starship.a.fg}})"
+
+[directory]
+truncation_length = 3
+truncate_to_repo = false
+truncation_symbol = "⋯  "
+format = "[](bg:{{.starship.b.bg}} fg:prev_bg)[ $path ](bg:{{.starship.b.bg}} fg:{{.starship.b.fg}})"
+read_only = " 󰌾"
+
+[directory.substitutions]
+'/' = "  "
+
+[git_branch]
+format = "[](fg:{{.starship.z.bg}})[ $symbol$branch ](bg:{{.starship.z.bg}} fg:{{.starship.z.fg}})"
+
+[git_status]
+disabled = true
+
+[status]
+disabled = false
+format = "[](fg:prev_bg bg:{{.starship.c.bg}})[ $status ](bg:{{.starship.c.bg}})"
+
+[character]
+success_symbol = "[ ](bold green)"
+error_symbol = "[ ](bold red)"
+
+[package]
+disabled = true

@@ -1,0 +1,81 @@
+# Core
+brew "fd"
+brew "jq"
+brew "lazygit"
+brew "moreutils"
+brew "coreutils"
+brew "gh"
+brew "git"
+brew "tmux"
+brew "trash-cli"
+brew "tree"
+brew "watchman"
+brew "wget"
+brew "yq"
+brew "zsh"
+brew "fzf"
+brew "ruby"
+brew "curl"
+brew "yazi"
+brew "starship"
+
+# managers
+brew "mise"
+brew "skillshare"
+brew "uv"
+brew "mackup"
+
+# neovim
+brew "neovim"
+brew "ripgrep"
+brew "shfmt"
+brew "black"
+brew "codespell"
+brew "imagemagick" # Need this for image.nvim
+brew "mermaid-cli" # Need this for diagram.nvim
+
+# Utils
+brew "fsouza/prettierd/prettierd"
+brew "anomalyco/tap/opencode"
+
+brew "bat"
+brew "ast-grep"
+brew "agent-browser"
+
+cask "font-jetbrains-mono"
+
+cask "brave-browser"
+cask "cleanshot"
+cask "pixelsnap"
+cask "firefox", args: { appdir: "~/Applications" }
+cask "dash", args: { appdir: "~/Applications" }
+
+# Media
+#brew "ffmpeg"
+brew "resvg"
+brew "poppler"
+brew "7-Zip"
+
+#tap "anomalyco/tap"
+#tap "atlassian/acli"
+#tap "fsouza/prettierd"
+#brew "librsvg"
+#brew "chafa"
+#brew "direnv"
+#brew "gawk"
+#brew "git-delta"
+#brew "gnupg"
+#brew "mas"
+#brew "pngpaste"
+#brew "rename"
+#brew "sf-pwgen"
+##cask "alfred", args: { appdir: "~/Applications" }
+##cask "blender"
+##cask "divvy", args: { appdir: "~/Applications" }
+##cask "figma", args: { appdir: "~/Applications" }
+#cask "kitty", args: { appdir: "~/Applications" }
+##cask "miro"
+##cask "mockoon"
+##cask "quip"
+##cask "slack", args: { appdir: "~/Applications" }
+##cask "wrike"

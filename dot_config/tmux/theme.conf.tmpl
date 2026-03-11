@@ -1,0 +1,54 @@
+
+# TODO cursor
+set -g cursor-colour '#5e5e5e'
+set -g cursor-style blinking-block
+
+set -g mode-style 'bg=#9e9e9e' # this is the little tip in copy mode
+
+set -g copy-mode-selection-style 'bg=#ffff00,fg=black'
+
+# | cursor-colour | Set the colour of the cursor |
+# | cursor-style | Set cursor style: default, blinking-block, block, blinking-underline, underline, blinking-bar, bar |
+# | cursor-blank | Cursor visibility when cursor is in a window not attached |
+# | cursor-flash | Cursor flash time in milliseconds |
+
+
+set -g message-command-style "fg=#e4e4e4,bg=#00ff00"
+set -g message-style "fg=#444444,bg=#d75f00"
+
+##############
+#    Pane    #
+##############
+set -g pane-border-style 'fg={{.tmux.pane.border.inactive.fg}},bg={{.tmux.pane.bg}}'
+set -g pane-active-border-style 'fg={{.tmux.pane.border.active.fg}},bg={{.tmux.pane.bg}}'
+set -g pane-border-status top
+set -g pane-border-format " #{pane_index} #{pane_title} "
+set -g pane-border-indicators both
+set -g pane-border-lines heavy # values: single double heavy simple number
+
+set -g window-style 'fg={{ .tmux.pane.fg }},bg={{ .tmux.pane.bg }}'
+set -g window-active-style 'none'
+
+##############
+#    Line    #
+##############
+
+set -g status-justify "left"
+set -g status "on"
+
+set -g status-style "bg={{ .tmux.line.bg }}"
+
+set -g status-left-style "none"
+set -g status-left-length "100"
+set -g status-left "#[fg={{ .tmux.line.status.a.fg }},bg={{ .tmux.line.status.a.bg }}] #S #[fg={{ .tmux.line.status.a.bg }},bg={{ .tmux.line.bg }},nobold,nounderscore,noitalics]"
+
+set -g status-right-style "none"
+set -g status-right-length "100"
+set -g status-right "#[fg={{ .tmux.line.status.y.bg }},bg={{ .tmux.line.bg }},nobold,nounderscore,noitalics]#[fg={{.tmux.line.status.y.fg}},bg={{ .tmux.line.status.y.bg }}] %Y-%m-%d  %I:%M %p #[fg={{.tmux.line.status.z.bg}},bg={{ .tmux.line.status.y.bg }},nobold,noitalics,nounderscore]#[fg={{.tmux.line.status.z.fg}},bg={{.tmux.line.status.z.bg}}] #h "
+
+set -g window-status-activity-style "bg={{ .tmux.line.tab.inactive.bg }}"
+set -g window-status-separator ""
+set -g window-status-style "none,fg={{ .tmux.line.tab.inactive.fg }},bg={{ .tmux.line.tab.inactive.bg }}"
+
+set -g window-status-format "#[fg={{ .tmux.line.bg }},bg={{ .tmux.line.tab.inactive.bg }},nobold,nounderscore,noitalics]#[default] #I  #W #[fg={{ .tmux.line.tab.inactive.bg }},bg={{ .tmux.line.bg }},nobold,nounderscore,noitalics]"
+set -g window-status-current-format "#[fg={{ .tmux.line.bg }},bg={{ .tmux.line.tab.active.bg }},nobold,nounderscore,noitalics]#[fg={{ .tmux.line.tab.active.fg }},bg={{ .tmux.line.tab.active.bg }}] #I  #W #[fg={{ .tmux.line.tab.active.bg }},bg={{ .tmux.line.bg }},nobold,nounderscore,noitalics]"

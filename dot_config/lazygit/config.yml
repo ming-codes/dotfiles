@@ -1,0 +1,13 @@
+gui:
+  scrollHeight: 15
+
+  theme:
+    activeBorderColor:
+      - "#005f87"
+      - bold
+    inactiveBorderColor:
+      - "#c4c4c4"
+    selectedLineBgColor:
+      - "#9e9e9e"
+    inactiveViewSelectedLineBgColor:
+      - "#c4c4c4"

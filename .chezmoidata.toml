@@ -1,0 +1,100 @@
+[color]
+black = "#000000"
+white = "#eeeeee"
+gray_light = "#e4e4e4"
+gray_medium = "#585858"
+cyan_dark = "#005f87"
+cyan = "#0087af"
+
+# #eeeeee # Default Background
+# #c4c4c4 # Lighter Background (Used for status bars, line number and folding marks)
+# #9e9e9e # Selection Background
+# #858585 # Comments, Invisibles, Line Highlighting
+# #6b6b6b # Dark Foreground (Used for status bars)
+# #5e5e5e # Default Foreground, Caret, Delimiters, Operators
+# #525252 # Light Foreground (Not often used)
+# #444444 # Light Background (Not often used)
+# #d70000 # Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+# #d75f00 # Integers, Boolean, Constants, XML Attributes, Markup Link Url
+# #d70087 # Classes, Markup Bold, Search Text Background
+# #008700 # Strings, Inherited Class, Markup Code, Diff Inserted
+# #0087af # Support, Regular Expressions, Escape Characters, Markup Quotes
+# #005f87 # Functions, Methods, Attribute IDs, Headings
+# #8700af # Keywords, Storage, Selector, Markup Italic, Diff Changed
+# #af0000 # Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
+
+# #d75f00 <- This color is magical. It has great contrast against both light and dark text
+# #0066cc | 7.97 (AAA) | 2.47 (FAIL) |
+# #ff6600 | 2.77 (AA) | 7.12 (AAA) |
+# #008800 | 4.67 (AA) | 4.22 (AA) |
+# #9900cc | 5.93 (AAA) | 3.32 (AA) |
+
+[starship.a]  # username
+bg = "#0087af"
+fg = "#eeeeee"
+
+[starship.b]  # directory
+bg = "#005f87"
+fg = "#eeeeee"
+
+[starship.c]  # status
+bg = "#d75f00"
+fg = "#eeeeee"
+
+[starship.z]  # git_branch
+bg = "#0087af"
+fg = "#eeeeee"
+
+[tmux.cursor]
+bg = "#5e5e5e"
+style = "blinking-block"
+
+[tmux.copy]
+bg = "#9e9e9e"
+
+[tmux.message]
+fg = "#444444"
+bg = "#d75f00"
+
+# TODO ^^^
+
+[tmux.pane]
+bg = "#eeeeee"
+fg = "#000000"
+
+[tmux.pane.border.active]
+fg = "#0087af"
+
+[tmux.pane.border.inactive]
+fg = "#c4c4c4"
+
+[tmux.line]
+bg = "#005f87"
+
+[tmux.line.tab.active]
+bg = "#eeeeee"
+fg = "#005f87"
+
+[tmux.line.tab.inactive]
+bg = "#0087af"
+fg = "#eeeeee"
+
+[tmux.line.status.a]
+fg = "#005f87"
+bg = "#eeeeee"
+
+[tmux.line.status.b]
+
+[tmux.line.status.c]
+
+[tmux.line.status.x]
+
+[tmux.line.status.y]
+fg = "#eeeeee"
+bg = "#0087af"
+
+[tmux.line.status.z]
+fg = "#005f87"
+bg = "#eeeeee"
+
+[neovim.lualine]

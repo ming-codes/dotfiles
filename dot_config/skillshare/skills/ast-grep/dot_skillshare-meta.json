@@ -1,0 +1,13 @@
+{
+  "source": "github.com/ast-grep/agent-skill/ast-grep/skills/ast-grep",
+  "type": "github-subdir",
+  "installed_at": "2026-03-12T12:25:45.894467-07:00",
+  "repo_url": "https://github.com/ast-grep/agent-skill.git",
+  "subdir": "ast-grep/skills/ast-grep",
+  "version": "577f4d4",
+  "tree_hash": "ef60f77564e2d47d0cba25a809daa3af8f0c469b",
+  "file_hashes": {
+    "SKILL.md": "sha256:1d356580b6d3af4feb5722e820b1c34041f6e90162c063f1c63fce3f21c72543",
+    "references/rule_reference.md": "sha256:9f6d2ba2f2dbde059f61f426c262abe943f548984496962c43c7cc6e44813ad6"
+  }
+}

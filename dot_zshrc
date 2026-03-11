@@ -1,0 +1,32 @@
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+
+# Raise file descriptor limit
+ulimit -n 8192
+
+eval "$(starship init zsh)"
+
+source $FZF_CONFIG_HOME/fzf.zsh
+source $ZSH_COMPLETION_HOME/history-substring-search.zsh
+
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+alias vim="nvim"
+alias vi="nvim"
+alias vd="uvx visidata $VISIDATA_DEFAULT_OPTS"
+alias opencode="opencode --port"
+
+zstyle ':completion:*' menu select
+#zstyle ':completion:*:*:git:*' script ~/.git-completion.bash
+# `compinit` scans $fpath, so do this before calling it.
+fpath=(~/.zsh/functions $fpath)
+autoload -Uz compinit && compinit
+
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
+
+export JRE_HOME=$JAVA_HOME
