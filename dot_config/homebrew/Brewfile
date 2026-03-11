@@ -15,16 +15,17 @@ brew "watchman"
 brew "wget"
 brew "yq"
 brew "zsh"
+brew "mackup"
 
 # Utils
 brew "anomalyco/tap/opencode"
 brew "fsouza/prettierd/prettierd"
 
 cask "brave-browser"
-cask "firefox"
-cask "pixelsnap"
 cask "cleanshot"
-cask "dash"
+cask "pixelsnap"
+cask "firefox", args: { appdir: "~/Applications" }
+cask "dash", args: { appdir: "~/Applications" }
 
 #tap "anomalyco/tap"
 #tap "atlassian/acli"
