@@ -1,0 +1,6 @@
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash
+
+# Raise file descriptor limit
+ulimit -n 8192
+
+source $POWERLINE_CONFIG_HOME/promptline.sh # 7ms
