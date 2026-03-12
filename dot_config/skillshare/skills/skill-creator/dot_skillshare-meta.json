@@ -1,0 +1,18 @@
+{
+  "source": "github.com/openclaw/openclaw/skills/skill-creator",
+  "type": "github-subdir",
+  "installed_at": "2026-03-12T09:18:00.769812-07:00",
+  "repo_url": "https://github.com/openclaw/openclaw.git",
+  "subdir": "skills/skill-creator",
+  "version": "b77b748",
+  "tree_hash": "533cfa3391d4a08ac9049001b5ff807358ec93f4",
+  "file_hashes": {
+    "SKILL.md": "sha256:c24f65fc88b9fb258a8d3a673e3c6de309a01b619c3865af8f01ef164abfeb01",
+    "license.txt": "sha256:cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "scripts/init_skill.py": "sha256:bcd6b802c400a9e89319844c6c3d965855c8b0555e982eb72cd4accb7ee67e3e",
+    "scripts/package_skill.py": "sha256:f290101073ee6a167f46edadda164d2c88affc03c554135fe101a4e422c44c22",
+    "scripts/quick_validate.py": "sha256:3e3cdceba2daa893e260551c8c5f09937f94be1153307185c7fc7c24c0896750",
+    "scripts/test_package_skill.py": "sha256:6b261a50fe632846e59e96b1c3e1f6787ffd534f7204d14bd7df8784873ac691",
+    "scripts/test_quick_validate.py": "sha256:2be00c164cb61020637d0364dc8387a8085522b6bfff7606f734a5274046be44"
+  }
+}

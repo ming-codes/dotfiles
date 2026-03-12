@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/runkids/skillshare/main/schemas/registry.schema.json
+skills:
+    - name: skill-creator
+      source: github.com/openclaw/openclaw/skills/skill-creator
+    - name: skillshare
+      source: github.com/runkids/skillshare/skills/skillshare
+    - name: ast-grep
+      source: github.com/ast-grep/agent-skill/ast-grep/skills/ast-grep
