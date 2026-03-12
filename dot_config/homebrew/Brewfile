@@ -21,6 +21,9 @@ brew "mackup"
 brew "anomalyco/tap/opencode"
 brew "fsouza/prettierd/prettierd"
 
+brew "ast-grep"
+brew "agent-browser"
+
 cask "brave-browser"
 cask "cleanshot"
 cask "pixelsnap"
@@ -30,7 +33,6 @@ cask "dash", args: { appdir: "~/Applications" }
 #tap "anomalyco/tap"
 #tap "atlassian/acli"
 #tap "fsouza/prettierd"
-#brew "agent-browser"
 #brew "asdf"
 #brew "bat"
 #brew "black"
