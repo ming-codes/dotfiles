@@ -4,4 +4,4 @@ brew upgrade
 opencode upgrade
 bun upgrade
 uv self update
-skillshare upgrade
+# skillshare upgrade

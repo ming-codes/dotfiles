@@ -16,6 +16,7 @@ brew "wget"
 brew "yq"
 brew "zsh"
 brew "mackup"
+brew "skillshare"
 
 # Utils
 brew "anomalyco/tap/opencode"
