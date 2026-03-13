@@ -5,3 +5,5 @@ opencode upgrade
 bun upgrade
 uv self update
 # skillshare upgrade
+
+skillshare sync
