@@ -3,3 +3,5 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 mackup restore -f
+
+skillshare sync
