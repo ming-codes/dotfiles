@@ -20,7 +20,6 @@ brew "uv"
 brew "skillshare"
 
 # Utils
-brew "anomalyco/tap/opencode"
 brew "fsouza/prettierd/prettierd"
 
 brew "ast-grep"
@@ -32,6 +31,7 @@ cask "pixelsnap"
 cask "firefox", args: { appdir: "~/Applications" }
 cask "dash", args: { appdir: "~/Applications" }
 
+#brew "anomalyco/tap/opencode"
 #tap "anomalyco/tap"
 #tap "atlassian/acli"
 #tap "fsouza/prettierd"
