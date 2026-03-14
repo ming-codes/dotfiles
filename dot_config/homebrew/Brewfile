@@ -16,6 +16,7 @@ brew "wget"
 brew "yq"
 brew "zsh"
 brew "mackup"
+brew "uv"
 brew "skillshare"
 
 # Utils

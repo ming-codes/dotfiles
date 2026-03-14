@@ -33,3 +33,8 @@ Eliminate metacommentary and progress narration. Do not announce what you are ab
 - ~/Library/Application Support/BraveSoftware/Brave-Browser/
 - Always use `agent-browser connect <url>` to connect first with url pointed to websocket
   url constructed from `DevToolsActivePort`.
+
+### verdaccio
+
+- `verdaccio` is a lightweight private npm proxy registry.
+- Start `verdaccio` server by running `npx verdaccio`
