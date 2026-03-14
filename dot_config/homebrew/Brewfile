@@ -18,6 +18,8 @@ brew "zsh"
 brew "mackup"
 brew "uv"
 brew "skillshare"
+brew "fzf"
+brew "ruby"
 
 # Utils
 brew "fsouza/prettierd/prettierd"
@@ -43,7 +45,6 @@ cask "dash", args: { appdir: "~/Applications" }
 #brew "curl"
 #brew "dash-shell"
 #brew "direnv"
-#brew "fzf"
 #brew "gawk"
 #brew "git-delta"
 #brew "gnupg"
@@ -51,9 +52,7 @@ cask "dash", args: { appdir: "~/Applications" }
 #brew "mas"
 #brew "pngpaste"
 #brew "rename"
-#brew "ruby"
 #brew "sf-pwgen"
-#brew "uv"
 ##cask "alfred", args: { appdir: "~/Applications" }
 ##cask "blender"
 ##cask "divvy", args: { appdir: "~/Applications" }
