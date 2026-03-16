@@ -20,6 +20,7 @@ brew "uv"
 brew "skillshare"
 brew "fzf"
 brew "ruby"
+brew "asdf"
 
 # Utils
 brew "fsouza/prettierd/prettierd"
@@ -37,7 +38,6 @@ cask "dash", args: { appdir: "~/Applications" }
 #tap "anomalyco/tap"
 #tap "atlassian/acli"
 #tap "fsouza/prettierd"
-#brew "asdf"
 #brew "bat"
 #brew "black"
 #brew "librsvg"
