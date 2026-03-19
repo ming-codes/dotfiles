@@ -1,4 +1,5 @@
 # Core
+brew "fd"
 brew "jq"
 brew "lazygit"
 brew "moreutils"
@@ -32,6 +33,8 @@ brew "fsouza/prettierd/prettierd"
 brew "bat"
 brew "ast-grep"
 brew "agent-browser"
+
+brew "lightpanda-io/browser/lightpanda"
 
 cask "brave-browser"
 cask "cleanshot"
