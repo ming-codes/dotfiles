@@ -258,9 +258,8 @@ return {
         if bufname:match("/node_modules/") then
           return
         end
-local state = {}
 
-return {
+        return {
           timeout_ms = 500,
           lsp_fallback = true,
         }
