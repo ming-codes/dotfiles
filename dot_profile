@@ -17,6 +17,10 @@ export VD_CONFIG_HOME=$XDG_CONFIG_HOME/visidata
 export POWERLINE_CONFIG_HOME=$XDG_CONFIG_HOME/powerline
 export ZSH_COMPLETION_HOME=$XDG_LOCAL_HOME/share/completions
 
+# Workaround for OpenCode markdown rendering issues in the terminal
+# https://github.com/anomalyco/opencode/issues/17323
+export OPENCODE_EXPERIMENTAL_MARKDOWN=0
+
 export PATH=/opt/cisco/anyconnect/bin:$PATH
 export PATH=$HOME/bin:$PATH
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
