@@ -289,39 +289,39 @@ return {
       require('render-markdown').setup({})
     end,
   },
-  {
-    -- TODO replace with mini.highpatterns
-    "folke/todo-comments.nvim",
-    event = "BufEnter",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    cmd = { "TodoTelescope" },
-    config = true,
-    opts = {
-      signs = false,
-      gui_style = {
-        fg = "BOLD"
-      },
-      highlight = {
-        pattern = [[<(KEYWORDS)]],
-        keyword = "wide_fg"
-      },
-      search = {
-        pattern = [[\b(KEYWORDS)\b]]
-      }
-    }
-  },
-  {
-    -- TODO replace with mini.highpatterns
-    "norcalli/nvim-colorizer.lua",
-    keys = {
-      { "<leader>uc", "<cmd>ColorizerToggle<cr>", desc = "Toggle Colorizer" }
-    },
-    config = function()
-      require('colorizer').setup({
-        "typescriptreact", "javascriptreact"
-      })
-    end
-  },
+  -- {
+  --   -- TODO replace with mini.highpatterns
+  --   "folke/todo-comments.nvim",
+  --   event = "BufEnter",
+  --   dependencies = { "nvim-lua/plenary.nvim" },
+  --   cmd = { "TodoTelescope" },
+  --   config = true,
+  --   opts = {
+  --     signs = false,
+  --     gui_style = {
+  --       fg = "BOLD"
+  --     },
+  --     highlight = {
+  --       pattern = [[<(KEYWORDS)]],
+  --       keyword = "wide_fg"
+  --     },
+  --     search = {
+  --       pattern = [[\b(KEYWORDS)\b]]
+  --     }
+  --   }
+  -- },
+  -- {
+  --   -- TODO replace with mini.highpatterns
+  --   "norcalli/nvim-colorizer.lua",
+  --   keys = {
+  --     { "<leader>uc", "<cmd>ColorizerToggle<cr>", desc = "Toggle Colorizer" }
+  --   },
+  --   config = function()
+  --     require('colorizer').setup({
+  --       "typescriptreact", "javascriptreact"
+  --     })
+  --   end
+  -- },
   {
     "NLKNguyen/papercolor-theme",
     event = "VimEnter",
