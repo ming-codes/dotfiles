@@ -1,4 +1,5 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(mise activate zsh)"
 
 export ASDF_DIR="$(/opt/homebrew/bin/brew --prefix asdf)/libexec"
 export ASDF_HOME=$HOME/.asdf
