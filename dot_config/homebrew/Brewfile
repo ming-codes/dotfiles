@@ -13,22 +13,26 @@ brew "watchman"
 brew "wget"
 brew "yq"
 brew "zsh"
-brew "mackup"
-brew "uv"
-brew "skillshare"
 brew "fzf"
 brew "ruby"
 brew "curl"
+
+# managers
 brew "mise"
+brew "skillshare"
+brew "uv"
+brew "mackup"
 
 # neovim
 brew "neovim"
 brew "ripgrep"
 brew "shfmt"
 brew "black"
+brew "codespell"
 
 # Utils
 brew "fsouza/prettierd/prettierd"
+brew "anomalyco/tap/opencode"
 
 brew "bat"
 brew "ast-grep"
@@ -42,7 +46,6 @@ cask "pixelsnap"
 cask "firefox", args: { appdir: "~/Applications" }
 cask "dash", args: { appdir: "~/Applications" }
 
-#brew "anomalyco/tap/opencode"
 #tap "anomalyco/tap"
 #tap "atlassian/acli"
 #tap "fsouza/prettierd"
