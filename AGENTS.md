@@ -6,7 +6,8 @@ Most files are sync'd to home directory via chezmoi.
 
 Tools are managed by many toolchain managers:
 
+- brew
 - uv
 - mise
-- brew
 - skillshare
+- mackup
