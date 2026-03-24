@@ -19,7 +19,7 @@ bindkey '^[[B' history-substring-search-down
 
 alias vim="nvim"
 alias vi="nvim"
-alias vd="vd $VISIDATA_DEFAULT_OPTS"
+alias vd="uvx visidata $VISIDATA_DEFAULT_OPTS"
 
 zstyle ':completion:*' menu select
 #zstyle ':completion:*:*:git:*' script ~/.git-completion.bash
