@@ -35,7 +35,5 @@ source ~/.config/fzf/gh_complete.zsh
 
 export JRE_HOME=$JAVA_HOME
 
-eval "$(direnv hook zsh)"
-
 # bun completions
 [ -s "/Users/mingliu/.bun/_bun" ] && source "/Users/mingliu/.bun/_bun"

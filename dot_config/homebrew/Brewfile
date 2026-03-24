@@ -19,7 +19,7 @@ brew "skillshare"
 brew "fzf"
 brew "ruby"
 brew "curl"
-brew "asdf"
+brew "mise"
 
 # neovim
 brew "neovim"
