@@ -10,8 +10,6 @@ ulimit -n 8192
 
 source $POWERLINE_CONFIG_HOME/promptline.sh     # 7ms
 source $FZF_CONFIG_HOME/fzf.zsh
-#source $ZSH_COMPLETION_HOME/git-completion.bash
-#source $ZSH_COMPLETION_HOME/git-completion.zsh
 source $ZSH_COMPLETION_HOME/history-substring-search.zsh
 
 bindkey '^[[A' history-substring-search-up
@@ -27,13 +25,6 @@ zstyle ':completion:*' menu select
 fpath=(~/.zsh/functions $fpath)
 autoload -Uz compinit && compinit
 
-source ~/.config/fzf/git_complete.zsh
-source ~/.config/fzf/gh_complete.zsh
-
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
-[ -f "${ASDF_HOME:-$HOME/.asdf}"/plugins/java/set-java-home.zsh ] && source "${ASDF_HOME:-$HOME/.asdf}"/plugins/java/set-java-home.zsh
 
 export JRE_HOME=$JAVA_HOME
-
-# bun completions
-[ -s "/Users/mingliu/.bun/_bun" ] && source "/Users/mingliu/.bun/_bun"
