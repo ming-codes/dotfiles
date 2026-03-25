@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/runkids/skillshare/main/schemas/config.schema.json
-source: /Users/mingliu/.config/skillshare/skills
+source: ~/.config/skillshare/skills
 mode: copy
 targets:
   claude:
