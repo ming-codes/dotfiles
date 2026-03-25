@@ -2,6 +2,7 @@ return {
   {
     "mfussenegger/nvim-dap",
     dependencies = {
+      "nvim-lua/plenary.nvim", -- Used in hack
       -- "rcarriga/cmp-dap",
       -- "williamboman/mason.nvim",
       -- "rcarriga/nvim-dap-ui",

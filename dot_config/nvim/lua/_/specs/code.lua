@@ -15,17 +15,6 @@ return {
     end,
   },
   {
-    "mistweaverco/kulala.nvim",
-    ft = { "http", "rest" },
-    config = true,
-    keys = {
-      { "<leader>R",  desc = "Run HTTP Request (kulala)" },
-      { "<leader>Rs", "<cmd>lua require('kulala').run()<cr>",     desc = "Run nearest" },
-      { "<leader>Ra", "<cmd>lua require('kulala').run_all()<cr>", desc = "Run all" },
-      { "<leader>Rr", "<cmd>lua require('kulala').replay()<cr>",  desc = "Run last" },
-    }
-  },
-  {
     "lewis6991/hover.nvim",
     opts = {
       init = function()
@@ -39,7 +28,7 @@ return {
         require('hover.providers.diagnostic')
         -- require('hover.providers.man')
         -- require('hover.providers.dictionary')
-        -- require('hover.providers.highlight')
+        require('hover.providers.highlight')
       end,
       preview_opts = {
         border = 'single'
