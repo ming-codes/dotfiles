@@ -18,6 +18,7 @@ bindkey '^[[B' history-substring-search-down
 alias vim="nvim"
 alias vi="nvim"
 alias vd="uvx visidata $VISIDATA_DEFAULT_OPTS"
+alias opencode="opencode --port"
 
 zstyle ':completion:*' menu select
 #zstyle ':completion:*:*:git:*' script ~/.git-completion.bash

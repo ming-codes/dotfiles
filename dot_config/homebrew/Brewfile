@@ -29,6 +29,7 @@ brew "ripgrep"
 brew "shfmt"
 brew "black"
 brew "codespell"
+brew "imagemagick" # Need this for image.nvim
 
 # Utils
 brew "fsouza/prettierd/prettierd"
@@ -55,7 +56,6 @@ cask "dash", args: { appdir: "~/Applications" }
 #brew "gawk"
 #brew "git-delta"
 #brew "gnupg"
-#brew "imagemagick"
 #brew "mas"
 #brew "pngpaste"
 #brew "rename"
