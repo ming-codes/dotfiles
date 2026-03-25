@@ -40,6 +40,7 @@ vim.o.relativenumber = true
 
 vim.o.startofline = true
 
+vim.o.autoread = true
 vim.o.undofile = true
 vim.o.backup = true
 
