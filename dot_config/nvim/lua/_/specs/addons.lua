@@ -1,9 +1,20 @@
 return {
   {
     "3rd/diagram.nvim",
+    ft = { "md" },
     dependencies = {
       "3rd/image.nvim",
     },
+    opts = {
+      renderer_options = {
+        mermaid = {
+          -- background = nil, -- nil | "transparent" | "white" | "#hex"
+          -- theme = nil, -- nil | "default" | "dark" | "forest" | "neutral"
+          scale = 5, --
+          width = 800,
+        }
+      }
+    }
   },
   {
     "mistweaverco/kulala.nvim",

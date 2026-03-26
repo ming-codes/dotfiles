@@ -186,9 +186,6 @@ return {
     end,
   },
   {
-    "3rd/image.nvim"
-  },
-  {
     "hakonharnes/img-clip.nvim",
     opts = {
       filetypes = {
