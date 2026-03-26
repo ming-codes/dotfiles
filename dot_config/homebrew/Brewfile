@@ -30,6 +30,7 @@ brew "shfmt"
 brew "black"
 brew "codespell"
 brew "imagemagick" # Need this for image.nvim
+brew "mermaid-cli" # Need this for diagram.nvim
 
 # Utils
 brew "fsouza/prettierd/prettierd"
