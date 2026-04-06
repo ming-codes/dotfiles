@@ -4,6 +4,7 @@ return {
     ft = { "http", "rest" },
     config = true,
     keys = {
+      -- TODO we need a hydra for this
       { "<leader>R",  desc = "Run HTTP Request (kulala)" },
       { "<leader>Rs", "<cmd>lua require('kulala').run()<cr>",     desc = "Run nearest" },
       { "<leader>Ra", "<cmd>lua require('kulala').run_all()<cr>", desc = "Run all" },
