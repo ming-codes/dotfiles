@@ -1,4 +1,7 @@
 return {
+  -- Cursor = {},
+  -- CursorLine = {},
+
   Normal = { bg = 'NONE' },
   NormalFloat = { bg = 'NONE' },
 
@@ -7,6 +10,13 @@ return {
   typescriptArrayMethod = { link = 'NORMAL' },
   typescriptDateStaticMethod = { link = 'NORMAL' },
   typescriptFuncCallArg = { link = 'NORMAL' },
+
+  -- embeded
+  Special = { fg = "#8700af" },
+  htmlTag = { link = 'Special' },
+  htmlTagName = { link = 'Special' },
+  tsxTagName = { link = 'Special' },
+  tsxCloseString = { link = 'Special' },
 
   -- Identifier = { fg = 'NONE', ctermfg = 14, underline = true },
   -- ^ this is common, property names are Identifiers
@@ -23,6 +33,7 @@ return {
   Delimiter = { fg = '#0087af' }, -- () [] {}
   typescriptBraces = { link = 'Delimiter' },
   typescriptParens = { link = 'Delimiter' },
+  cssBraces = { link = 'Delimiter' },
   PreProc = { link = 'Delimiter' },
 
   -- type
@@ -32,8 +43,11 @@ return {
   typescriptCall = { fg = 'NONE' },
   Function = { fg = 'NONE' },
 
-  String = { fg = '#008700' },
-  Boolean = { fg = '#008700' },
+  Value = { fg = '#008700' },
+  String = { link = 'Value' },
+  Boolean = { link = 'Value' },
+  cssAttrRegion = { link = 'Value' },
+  cssTextAttr = { link = 'Value' },
 
   LualineNormalA = { fg = '#4d4d4c', bg = '#f5f5f5', bold = true },
   LualineNormalB = { fg = '#efefef', bg = '#3e999f', },
