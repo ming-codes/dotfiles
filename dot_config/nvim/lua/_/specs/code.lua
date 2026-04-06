@@ -1,4 +1,5 @@
 return {
+  { "ngynkvn/gotmpl.nvim", opts = {} },
   {
     "neovim/nvim-lspconfig",
   },
@@ -51,6 +52,8 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    --commit = "",
     event = { "BufEnter" },
     dependencies = {
       { "windwp/nvim-ts-autotag" },
@@ -73,7 +76,33 @@ return {
     build = ":TSUpdate",
     opts = {
       auto_install = true,
-      ensure_installed = { "lua", "vim", "vimdoc", "markdown", "markdown_inline" },
+      ensure_installed = {
+        "bash",
+        "c",
+        "diff",
+        "html",
+        "css",
+        "javascript",
+        "jsdoc",
+        "json",
+        "lua",
+        "luadoc",
+        "luap",
+        "gotmpl",
+        "markdown",
+        "markdown_inline",
+        "printf",
+        "python",
+        "query",
+        "regex",
+        "toml",
+        "tsx",
+        "typescript",
+        "vim",
+        "vimdoc",
+        "xml",
+        "yaml",
+      },
       highlight = {
         enable = true,
         disable = function(_, bufnr)
@@ -114,7 +143,22 @@ return {
         on_attach = nil,
         servers = {
           eslint = {},
-          lua_ls = {},
+          lua_ls = {
+            settings = {
+              Lua = {
+                diagnostics = {
+                  globals = { "vim" },
+                },
+                workspace = {
+                  library = {
+                    vim.fn.expand("$VIMRUNTIME/lua"),
+                    vim.fn.expand("$XDG_CONFIG_HOME") .. "/nvim/lua",
+                  },
+                },
+                hint = { enable = true },
+              },
+            },
+          },
           tailwindcss = {},
           jsonls = {},
           ts_ls = {
