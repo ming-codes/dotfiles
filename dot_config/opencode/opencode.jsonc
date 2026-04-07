@@ -6,6 +6,14 @@
     "opencode-wakelock",
     "opencode-pty"
   ],
+  "permission": {
+    "external_directory": {
+      "~/.config/**": "allow",
+      "~/.local/**": "allow",
+      "~/Workspace/**": "allow",
+      "~/Sandbox/**": "allow"
+    }
+  },
   "mcp": {
     "chrome-devtools": {
       "type": "local",
