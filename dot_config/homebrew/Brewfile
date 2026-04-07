@@ -31,6 +31,7 @@ brew "ripgrep"
 brew "shfmt"
 brew "black"
 brew "codespell"
+brew "tree-sitter-cli"
 brew "imagemagick" # Need this for image.nvim
 brew "mermaid-cli" # Need this for diagram.nvim
 
