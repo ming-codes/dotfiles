@@ -18,6 +18,7 @@ brew "ruby"
 brew "curl"
 brew "yazi"
 brew "starship"
+brew "ollama"
 
 # managers
 brew "mise"
