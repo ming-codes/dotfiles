@@ -8,10 +8,12 @@
   ],
   "permission": {
     "external_directory": {
+      "~/*": "ask",
       "~/.config/**": "allow",
       "~/.local/**": "allow",
       "~/Workspace/**": "allow",
-      "~/Sandbox/**": "allow"
+      "~/Sandbox/**": "allow",
+      "/tmp/**": "allow"
     }
   },
   "mcp": {

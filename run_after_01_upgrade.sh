@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# eval "$(/opt/homebrew/bin/brew shellenv)"
 
-brew upgrade
-opencode upgrade
-bun upgrade
+# brew upgrade
+# opencode upgrade
+# bun upgrade
