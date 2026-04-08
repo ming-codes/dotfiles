@@ -11,6 +11,7 @@
       "~/*": "ask",
       "~/.config/**": "allow",
       "~/.local/**": "allow",
+      "~/.opencode/**": "allow",
       "~/Workspace/**": "allow",
       "~/Sandbox/**": "allow",
       "/tmp/**": "allow"
