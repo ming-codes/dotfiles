@@ -31,6 +31,8 @@ return {
         ["<C-v>"] = false,
         ["<C-p>"] = false,
         ["<C-t>"] = false,
+        ["<C-l>"] = false,
+        ["gr"] = "actions.refresh",
         ["yp"] = "actions.copy_entry_path",
         ["yf"] = "copy_entry_filename",
         ["K"] = "actions.preview",
