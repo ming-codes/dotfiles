@@ -9,3 +9,5 @@ mackup restore -f
 skillshare sync
 
 tinty sync
+
+gpgconf --kill keyboxd
