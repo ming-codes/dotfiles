@@ -16,10 +16,19 @@ Eliminate metacommentary and progress narration. Do not announce what you are ab
 
 ## User Environment
 
-| Directory    | Description                   |
-| ------------ | ----------------------------- |
-| ~/Workspace/ | Contains project repositories |
-| ~/Sandbox/   | Contains one off disposables  |
+| Directory              | Description                                                                         |
+| ---------------------- | ----------------------------------------------------------------------------------- |
+| ~/Workspace/           | Contains project repositories                                                       |
+| ~/Workspace/.worktrees | Contains git worktrees for the projects in ~/Workspace/. See Worktree section below |
+| ~/Sandbox/             | Contains one off disposables                                                        |
+
+### Worktree
+
+Worktrees MUST be checked out in the following pattern.
+
+```
+~/Workspace/.worktrees/<project-name>/<branch-name>
+```
 
 ## Toolchains
 

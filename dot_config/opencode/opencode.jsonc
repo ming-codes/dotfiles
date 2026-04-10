@@ -3,6 +3,7 @@
   "autoupdate": false,
   "plugin": [
     "@tarquinen/opencode-dcp@latest",
+    "@mohak34/opencode-notifier@latest",
     "opencode-wakelock",
     "opencode-pty"
   ],
@@ -12,6 +13,7 @@
       "~/.config/**": "allow",
       "~/.local/**": "allow",
       "~/.opencode/**": "allow",
+      "~/.agent-browser/tmp/**": "allow",
       "~/Workspace/**": "allow",
       "~/Sandbox/**": "allow",
       "/tmp/**": "allow"
