@@ -11,11 +11,13 @@ export CHEZMOI_HOME=$HOME/.local/share/chezmoi
 
 export FZF_CONFIG_HOME=$XDG_CONFIG_HOME/fzf
 export VD_CONFIG_HOME=$XDG_CONFIG_HOME/visidata
-export POWERLINE_CONFIG_HOME=$XDG_CONFIG_HOME/powerline
+#export POWERLINE_CONFIG_HOME=$XDG_CONFIG_HOME/powerline
 export ZSH_COMPLETION_HOME=$XDG_LOCAL_HOME/share/completions
 
+export VD_CONFIG="$VD_CONFIG_HOME/config.py"
+export VD_DIR="$VD_CONFIG_HOME"
+
 export FZF_DEFAULT_OPTS="--bind alt-a:select-all"
-export VISIDATA_DEFAULT_OPTS="--config=$VD_CONFIG_HOME/config.py --visidata-dir=$VD_CONFIG_HOME --undo"
 # Workaround for OpenCode markdown rendering issues in the terminal
 # https://github.com/anomalyco/opencode/issues/17323
 export OPENCODE_EXPERIMENTAL_MARKDOWN=0
