@@ -52,3 +52,13 @@ ALWAYS start server in a background process using pty
 ### gh
 
 When asked to perform read or other operations on an github link, extract information from the link, but use the `gh` GitHub CLI tool to perform the operation.
+
+### opencode
+
+Opencode contains a lot of subcommands to access its internals
+
+| Subcommand | Description               |
+| ---------- | ------------------------- |
+| debug      |                           |
+| agent      | Manage agents             |
+| models     | List out available models |
