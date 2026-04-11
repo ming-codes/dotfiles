@@ -8,7 +8,7 @@ brew "gh"
 brew "git"
 brew "tmux"
 brew "trash-cli"
-brew "tree"
+# brew "tree"
 brew "watchman"
 brew "wget"
 brew "yq"
@@ -51,6 +51,8 @@ cask "cleanshot"
 cask "pixelsnap"
 cask "firefox", args: { appdir: "~/Applications" }
 cask "dash", args: { appdir: "~/Applications" }
+
+uv "visidata"
 
 # Media
 #brew "ffmpeg"
