@@ -9,12 +9,13 @@ setopt HIST_SAVE_NO_DUPS
 ulimit -n 8192
 
 eval "$(starship init zsh)"
+eval "$(atuin init zsh)"
 
 source $FZF_CONFIG_HOME/fzf.zsh
-source $ZSH_COMPLETION_HOME/history-substring-search.zsh
+#source $ZSH_COMPLETION_HOME/history-substring-search.zsh
 
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+#bindkey '^[[A' history-substring-search-up
+#bindkey '^[[B' history-substring-search-down
 
 alias vim="nvim"
 alias vi="nvim"
