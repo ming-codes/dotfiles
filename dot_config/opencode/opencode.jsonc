@@ -4,6 +4,7 @@
   "plugin": [
     "@tarquinen/opencode-dcp@latest",
     "@mohak34/opencode-notifier@latest",
+    "@franlol/opencode-md-table-formatter",
     "opencode-wakelock",
     "opencode-pty"
   ],
