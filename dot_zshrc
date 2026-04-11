@@ -10,6 +10,7 @@ ulimit -n 8192
 
 eval "$(starship init zsh)"
 eval "$(atuin init zsh)"
+eval "$(zoxide init zsh --cmd cd)"
 
 source $FZF_CONFIG_HOME/fzf.zsh
 #source $ZSH_COMPLETION_HOME/history-substring-search.zsh
@@ -18,9 +19,11 @@ source $FZF_CONFIG_HOME/fzf.zsh
 #bindkey '^[[B' history-substring-search-down
 
 alias vim="nvim"
-alias vi="nvim"
-alias vd="uvx visidata $VISIDATA_DEFAULT_OPTS"
+alias vi="nvim --clean"
 alias opencode="opencode --port"
+
+alias ls="lsd"
+alias tree="lsd --tree"
 
 zstyle ':completion:*' menu select
 #zstyle ':completion:*:*:git:*' script ~/.git-completion.bash
