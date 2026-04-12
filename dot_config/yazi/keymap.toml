@@ -1,0 +1,43 @@
+[[mgr.prepend_keymap]]
+on   = [ "?" ]
+run  = "help"
+desc = "Show help"
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "r" ]
+run  = "cd ~/Documents/Resumes"
+desc = "Go to Resumes"
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "t" ]
+run  = "cd ~/Documents/Taxes"
+desc = "Go to Taxes"
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "c" ]
+run  = "cd ~/.config"
+desc = "Go to config"
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "C" ]
+run  = "cd ~/.local/share/chezmoi"
+desc = "Go to Chezmoi"
+
+[[mgr.prepend_keymap]]
+on   = [ "<Backspace>" ]
+run  = "back"
+desc = "Back"
+
+[[mgr.prepend_keymap]]
+on   = [ "H" ]
+run  = "back"
+desc = "Back"
+
+[[mgr.prepend_keymap]]
+on   = [ "L" ]
+run  = "forward"
+desc = "Forward"
+
+[[help.prepend_keymap]]
+on = "/"
+run = "filter"
