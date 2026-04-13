@@ -31,5 +31,3 @@ fpath=(~/.zsh/functions $fpath)
 autoload -Uz compinit && compinit
 
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
-
-export JRE_HOME=$JAVA_HOME

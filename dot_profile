@@ -14,6 +14,8 @@ export VD_CONFIG_HOME=$XDG_CONFIG_HOME/visidata
 #export POWERLINE_CONFIG_HOME=$XDG_CONFIG_HOME/powerline
 export ZSH_COMPLETION_HOME=$XDG_LOCAL_HOME/share/completions
 
+export JRE_HOME=$JAVA_HOME
+
 export VD_CONFIG="$VD_CONFIG_HOME/config.py"
 export VD_DIR="$VD_CONFIG_HOME"
 
