@@ -44,14 +44,13 @@ brew "bat"
 brew "ast-grep"
 brew "agent-browser"
 
-cask "font-jetbrains-mono"
-
 cask "brave-browser"
 cask "cleanshot"
 cask "pixelsnap"
 cask "firefox", args: { appdir: "~/Applications" }
 cask "dash", args: { appdir: "~/Applications" }
 cask "alfred", args: { appdir: "~/Applications" }
+cask "ghostty", args: { appdir: "~/Applications" }
 
 uv "visidata"
 
@@ -79,7 +78,6 @@ brew "7-Zip"
 ##cask "blender"
 ##cask "divvy", args: { appdir: "~/Applications" }
 ##cask "figma", args: { appdir: "~/Applications" }
-#cask "kitty", args: { appdir: "~/Applications" }
 ##cask "miro"
 ##cask "mockoon"
 ##cask "quip"
