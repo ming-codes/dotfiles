@@ -51,6 +51,7 @@ cask "cleanshot"
 cask "pixelsnap"
 cask "firefox", args: { appdir: "~/Applications" }
 cask "dash", args: { appdir: "~/Applications" }
+cask "alfred", args: { appdir: "~/Applications" }
 
 uv "visidata"
 
@@ -75,7 +76,6 @@ brew "7-Zip"
 #brew "pngpaste"
 #brew "rename"
 #brew "sf-pwgen"
-##cask "alfred", args: { appdir: "~/Applications" }
 ##cask "blender"
 ##cask "divvy", args: { appdir: "~/Applications" }
 ##cask "figma", args: { appdir: "~/Applications" }
