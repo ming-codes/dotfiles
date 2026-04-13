@@ -20,7 +20,6 @@ source $FZF_CONFIG_HOME/fzf.zsh
 
 alias vim="nvim"
 alias vi="nvim --clean"
-alias opencode="opencode --port"
 
 alias ls="lsd"
 alias tree="lsd --tree"
