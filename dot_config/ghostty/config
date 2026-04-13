@@ -1,0 +1,60 @@
+# Font
+font-family = JetBrains Mono
+font-size = 14
+
+# Startup: launch tmux in fullscreen
+command = /opt/homebrew/bin/tmux
+maximize = true
+
+# macOS option key as alt (for keybindings in shell/editors)
+macos-option-as-alt = true
+
+# Window chrome: no padding, no margin
+window-padding-x = 0
+window-padding-y = 0
+
+# Colors — based on PaperColor Light (customized)
+background = #000000
+foreground = #444444
+
+selection-foreground = #eeeeee
+selection-background = #0087af
+
+cursor-color = #005f87
+cursor-text = #eeeeee
+
+# Underline nudge (kitty: modify_font underline_position 3px)
+adjust-underline-position = 3
+
+# 16-color palette
+# black
+palette = 0=#eeeeee
+palette = 8=#bcbcbc
+
+# red
+palette = 1=#af0000
+palette = 9=#d70000
+
+# green
+palette = 2=#558b33
+palette = 10=#7aba39
+
+# yellow
+palette = 3=#f19618
+palette = 11=#ffc849
+
+# blue
+palette = 4=#0087af
+palette = 12=#d75f00
+
+# magenta
+palette = 5=#878787
+palette = 13=#d75f00
+
+# cyan
+palette = 6=#005f87
+palette = 14=#3e999f
+
+# white
+palette = 7=#444444
+palette = 15=#005f87
