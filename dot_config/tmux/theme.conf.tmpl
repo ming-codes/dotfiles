@@ -5,7 +5,7 @@ set -g cursor-style blinking-block
 
 set -g mode-style 'bg=#9e9e9e' # this is the little tip in copy mode
 
-set -g copy-mode-selection-style 'bg=#ffff00,fg=black'
+set -g copy-mode-selection-style 'bg=#ffff00,fg=#000000'
 
 # | cursor-colour | Set the colour of the cursor |
 # | cursor-style | Set cursor style: default, blinking-block, block, blinking-underline, underline, blinking-bar, bar |
@@ -14,13 +14,13 @@ set -g copy-mode-selection-style 'bg=#ffff00,fg=black'
 
 
 set -g message-command-style "fg=#e4e4e4,bg=#00ff00"
-set -g message-style "fg=#444444,bg=#d75f00"
+set -g message-style "fg={{.tmux.message.fg}},bg={{.tmux.message.bg}}"
 
 ##############
 #   Popup    #
 ##############
-set -g popup-style 'fg=#000000,bg=#eeeeee'
-set -g popup-border-style 'fg=#0087af,bg=#eeeeee'
+set -g popup-style 'fg={{.tmux.popup.fg}},bg={{.tmux.popup.bg}}'
+set -g popup-border-style 'fg={{.tmux.popup.border.fg}},bg={{.tmux.popup.border.bg}}'
 set -g popup-border-lines heavy
 
 ##############

@@ -58,6 +58,14 @@ bg = "#d75f00"
 
 # TODO ^^^
 
+[tmux.popup]
+bg = "#eeeeee"
+fg = "#000000"
+
+[tmux.popup.border]
+bg = "#eeeeee"
+fg = "#000000"
+
 [tmux.pane]
 bg = "#eeeeee"
 fg = "#000000"
