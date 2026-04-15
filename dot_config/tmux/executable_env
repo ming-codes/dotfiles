@@ -3,3 +3,7 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 tmux set-environment -g PATH "$PATH"
+
+for FILE in $HOME/.ssh/*.pub; do
+  ssh-add --apple-use-keychain "$(dirname "$FILE")/$(basename -s .pub "$FILE")"
+done
