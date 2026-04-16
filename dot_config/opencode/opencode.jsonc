@@ -20,6 +20,19 @@
       "/tmp/**": "allow"
     }
   },
+  "agent": {
+    "plan": {
+      "color": "accent"
+    },
+    "build": {
+      "color": "primary"
+    },
+    "compaction": {},
+    "explore": {},
+    "general": {},
+    "summary": {},
+    "title": {}
+  },
   "mcp": {
     "chrome-devtools": {
       "type": "local",
