@@ -11,12 +11,12 @@
 
 # Greyscales: Comments?
 # 1. #eeeeee <- Background
-# 2. #e4e4e4 <- Background Highlight: vim current row, opencode dialog box
+# 2. #e4e4e4 <- Background Highlight: vim current row, opencode dialog box, lazygit selection
 # 3. #d0d0d0
 # 4. #c6c6c6
 # 5. #bcbcbc
-# 6. #b2b2b2 
-# 7. #878787 <- Standard Text
+# 6. #b2b2b2 <- Comments
+# 7. #878787 <- Standard Text, first to meet contrast ratio
 # 8. #444444 <- Bold text?
 
 # Colors
