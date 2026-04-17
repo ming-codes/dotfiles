@@ -1,12 +1,30 @@
-[color]
-black = "#000000"
-white = "#eeeeee"
-gray_light = "#e4e4e4"
-gray_medium = "#585858"
-cyan_dark = "#005f87"
-cyan = "#0087af"
+# How many shades of gray?
+# background
+# dialog box
+# dialog box active
+# highlight current row #e4e4e4 <== paper color use this
+# highlight current cursor
+# foreground muted (like comments)
+# foreground
+# ---- This is 7 already -.-
+# border?
 
-# #eeeeee # Default Background
+# Greyscales: Comments?
+# 1. #eeeeee <- Background
+# 2. #e4e4e4 <- Background Highlight: vim current row, opencode dialog box
+# 3. #d0d0d0
+# 4. #c6c6c6
+# 5. #bcbcbc
+# 6. #b2b2b2 
+# 7. #878787 <- Standard Text
+# 8. #444444 <- Bold text?
+
+# Colors
+# #005f87 <- Primary accent
+# #0087af <- Primary accent dim
+# #8700af <- "Special", often used for embedding language in another language, like template literal or markdown inline codeblock
+
+# #eeeeee # Default Background #d8e1e5
 # #c4c4c4 # Lighter Background (Used for status bars, line number and folding marks)
 # #9e9e9e # Selection Background
 # #858585 # Comments, Invisibles, Line Highlighting
@@ -64,7 +82,7 @@ fg = "#000000"
 
 [tmux.popup.border]
 bg = "#eeeeee"
-fg = "#000000"
+fg = "#005f87"
 
 [tmux.pane]
 bg = "#eeeeee"
@@ -74,7 +92,7 @@ fg = "#000000"
 fg = "#0087af"
 
 [tmux.pane.border.inactive]
-fg = "#c4c4c4"
+fg = "#eeeeee"
 
 [tmux.line]
 bg = "#005f87"
