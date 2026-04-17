@@ -8,6 +8,6 @@ gui:
     inactiveBorderColor:
       - "#c4c4c4"
     selectedLineBgColor:
-      - "#9e9e9e"
+      - "#e4e4e4"
     inactiveViewSelectedLineBgColor:
       - "#c4c4c4"
