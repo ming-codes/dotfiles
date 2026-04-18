@@ -45,10 +45,10 @@
     "syntaxComment": "#878787",
     "syntaxKeyword": "#8700af",
     "syntaxFunction": "#005f87",
-    "syntaxVariable": "#d70000",
+    "syntaxVariable": "#444444",
     "syntaxString": "#008700",
-    "syntaxNumber": "#d75f00",
-    "syntaxType": "#d70087",
+    "syntaxNumber": "#008700",
+    "syntaxType": "#d70000",
     "syntaxOperator": "#0087af",
     "syntaxPunctuation": "#444444"
   }
