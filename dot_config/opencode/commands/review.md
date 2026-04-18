@@ -11,7 +11,7 @@ You may be given reference to from many sources. If the reference is of same pro
 as current working directory, checkout the branch as a worktree.
 
 Spawn parallel subagents to review the code from different angles. The following sections
-describes what each subagent is targeting.
+describes what each subagent is targeting. Ask me question on which of these should be included for the run.
 
 ## Structural Changes
 
@@ -25,10 +25,10 @@ Interfaces that are exposed (exported) should be noted in report.
 
 Feature changes needs to captured as screenshots.
 
-1. Start the dev server in a background PTY: `npm run dev` (this also starts the mock server). Wait for "ready" output before proceeding.
+1. Start the dev server in a background PTY: `npm run dev`. Wait for "ready" output before proceeding.
 
 2. Use `agent-browser` to capture screenshots of the key UI changes. For each feature changed:
-   - Navigate to the relevant example page on `http://localhost.apple.com:3000`
+   - Navigate to the relevant example page on `http://localhost:3000`
    - Interact with the UI to demonstrate the change (click buttons, send messages, etc.)
    - Take `--screenshot-format png` screenshots saved to `/tmp/pr-<number>-screenshots/`
    - Set viewport with `agent-browser set viewport 1280 900 2` for 2x retina quality
@@ -52,6 +52,9 @@ Feature changes needs to captured as screenshots.
 
 ## Detailed Code Changes
 
+Break these down into 2 or more subagents. For code references, always include the line number.
+
+- Rule violations on defined agent rules
 - Security vulnerabilities and potential exploits
 - Performance bottlenecks and optimization opportunities
 - Code maintainability and readability issues
