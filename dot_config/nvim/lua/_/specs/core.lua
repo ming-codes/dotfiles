@@ -105,6 +105,15 @@ return {
             },
           },
         },
+        sources = {
+          notifications = {
+            win = {
+              wo = {
+                wrap = true,
+              },
+            },
+          },
+        },
         actions = {
           flash = function(picker)
             require("flash").jump({

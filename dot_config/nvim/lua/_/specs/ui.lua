@@ -40,7 +40,8 @@ return {
         ["gv"] = { "actions.select", opts = { vertical = true } },
         ["gj"] = { "actions.select", opts = { horizontal = true } },
         ["gs"] = { "actions.select", opts = { horizontal = true } },
-        ["gt"] = { "actions.select", opts = { tab = true } },
+        -- gt is used to switch tab
+        -- ["gt"] = { "actions.select", opts = { tab = true } },
         ["gS"] = { "actions.change_sort", mode = "n" },
         ["g."] = "actions.toggle_hidden",
       },
