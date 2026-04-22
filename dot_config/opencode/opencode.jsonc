@@ -5,6 +5,7 @@
     "@tarquinen/opencode-dcp@latest",
     "@mohak34/opencode-notifier@latest",
     "@franlol/opencode-md-table-formatter",
+    "opencode-background-agents",
     "opencode-wakelock",
     "opencode-pty"
   ],
