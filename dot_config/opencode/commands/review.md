@@ -52,7 +52,8 @@ Feature changes needs to captured as screenshots.
 
 ## Detailed Code Changes
 
-Break these down into 2 or more subagents. For code references, always include the line number.
+Break these down into 2 or more subagents. For code references, ALWAYS include the line number. If possible,
+include the web link to the PR of the line number as well.
 
 - Rule violations on defined agent rules
 - Security vulnerabilities and potential exploits
