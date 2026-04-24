@@ -13,6 +13,8 @@ as current working directory, checkout the branch as a worktree.
 Spawn parallel subagents to review the code from different angles. The following sections
 describes what each subagent is targeting. Ask me question on which of these should be included for the run.
 
+Compile final report and write to Obsidian inbox
+
 ## Structural Changes
 
 Files that got moved needs to be noted in report. Put emphasis on files that got deleted and even more emphasis on files that are moved.
@@ -55,6 +57,7 @@ Feature changes needs to captured as screenshots.
 Break these down into 2 or more subagents. For code references, ALWAYS include the line number. If possible,
 include the web link to the PR of the line number as well.
 
+- Accessibility practices
 - Rule violations on defined agent rules
 - Security vulnerabilities and potential exploits
 - Performance bottlenecks and optimization opportunities
