@@ -5,4 +5,4 @@ eval "$(mise activate zsh)"
 export ZLE_RPROMPT_INDENT=0
 export SHELL=$(command -v zsh)
 
-fpath=( ~/.local/share/completions "${fpath[@]}" )
+fpath=( ~/.local/share/completions /opt/homebrew/share/zsh/site-functions "${fpath[@]}" )
