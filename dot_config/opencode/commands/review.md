@@ -5,25 +5,31 @@ agent: plan
 
 # review.md
 
-Perform code review on $ARGUMENTS
+Review target is "$ARGUMENTS".
+
+Perform code review on review target.
+
+If review target is empty, assume it is the current feature branch.
 
 You may be given reference to from many sources. If the reference is of same project
 as current working directory, checkout the branch as a worktree.
 
+## Task
+
 Spawn parallel subagents to review the code from different angles. The following sections
 describes what each subagent is targeting. Ask me question on which of these should be included for the run.
 
-Compile final report and write to Obsidian inbox
+Compile final report and write to the Obsidian `code-reviews/` folder. Don't forget to move any screenshots there as well.
 
-## Structural Changes
+### Structural Changes
 
 Files that got moved needs to be noted in report. Put emphasis on files that got deleted and even more emphasis on files that are moved.
 
-## Interface Changes
+### Interface Changes
 
 Interfaces that are exposed (exported) should be noted in report.
 
-## UI/Feature Changes
+### UI/Feature Changes
 
 Feature changes needs to captured as screenshots.
 
@@ -52,7 +58,7 @@ Feature changes needs to captured as screenshots.
 5. Present the report as a markdown file in the closest `.opencode` directory. Ensure screenshots are attached
    using proper syntax: ![annotation](/path/to/file)
 
-## Detailed Code Changes
+### Detailed Code Changes
 
 Break these down into 2 or more subagents. For code references, ALWAYS include the line number. If possible,
 include the web link to the PR of the line number as well.
@@ -66,3 +72,10 @@ include the web link to the PR of the line number as well.
 - Error handling and edge cases
 - Test coverage gaps
 - Documentation completeness
+
+## Obsidian Quick Reference
+
+```bash
+obsidian files   # to list files
+obsidian folders # to list folders
+```
