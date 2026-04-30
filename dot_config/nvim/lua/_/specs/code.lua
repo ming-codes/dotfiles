@@ -1,3 +1,5 @@
+local state = {}
+
 return {
   { "ngynkvn/gotmpl.nvim", opts = {} },
   {

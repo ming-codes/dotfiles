@@ -21,6 +21,8 @@ describes what each subagent is targeting. Ask me question on which of these sho
 
 Compile final report and write to the Obsidian `code-reviews/` folder. Don't forget to move any screenshots there as well.
 
+Details of the final report format in Final Report section.
+
 ### Structural Changes
 
 Files that got moved needs to be noted in report. Put emphasis on files that got deleted and even more emphasis on files that are moved.
@@ -60,8 +62,13 @@ Feature changes needs to captured as screenshots.
 
 ### Detailed Code Changes
 
-Break these down into 2 or more subagents. For code references, ALWAYS include the line number. If possible,
-include the web link to the PR of the line number as well.
+Break these down into 2 or more subagents. For code references, ALWAYS include the line number. If applicable,
+include the web link to the PR of the line number as well. The following specifies the format.
+
+```
+https://${HOSTNAME}/${ORG_NAME}/${PROJECT_NAME}/pull/${PR_NUMBER}/files#diff-${HASH}R${LINE_NUMBER}
+https://${HOSTNAME}/${ORG_NAME}/${PROJECT_NAME}/pull/${PR_NUMBER}/files#diff-${HASH}R${START_LINE_NUMBER}-${END_LINE_NUMBER}
+```
 
 - Accessibility practices
 - Rule violations on defined agent rules
@@ -73,9 +80,16 @@ include the web link to the PR of the line number as well.
 - Test coverage gaps
 - Documentation completeness
 
+## Final Report
+
+The final report should start with a table summerizing the number of issues found aggregated by severity. Include in
+the table with estimated time to fix them.
+
+The final report should include sections for each of the reviewed area.
+
 ## Obsidian Quick Reference
 
 ```bash
-obsidian files   # to list files
-obsidian folders # to list folders
+obsidian files   # list files
+obsidian folders # list folders
 ```
