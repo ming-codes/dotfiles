@@ -49,6 +49,7 @@ brew "agent-browser"
 cask "brave-browser"
 cask "cleanshot"
 cask "pixelsnap"
+cask "mitmproxy", args: { appdir: "~/Applications" }
 cask "firefox", args: { appdir: "~/Applications" }
 cask "dash", args: { appdir: "~/Applications" }
 cask "alfred", args: { appdir: "~/Applications" }
