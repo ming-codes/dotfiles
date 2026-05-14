@@ -4,6 +4,9 @@ return {
   { "ngynkvn/gotmpl.nvim", opts = {} },
   {
     "neovim/nvim-lspconfig",
+    dependencies = {
+      "folke/neoconf.nvim"
+    }
   },
   {
     "williamboman/mason.nvim",
@@ -53,82 +56,79 @@ return {
     },
   },
   {
-    "arborist-ts/arborist.nvim"
+    -- https://github.com/arborist-ts/arborist.nvim as alternative?
+    "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    --commit = "",
+    event = { "BufEnter" },
+    dependencies = {
+      { "windwp/nvim-ts-autotag" },
+    },
+    cmd = {
+      "TSBufDisable",
+      "TSBufEnable",
+      "TSBufToggle",
+      "TSDisable",
+      "TSEnable",
+      "TSToggle",
+      "TSInstall",
+      "TSInstallInfo",
+      "TSInstallSync",
+      "TSModuleInfo",
+      "TSUninstall",
+      "TSUpdate",
+      "TSUpdateSync",
+    },
+    build = ":TSUpdate",
+    opts = {
+      auto_install = true,
+      ensure_installed = {
+        "bash",
+        "c",
+        "diff",
+        "html",
+        "css",
+        "javascript",
+        "jsdoc",
+        "json",
+        "lua",
+        "luadoc",
+        "luap",
+        "gotmpl",
+        "markdown",
+        "markdown_inline",
+        "printf",
+        "python",
+        "query",
+        "regex",
+        "toml",
+        "tsx",
+        "typescript",
+        "vim",
+        "vimdoc",
+        "xml",
+        "yaml",
+      },
+      highlight = {
+        enable = true,
+        disable = function(_, bufnr)
+          return vim.api.nvim_buf_line_count(bufnr) > 10000
+        end,
+      },
+      incremental_selection = {
+        enable = true
+      },
+      indent = {
+        enable = true
+      },
+      autotag = {
+        enable = true
+      },
+    },
+    -- config = function(plugin, opts)
+    --   require("nvim-treesitter.configs").setup(opts)
+    -- end
   },
-  -- {
-  --   -- https://github.com/arborist-ts/arborist.nvim as alternative?
-  --   "nvim-treesitter/nvim-treesitter",
-  --   branch = "main",
-  --   --commit = "",
-  --   event = { "BufEnter" },
-  --   dependencies = {
-  --     { "windwp/nvim-ts-autotag" },
-  --   },
-  --   cmd = {
-  --     "TSBufDisable",
-  --     "TSBufEnable",
-  --     "TSBufToggle",
-  --     "TSDisable",
-  --     "TSEnable",
-  --     "TSToggle",
-  --     "TSInstall",
-  --     "TSInstallInfo",
-  --     "TSInstallSync",
-  --     "TSModuleInfo",
-  --     "TSUninstall",
-  --     "TSUpdate",
-  --     "TSUpdateSync",
-  --   },
-  --   build = ":TSUpdate",
-  --   opts = {
-  --     auto_install = true,
-  --     ensure_installed = {
-  --       "bash",
-  --       "c",
-  --       "diff",
-  --       "html",
-  --       "css",
-  --       "javascript",
-  --       "jsdoc",
-  --       "json",
-  --       "lua",
-  --       "luadoc",
-  --       "luap",
-  --       "gotmpl",
-  --       "markdown",
-  --       "markdown_inline",
-  --       "printf",
-  --       "python",
-  --       "query",
-  --       "regex",
-  --       "toml",
-  --       "tsx",
-  --       "typescript",
-  --       "vim",
-  --       "vimdoc",
-  --       "xml",
-  --       "yaml",
-  --     },
-  --     highlight = {
-  --       enable = true,
-  --       disable = function(_, bufnr)
-  --         return vim.api.nvim_buf_line_count(bufnr) > 10000
-  --       end,
-  --     },
-  --     incremental_selection = {
-  --       enable = true
-  --     },
-  --     indent = {
-  --       enable = true
-  --     },
-  --     autotag = {
-  --       enable = true
-  --     },
-  --   },
-  --   -- config = function(plugin, opts)
-  --   --   require("nvim-treesitter.configs").setup(opts)
-  --   -- end
-  -- },
   {
     'junnplus/lsp-setup.nvim',
     event = { "FileType" },

@@ -283,4 +283,5 @@ return {
   {
     "nvimtools/hydra.nvim",
   },
+  { "folke/neoconf.nvim", lazy = false, config = true }
 }
