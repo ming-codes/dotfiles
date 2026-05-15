@@ -330,8 +330,13 @@ return {
           completeopt = "menu,menuone,noinsert",
         },
         window = {
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
+          completion = cmp.config.window.bordered({ border = "rounded" }),
+          documentation = cmp.config.window.bordered({
+            border = "rounded",
+          }),
+        },
+        performance = {
+          fetching_timeout = 5000,
         },
         mapping = cmp.mapping.preset.insert({
           ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -341,6 +346,7 @@ return {
           ['<CR>'] = cmp.mapping.confirm({ select = true }),
         }),
         sources = cmp.config.sources({
+          { name = "minuet",   priority = 2000 },
           { name = "nvim_lsp", priority = 1000 },
           { name = "buffer",   priority = 500 },
           { name = "path",     priority = 250 },
