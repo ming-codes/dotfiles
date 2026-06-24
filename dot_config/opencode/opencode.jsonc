@@ -18,6 +18,7 @@
       "~/.agent-browser/tmp/**": "allow",
       "~/Workspace/**": "allow",
       "~/Sandbox/**": "allow",
+      "~/Screenshots/**": "allow",
       "/tmp/**": "allow"
     }
   },

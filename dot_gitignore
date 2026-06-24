@@ -2,3 +2,4 @@ Makefile
 
 .envrc
 .opencode
+.neoconf.json

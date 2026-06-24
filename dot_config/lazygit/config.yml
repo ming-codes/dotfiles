@@ -10,13 +10,13 @@ gui:
       - "#e4e4e4"
     inactiveViewSelectedLineBgColor:
       - "#c4c4c4"
-#customCommands:
-#  - key: "Y"
-#    context: "global"
-#    description: "Git Town sYnc"
-#    command: "git town sync --all"
-#    loadingText: "Syncing"
-#    output: log
+customCommands:
+  - key: "Y"
+    context: "global"
+    description: "Git Town sYnc"
+    command: "git town sync --stack"
+    loadingText: "Syncing"
+    output: log
 #  - key: "U"
 #    context: "global"
 #    description: "Git Town Undo (undo the last Git Town command)"
