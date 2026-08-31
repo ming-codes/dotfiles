@@ -328,6 +328,7 @@ return {
       return {
         completion = {
           completeopt = "menu,menuone,noinsert",
+          autocomplete = { require("cmp.types").cmp.TriggerEvent.TextChanged },
         },
         window = {
           completion = cmp.config.window.bordered({ border = "rounded" }),
@@ -342,11 +343,12 @@ return {
           ['<C-b>'] = cmp.mapping.scroll_docs(-4),
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
           ['<C-Space>'] = cmp.mapping.complete(),
+          -- ['<A-y>'] = require('minuet').make_cmp_map(),
           ['<C-e>'] = cmp.mapping.abort(),
           ['<CR>'] = cmp.mapping.confirm({ select = true }),
         }),
         sources = cmp.config.sources({
-          { name = "minuet",   priority = 2000 },
+          -- { name = "minuet",   priority = 2000, group_index = 1 },
           { name = "nvim_lsp", priority = 1000 },
           { name = "buffer",   priority = 500 },
           { name = "path",     priority = 250 },

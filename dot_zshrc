@@ -12,9 +12,6 @@ eval "$(starship init zsh)"
 eval "$(atuin init zsh)"
 eval "$(zoxide init zsh --cmd cd)"
 
-source $FZF_CONFIG_HOME/fzf.zsh
-#source $ZSH_COMPLETION_HOME/history-substring-search.zsh
-
 #bindkey '^[[A' history-substring-search-up
 #bindkey '^[[B' history-substring-search-down
 
@@ -29,5 +26,10 @@ zstyle ':completion:*' menu select
 # `compinit` scans $fpath, so do this before calling it.
 fpath=(~/.zsh/functions $fpath)
 autoload -Uz compinit && compinit
+
+source $FZF_CONFIG_HOME/fzf.zsh
+#source $ZSH_COMPLETION_HOME/history-substring-search.zsh
+source $ZSH_COMPLETION_HOME/git-town.zsh
+#source <(git town completions zsh)
 
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh

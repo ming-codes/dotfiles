@@ -6,11 +6,14 @@ gui:
       - bold
     inactiveBorderColor:
       - "#c4c4c4"
+    selectedRangeBgColor:
+      - "#e4e4e4"
     selectedLineBgColor:
       - "#e4e4e4"
     inactiveViewSelectedLineBgColor:
       - "#c4c4c4"
 customCommands:
+  # {{.SelectedLocalBranch.Name}}
   - key: "Y"
     context: "global"
     description: "Git Town sYnc"

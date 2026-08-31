@@ -196,7 +196,9 @@ return {
       'nvim-tree/nvim-web-devicons',
     },
     config = function()
-      require('render-markdown').setup({})
+      require('render-markdown').setup({
+        file_types = { "markdown", "Avante" }
+      })
     end,
   },
   {
@@ -205,9 +207,20 @@ return {
     event = "VeryLazy",
     -- FugitiveHead
     opts = {
-      extensions = { 'oil', 'nvim-dap-ui' },
+      extensions = { 'oil', 'nvim-dap-ui', "avante", },
       options = {
         theme = 'papercolor_light',
+        disabled_filetypes = {
+          -- "AvanteInput",
+          -- "AvanteSelectedFiles",
+          -- "AvanteSelectedCode",
+          -- "Avante",
+
+          -- "NvimTree",
+          -- "TelescopePrompt",
+          -- "help",
+          -- "dashboard",
+        },
         -- theme = {
         --   normal = {
         --     a = "LualineNormalA",

@@ -19,6 +19,7 @@ Eliminate metacommentary and progress narration. Do not announce what you are ab
 | ~/Workspace/           | Contains project repositories                                                       |
 | ~/Workspace/.worktrees | Contains git worktrees for the projects in ~/Workspace/. See Worktree section below |
 | ~/Sandbox/             | Contains one off disposables                                                        |
+| ~/Screenshots/         | Screenshots                                                                         |
 
 ### Worktree
 
