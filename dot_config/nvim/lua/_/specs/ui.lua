@@ -81,6 +81,7 @@ return {
         { "<leader>x", group = "External", icon = { icon = "", hl = "NONE" } },
         { "<leader>u", group = "UI" },
         { "<leader>c", group = "Chat/AI" },
+        { "<leader>b", group = "Buffer" },
 
         -- { "<C-n>", vim.lsp.buf.completion },
         { "<C-space>", vim.lsp.buf.code_action },
@@ -91,6 +92,42 @@ return {
         -- { "<leader>yf", "<cmd>echo 'Not implemented'<cr>", desc = "Name of current file" },
         -- { "<leader>yF", "<cmd>echo 'Not implemented'<cr>", desc = "Name of current file with extension" },
         -- { "<leader>yh", "<cmd>GBrowse!<cr>", desc = "Github path of current file" }, -- TODO  yank github path of current file
+
+        { "<leader>b1", "<cmd>LualineBuffersJump 1<cr>", desc = "Jump to Lualine buffer 1" },
+        { "<leader>b2", "<cmd>LualineBuffersJump 2<cr>", desc = "Jump to Lualine buffer 2" },
+        { "<leader>b3", "<cmd>LualineBuffersJump 3<cr>", desc = "Jump to Lualine buffer 3" },
+        { "<leader>b4", "<cmd>LualineBuffersJump 4<cr>", desc = "Jump to Lualine buffer 4" },
+        { "<leader>b5", "<cmd>LualineBuffersJump 5<cr>", desc = "Jump to Lualine buffer 5" },
+        { "<leader>b6", "<cmd>LualineBuffersJump 6<cr>", desc = "Jump to Lualine buffer 6" },
+        { "<leader>b7", "<cmd>LualineBuffersJump 7<cr>", desc = "Jump to Lualine buffer 7" },
+        { "<leader>b8", "<cmd>LualineBuffersJump 8<cr>", desc = "Jump to Lualine buffer 8" },
+        { "<leader>b9", "<cmd>LualineBuffersJump 9<cr>", desc = "Jump to Lualine buffer 9" },
+        {
+          "<leader>bo",
+          function()
+            local buf = vim.api.nvim_get_current_buf()
+            local name = vim.api.nvim_buf_get_name(buf)
+
+            local is_file = (
+              vim.bo[buf].buftype == ""
+              and name ~= ""
+              and vim.fn.filereadable(name) == 1
+            )
+
+            if is_file then
+              vim.cmd.restart({
+                args = {
+                  "edit",
+                  vim.fn.fnameescape(name),
+                },
+              })
+            else
+              vim.cmd.restart()
+            end
+          end,
+          desc = "Restart and reopen current file",
+          mode = "n",
+        },
       },
     },
     config = true
@@ -108,6 +145,26 @@ return {
     },
     config = true,
   },
+  -- {
+  --   "folke/edgy.nvim",
+  --   event = "VeryLazy",
+  --   opts = {
+  --     right = {
+  --       {
+  --         ft = "Avante",
+  --         -- size = { height = 0.4 },
+  --       },
+  --       {
+  --         ft = "AvanteSelectedFiles",
+  --         size = { height = 2 },
+  --       },
+  --       {
+  --         ft = "AvanteInput",
+  --         size = { height = 5 },
+  --       },
+  --     }
+  --   }
+  -- },
   {
     "Bekaboo/dropbar.nvim",
     lazy = false,
@@ -210,6 +267,7 @@ return {
       extensions = { 'oil', 'nvim-dap-ui', "avante", },
       options = {
         theme = 'papercolor_light',
+        always_show_tabline = true,
         disabled_filetypes = {
           -- "AvanteInput",
           -- "AvanteSelectedFiles",
@@ -267,11 +325,11 @@ return {
         lualine_a = {},
         lualine_b = {
           {
-            "tabs",
+            "buffers",
             mode = 2,
             max_length = vim.o.columns,
 
-            tabs_color = {
+            buffers_color = {
               active = 'LualineTabActive',
               inactive = 'LualineTabInactive',
             },
@@ -286,21 +344,11 @@ return {
             -- end
           }
         },
-        --   --lualine_b = {
-        --   --  {
-        --   --    function()
-        --   --      return ""
-        --   --    end,
-        --   --    padding = { left = 1, right = 0 },
-        --   --  },
-        --   --},
-        --   --lualine_c = {
-        --   --  {
-        --   --    "gitbranch",
-        --   --    icon = "󰊢",
-        --   --  },
-        --   --},
-        lualine_z = { "FugitiveHead" },
+        -- lualine_x = { "FugitiveHead" },
+        lualine_y = {
+          "tabs",
+        },
+        -- lualine_z = { "FugitiveHead" },
       },
     },
   },

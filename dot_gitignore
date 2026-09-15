@@ -3,5 +3,6 @@ Makefile
 .envrc
 .opencode
 .neoconf.json
+mise.toml
 
 **/.claude/settings.local.json

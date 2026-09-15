@@ -2,6 +2,102 @@
 -- This module bundles ai related plugins
 --
 return {
+  {
+    "yetone/avante.nvim",
+    -- build = "make",
+    event = "VeryLazy",
+    version = false,
+    ---@module 'avante'
+    ---@type avante.Config
+    opts = {
+      provider = "opencode",
+      mode = "agentic",
+      behaviour = {
+        enable_token_counting = false,
+        auto_suggestions = false,
+        auto_approve_tool_permissions = true,
+        acp_follow_agent_locations = true,
+      },
+      selector = {
+        provider = "fzf_lua",
+      },
+      windows = {
+        position = "right",
+        width = 35,
+      },
+      mappings = {
+        submit = {
+          normal = "<CR>",
+          insert = "<S-CR>",
+        },
+      }
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "ibhagwan/fzf-lua",
+      {
+        "HakonHarnes/img-clip.nvim",
+        event = "VeryLazy",
+        opts = {
+          default = {
+            embed_image_as_base64 = false,
+            prompt_for_file_name = false,
+            drag_and_drop = { insert_mode = true },
+          },
+        },
+      },
+      {
+        "MeanderingProgrammer/render-markdown.nvim",
+      },
+    },
+    keys = {
+      --{ "<leader>aa", "<cmd>AvanteAsk<cr>",    desc = "Avante Ask" },
+      { "<leader>cc", "<cmd>AvanteToggle<cr>", desc = "Avante Toggle" },
+      --{ "<leader>ae", "<cmd>AvanteEdit<cr>",   mode = { "n", "v" },   desc = "Avante Edit" },
+    },
+  },
+  -- {
+  --   "alsi-lawr/agent-term.nvim",
+  --   main = "agent_term",
+  --   dependencies = {
+  --     { "folke/snacks.nvim", opts = {} },
+  --   },
+  --   opts = {
+  --     float = {
+  --       host = "snacks",
+  --     },
+  --     agents = {
+  --       "opencode"
+  --     }
+  --   },
+  -- }
+  -- {
+  --   'milanglacier/minuet-ai.nvim',
+  --   event = 'InsertEnter',
+  --   config = function()
+  --     require('minuet').setup {
+  --       provider = 'openai_fim_compatible',
+  --       n_completions = 1,
+  --       context_window = 4096,
+  --       request_timeout = 5,
+  --       provider_options = {
+  --         openai_fim_compatible = {
+  --           api_key = function() return 'ollama' end,
+  --           name = 'Ollama',
+  --           end_point = 'http://localhost:11434/v1/completions',
+  --           model = 'qwen2.5-coder:1.5b',
+  --           stream = true,
+  --           optional = {
+  --             max_tokens = 64,
+  --             top_p = 0.9,
+  --           },
+  --         },
+  --       },
+  --     }
+  --   end,
+  -- }
   --   {
   --     {
   --       "ravitemer/mcphub.nvim",
@@ -164,4 +260,62 @@ return {
   --       }
   --     },
   --   },
+  -- {
+  --   "nickjvandyke/opencode.nvim",
+  --   version = "*", -- Latest stable release
+  --   keys = {
+  --     { "<leader>cs", function() require('opencode').select_server() end,                   desc = "Connect to Opencode Server" },
+  --     { "<leader>cc", function() require("opencode").ask("@this: ", { submit = true }) end, desc = "Prompt Opencode" },
+  --   },
+  --   -- dependencies = {
+  --   --   {
+  --   --     -- `snacks.nvim` integration is recommended, but optional
+  --   --     ---@module "snacks" <- Loads `snacks.nvim` types for configuration intellisense
+  --   --     "folke/snacks.nvim",
+  --   --     optional = true,
+  --   --     opts = {
+  --   --       input = {}, -- Enhances `ask()`
+  --   --       picker = {  -- Enhances `select()`
+  --   --         actions = {
+  --   --           opencode_send = function(...) return require("opencode").snacks_picker_send(...) end,
+  --   --         },
+  --   --         win = {
+  --   --           input = {
+  --   --             keys = {
+  --   --               ["<a-a>"] = { "opencode_send", mode = { "n", "i" } },
+  --   --             },
+  --   --           },
+  --   --         },
+  --   --       },
+  --   --     },
+  --   --   },
+  --   -- },
+  --   -- config = function()
+  --   --   ---@type opencode.Opts
+  --   --   vim.g.opencode_opts = {
+  --   --     -- Your configuration, if any; goto definition on the type or field for details
+  --   --   }
+  --   --
+  --   --   -- Recommended/example keymaps
+  --   --   vim.keymap.set({ "n", "x" }, "<C-a>", function() require("opencode").ask("@this: ", { submit = true }) end,
+  --   --     { desc = "Ask opencode…" })
+  --   --   vim.keymap.set({ "n", "x" }, "<C-x>", function() require("opencode").select() end,
+  --   --     { desc = "Execute opencode action…" })
+  --   --   vim.keymap.set({ "n", "t" }, "<C-.>", function() require("opencode").toggle() end, { desc = "Toggle opencode" })
+  --   --
+  --   --   vim.keymap.set({ "n", "x" }, "go", function() return require("opencode").operator("@this ") end,
+  --   --     { desc = "Add range to opencode", expr = true })
+  --   --   vim.keymap.set("n", "goo", function() return require("opencode").operator("@this ") .. "_" end,
+  --   --     { desc = "Add line to opencode", expr = true })
+  --   --
+  --   --   vim.keymap.set("n", "<S-C-u>", function() require("opencode").command("session.half.page.up") end,
+  --   --     { desc = "Scroll opencode up" })
+  --   --   vim.keymap.set("n", "<S-C-d>", function() require("opencode").command("session.half.page.down") end,
+  --   --     { desc = "Scroll opencode down" })
+  --   --
+  --   --   -- You may want these if you use the opinionated `<C-a>` and `<C-x>` keymaps above — otherwise consider `<leader>o…` (and remove terminal mode from the `toggle` keymap)
+  --   --   vim.keymap.set("n", "+", "<C-a>", { desc = "Increment under cursor", noremap = true })
+  --   --   vim.keymap.set("n", "-", "<C-x>", { desc = "Decrement under cursor", noremap = true })
+  --   -- end,
+  -- }
 }
