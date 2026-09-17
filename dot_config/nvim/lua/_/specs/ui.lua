@@ -105,6 +105,27 @@ return {
         {
           "<leader>bo",
           function()
+            local current = vim.api.nvim_get_current_buf()
+            local is_file = vim.bo[current].buftype == ""
+                and vim.api.nvim_buf_get_name(current) ~= ""
+
+            if not is_file then
+              vim.cmd("enew")
+              current = vim.api.nvim_get_current_buf()
+            end
+
+            for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+              if bufnr ~= current and vim.api.nvim_buf_is_valid(bufnr) then
+                local unnamed = vim.api.nvim_buf_get_name(bufnr) == ""
+                vim.api.nvim_buf_delete(bufnr, { force = unnamed })
+              end
+            end
+          end,
+          desc = "Clear all other buffers"
+        },
+        {
+          "<leader>bO",
+          function()
             local buf = vim.api.nvim_get_current_buf()
             local name = vim.api.nvim_buf_get_name(buf)
 
