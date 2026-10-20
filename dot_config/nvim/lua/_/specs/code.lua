@@ -95,6 +95,7 @@ return {
         "luadoc",
         "luap",
         "gotmpl",
+        "http",
         "markdown",
         "markdown_inline",
         "printf",

@@ -76,6 +76,7 @@ return {
         { "<leader>h", group = "GitHub", icon = { icon = "", hl = "NONE" } },
         { "<leader>w", group = "Window", icon = { icon = " ", hl = "NONE" } },
         { "<leader>d", group = "Debugger", icon = { icon = "", hl = "NONE" } },
+        { "<leader>l", group = "List (trouble)", icon = { icon = "", hl = "NONE" } },
         { "<leader>e", group = "Test (neotest)", icon = { icon = "", hl = "NONE" } },
         { "<leader>s", group = "Grep", icon = { icon = "󰍉", hl = "NONE" } },
         { "<leader>x", group = "External", icon = { icon = "", hl = "NONE" } },

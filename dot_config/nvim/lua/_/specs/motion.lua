@@ -46,6 +46,7 @@ return {
     lazy = false,
     dependencies = {
       "nvimtools/hydra.nvim",
+      { 'smart-splits-nvim/backend-tmux', main = 'smart-splits-backend-tmux' },
     },
     keys = {
       { "<leader>w", desc = "Control Window Hydra" },
@@ -66,8 +67,7 @@ return {
       { "<C-w>l",    "<cmd>lua require('smart-splits').swap_buf_right()<cr>",    desc = "Swap window with right" },
     },
     opts = {
-      -- Enable tmux integration for seamless navigation between Neovim and tmux panes
-      multiplexer_integration = 'tmux',
+      mux = { backend = 'smart-splits-backend-tmux' },
     },
     config = function(plugin, opts)
       local hydra = require("hydra")

@@ -1,16 +1,34 @@
 return {
   {
-    "mistweaverco/kulala.nvim",
-    ft = { "http", "rest" },
-    config = true,
-    keys = {
-      -- TODO we need a hydra for this
-      { "<leader>R",  desc = "Run HTTP Request (kulala)" },
-      { "<leader>Rs", "<cmd>lua require('kulala').run()<cr>",     desc = "Run nearest" },
-      { "<leader>Ra", "<cmd>lua require('kulala').run_all()<cr>", desc = "Run all" },
-      { "<leader>Rr", "<cmd>lua require('kulala').replay()<cr>",  desc = "Run last" },
+    "dont-be-evil-company/kulala.nvim",
+    event = { "SessionLoadPost" },
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    -- keys = {
+    --   { "<leader>Rs", desc = "Send request" },
+    --   { "<leader>Ra", desc = "Send all requests" },
+    --   { "<leader>Rb", desc = "Open scratchpad" },
+    -- },
+    ft = { "http", "rest", "javascript", "lua" },
+    opts = {
+      treesitter = {
+        enable = false,
+      }
     }
   },
+  -- {
+  --   "mistweaverco/kulala.nvim",
+  --   ft = { "http", "rest" },
+  --   config = true,
+  --   keys = {
+  --     -- TODO we need a hydra for this
+  --     { "<leader>R",  desc = "Run HTTP Request (kulala)" },
+  --     { "<leader>Rs", "<cmd>lua require('kulala').run()<cr>",     desc = "Run nearest" },
+  --     { "<leader>Ra", "<cmd>lua require('kulala').run_all()<cr>", desc = "Run all" },
+  --     { "<leader>Rr", "<cmd>lua require('kulala').replay()<cr>",  desc = "Run last" },
+  --   }
+  -- },
   {
     "obsidian-nvim/obsidian.nvim",
     version = "*", -- use latest release, remove to use latest commit
