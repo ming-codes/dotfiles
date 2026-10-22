@@ -11,6 +11,9 @@ return {
       modes = {
         char = {
           keys = { "f", "F", ";", "," },
+        },
+        search = {
+          --enabled = true,
         }
       }
     },

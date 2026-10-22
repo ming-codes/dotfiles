@@ -198,7 +198,7 @@ return {
       { "<leader>sH", function() Snacks.picker.highlights() end,            desc = "Highlights" },
       { "<leader>sJ", function() require('_.pickers.jira').search() end,    desc = "JIRA" },
       -- { "<leader>si", function() Snacks.picker.icons() end, desc = "Icons" },
-      -- { "<leader>sj", function() Snacks.picker.jumps() end, desc = "Jumps" },
+      { "<leader>sj", function() Snacks.picker.jumps() end,                 desc = "Jumps" },
       -- { "<leader>sk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
       -- { "<leader>sl", function() Snacks.picker.loclist() end, desc = "Location List" },
       -- { "<leader>sm", function() Snacks.picker.marks() end, desc = "Marks" },
@@ -281,6 +281,11 @@ return {
     end
   },
   {
+    -- TODO I need mapping ideas for hydra
+    -- `debugger` is the only one so far
+    -- `git` is interesting, I can do interactive staging
+    -- `agent` could be useful, but no idea yet
+    -- `window` was suggested, but I don't do this often enough for hydra
     "nvimtools/hydra.nvim",
   },
   { "folke/neoconf.nvim", lazy = false, config = true }

@@ -71,14 +71,16 @@ return {
         g = false,
       },
       spec = {
+        -- Find is general. Files, Buffers
         { "<leader>f", group = "Find", icon = { icon = "󰍉", hl = "NONE" } },
+        -- Search is specific position in files and buffers
+        { "<leader>s", group = "Search", icon = { icon = "󰍉", hl = "NONE" } },
         { "<leader>g", group = "Git", icon = { icon = "󰊢", hl = "NONE" } },
         { "<leader>h", group = "GitHub", icon = { icon = "", hl = "NONE" } },
         { "<leader>w", group = "Window", icon = { icon = " ", hl = "NONE" } },
         { "<leader>d", group = "Debugger", icon = { icon = "", hl = "NONE" } },
         { "<leader>l", group = "List (trouble)", icon = { icon = "", hl = "NONE" } },
         { "<leader>e", group = "Test (neotest)", icon = { icon = "", hl = "NONE" } },
-        { "<leader>s", group = "Grep", icon = { icon = "󰍉", hl = "NONE" } },
         { "<leader>x", group = "External", icon = { icon = "", hl = "NONE" } },
         { "<leader>u", group = "UI" },
         { "<leader>c", group = "Chat/AI" },
@@ -268,6 +270,28 @@ return {
     }
   },
   {
+    "hat0uma/csvview.nvim",
+    cmd = { "CsvViewEnable", "CsvViewDisable", "CsvViewToggle" },
+    ---@module "csvview"
+    ---@type CsvView.Options
+    opts = {
+      parser = { comments = { "#", "//" } },
+      keymaps = {
+        -- Text objects for selecting fields
+        textobject_field_inner = { "if", mode = { "o", "x" } },
+        textobject_field_outer = { "af", mode = { "o", "x" } },
+        -- Excel-like navigation:
+        -- Use <Tab> and <S-Tab> to move horizontally between fields.
+        -- Use <Enter> and <S-Enter> to move vertically between rows and place the cursor at the end of the field.
+        -- Note: In terminals, you may need to enable CSI-u mode to use <S-Tab> and <S-Enter>.
+        jump_next_field_end = { "<Tab>", mode = { "n", "v" } },
+        jump_prev_field_end = { "<S-Tab>", mode = { "n", "v" } },
+        jump_next_row = { "<Enter>", mode = { "n", "v" } },
+        jump_prev_row = { "<S-Enter>", mode = { "n", "v" } },
+      },
+    },
+  },
+  {
     'MeanderingProgrammer/markdown.nvim',
     name = 'render-markdown',
     dependencies = {
@@ -282,7 +306,7 @@ return {
   },
   {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons", "tpope/vim-fugitive" },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     event = "VeryLazy",
     -- FugitiveHead
     opts = {

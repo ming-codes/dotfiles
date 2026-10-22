@@ -1,5 +1,9 @@
 local tmpdir = os.getenv("TMPDIR")
 
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+vim.go.background = "light"
+
 vim.o.guicursor = "n:block-blinkon500-blinkoff500-blinkwait1000,v-c-sm:block,i-ci-ve:block,r-cr-o:block"
 vim.o.clipboard = 'unnamed,unnamedplus'
 vim.o.termguicolors = true

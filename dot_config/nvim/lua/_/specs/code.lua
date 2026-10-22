@@ -23,19 +23,21 @@ return {
   {
     "lewis6991/hover.nvim",
     opts = {
-      init = function()
-        -- Require providers
-        require("hover.providers.lsp")
-        -- require('hover.providers.gh')
-        -- require('hover.providers.gh_user')
-        require('hover.providers.jira')
-        require('hover.providers.dap')
-        require('hover.providers.fold_preview')
-        require('hover.providers.diagnostic')
-        -- require('hover.providers.man')
-        -- require('hover.providers.dictionary')
-        require('hover.providers.highlight')
-      end,
+      providers = {
+        'hover.providers.diagnostic',
+        -- 'hover.providers.lsp',
+        '_.hacks.lsp_hover', -- lsp hover with ts_ls enhancements
+        'hover.providers.dap',
+        -- 'hover.providers.man',
+        {
+          module = 'hover.providers.dictionary',
+          -- the override replaces the plugin's own check, so repeat it
+          enabled = function(bufnr)
+            return vim.bo[bufnr].filetype == 'markdown'
+                and #vim.spell.check(vim.fn.expand('<cword>')) == 0
+          end,
+        },
+      },
       preview_opts = {
         border = 'single'
       },
@@ -49,10 +51,20 @@ return {
       mouse_delay = 1000
     },
     keys = {
-      { "K",     function() require("hover").hover() end,                  desc = "Hover" },
-      { "gK",    function() require('hover').hover_select() end,           desc = "Hover (select)" },
-      { "<C-p>", function() require('hover').hover_switch("previous") end, desc = "Hover (select previous)" },
-      { "<C-n>", function() require('hover').hover_switch("next") end,     desc = "Hover (select next)" },
+      -- TODO
+      -- .open takes a list of providers. This gives better context on what to use
+      -- I need better idea on what I want the experience to be like
+      -- Too many things are contextual
+      -- - diagnostic <- most important
+      -- - type def <- most important
+      -- - debugger
+      -- - code action
+      -- - code lens
+      -- - git blame
+      { "K",     function() require("hover").open() end,             desc = "Hover" },
+      -- { "gK",    function() require('hover').select({}) end,         desc = "Hover (select)" },
+      { "<C-p>", function() require('hover').switch("previous") end, desc = "Hover (select previous)" },
+      { "<C-n>", function() require('hover').switch("next") end,     desc = "Hover (select next)" },
     },
   },
   {

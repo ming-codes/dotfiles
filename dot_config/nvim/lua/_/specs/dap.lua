@@ -35,8 +35,8 @@ return {
       { "<Right>", function() require('dap').step_into() end, desc = "Step into" },
       { "<Left>", function() require('dap').step_out() end, desc = "Step out" },
 
-      { "]d", function() require('dap').down() end, desc = "Go down frame stack" },
-      { "[d", function() require('dap').up() end, desc = "Go up frame stack" },
+      { "]f", function() require('dap').down() end, desc = "Go down frame stack" },
+      { "[f", function() require('dap').up() end, desc = "Go up frame stack" },
 
       { "<leader>dC", function() require('dap').continue() end, desc = "Continue" },
 
