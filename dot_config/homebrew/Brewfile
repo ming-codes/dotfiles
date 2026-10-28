@@ -55,7 +55,7 @@ cask "dash", args: { appdir: "~/Applications" }
 cask "alfred", args: { appdir: "~/Applications" }
 cask "ghostty", args: { appdir: "~/Applications" }
 
-uv "visidata"
+uv "visidata", with: ["openpyxl", "lxml"]
 
 # Media
 #brew "ffmpeg"
