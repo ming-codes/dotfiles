@@ -11,6 +11,7 @@ ulimit -n 8192
 eval "$(starship init zsh)"
 eval "$(atuin init zsh)"
 eval "$(zoxide init zsh --cmd cd)"
+eval "$(mise activate zsh)"
 
 #bindkey '^[[A' history-substring-search-up
 #bindkey '^[[B' history-substring-search-down
